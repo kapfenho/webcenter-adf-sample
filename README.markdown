@@ -22,7 +22,7 @@ and create synonyms for it.
 
 Open the applications in JDeveloper. Build "CustomerTaskFlow" 
 as jar and then build "GlobalSupportUnit", which uses that task flows
-and creats a WebCenter application.
+and creates a WebCenter application.
 
 PS: I hope this information helps you. Please don't expect more ADF apps
 coming from my side... So glad this is over....!!! :-)
