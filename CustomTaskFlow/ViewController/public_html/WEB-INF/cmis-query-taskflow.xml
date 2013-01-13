@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="cmis-query-taskflow">
+    <default-activity id="__3">main</default-activity>
+    <input-parameter-definition id="__2">
+      <name id="__1">user</name>
+      <value>#{pageFlowScope.user}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <return-value-definition id="__8">
+      <description id="__11">CMIS query to retrieve announcement documents from Content Server</description>
+      <display-name id="__10">Announcement Query</display-name>
+      <name id="__9">announcementQuery</name>
+      <value>#{pageFlowScope.contentQueryBean.announcementQuery}</value>
+      <class>java.lang.String</class>
+    </return-value-definition>
+    <return-value-definition id="__12">
+      <description id="__14">CMIS query to retrieve product information from Content Server. Null, if no corresponding product info should be retrieved.</description>
+      <display-name id="__15">Product Info Query</display-name>
+      <name id="__13">productQuery</name>
+      <value>#{pageFlowScope.contentQueryBean.productQuery}</value>
+      <class>java.lang.String</class>
+    </return-value-definition>
+    <return-value-definition id="__17">
+      <description id="__18">CMIS query to retrieve vendor information from Content Server.</description>
+      <display-name id="__19">Vendor Info Query</display-name>
+      <name id="__16">vendorQuery</name>
+      <value>#{pageFlowScope.contentQueryBean.vendorQuery}</value>
+      <class>java.lang.String</class>
+    </return-value-definition>
+    <managed-bean id="__5">
+      <managed-bean-name id="__4">contentQueryBean</managed-bean-name>
+      <managed-bean-class id="__7">com.h3g.owc.custom.taskflow.view.ContentQueryGenerator</managed-bean-class>
+      <managed-bean-scope id="__6">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__20">
+      <managed-bean-name id="__22">eventStarterBean</managed-bean-name>
+      <managed-bean-class id="__23">com.h3g.owc.custom.taskflow.view.EventStarter</managed-bean-class>
+      <managed-bean-scope id="__21">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="main">
+      <page>/pagefragments/main.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

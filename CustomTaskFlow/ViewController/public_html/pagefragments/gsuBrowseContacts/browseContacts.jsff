@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="bcpsl1" topHeight="25px">
+    <f:facet name="top">
+      <af:panelHeader text="Browse Contacts" id="pagehead1"/>
+    </f:facet>
+    <f:facet name="center">
+      <af:panelSplitter orientation="vertical" splitterPosition="100" positionedFromEnd="true" id="ps1">
+          <f:facet name="first">
+                <af:table value="#{bindings.ContactView1.collectionModel}" var="row"
+                          rows="#{bindings.ContactView1.rangeSize}"
+                          emptyText="#{bindings.ContactView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.ContactView1.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.ContactView1Query.queryDescriptor}"
+                          queryListener="#{bindings.ContactView1Query.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectedRowKeys="#{bindings.ContactView1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.ContactView1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t1"
+                          columnStretching="last" styleClass="AFStretchWidth" >
+                    <af:column sortProperty="Logon" filterable="true"
+                               sortable="true" filterFeatures="caseInsensitive"
+                               headerText="#{bindings.ContactView1.hints.Logon.label}"
+                               id="c1"  width="70">
+                        <af:outputText value="#{row.Logon}" id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="FirstName" filterable="true"
+                               sortable="true" filterFeatures="caseInsensitive"
+                               headerText="#{bindings.ContactView1.hints.FirstName.label}"
+                               id="c3" width="100">
+                        <af:outputText value="#{row.FirstName}" id="ot1"/>
+                    </af:column>
+                    <af:column sortProperty="LastName" filterable="true"
+                               sortable="true" filterFeatures="caseInsensitive"
+                               headerText="#{bindings.ContactView1.hints.LastName.label}"
+                               id="c6"  width="120">
+                        <af:outputText value="#{row.LastName}" id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="Category" filterable="true"
+                               sortable="true" filterFeatures="caseInsensitive"
+                               headerText="#{bindings.ContactView1.hints.Category.label}"
+                               id="c4"  width="130">
+                        <af:outputText value="#{row.Category}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="Organisation" filterable="true"
+                               sortable="true" filterFeatures="caseInsensitive"
+                               headerText="#{bindings.ContactView1.hints.Organisation.label}"
+                               id="c7"  width="130">
+                        <af:outputText value="#{row.Organisation}" id="ot6"/>
+                    </af:column>
+                    <af:column sortProperty="OrganisationSub" filterable="true"
+                               sortable="true" filterFeatures="caseInsensitive"
+                               headerText="#{bindings.ContactView1.hints.OrganisationSub.label}"
+                               id="c5"  width="100">
+                        <af:outputText value="#{row.OrganisationSub}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="Position" filterable="true"
+                               sortable="true" filterFeatures="caseInsensitive"
+                               headerText="#{bindings.ContactView1.hints.Position.label}"
+                               id="c2" >
+                        <af:outputText value="#{row.Position}" id="ot7"/>
+                    </af:column>
+                </af:table>
+            </f:facet>
+          <f:facet name="second">
+                <af:panelFormLayout id="pfl1" partialTriggers="t1" maxColumns="4"
+                                    rows="5">
+                    <af:panelLabelAndMessage label="#{bindings.Id.hints.label}"
+                                             id="plam16">
+                        <af:outputText value="#{bindings.Id.inputValue}" id="ot21"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.Logon.hints.label}"
+                                             id="plam8">
+                        <af:outputText value="#{bindings.Logon.inputValue}"
+                                       id="ot28"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.FirstName.hints.label}"
+                                             id="plam19">
+                        <af:outputText value="#{bindings.FirstName.inputValue}"
+                                       id="ot8"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.LastName.hints.label}"
+                                             id="plam18">
+                        <af:outputText value="#{bindings.LastName.inputValue}"
+                                       id="ot17"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.Category.hints.label}"
+                                             id="plam1">
+                        <af:outputText value="#{bindings.Category.inputValue}"
+                                       id="ot18"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.Organisation.hints.label}"
+                                             id="plam11">
+                        <af:outputText value="#{bindings.Organisation.inputValue}"
+                                       id="ot19"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.OrganisationSub.hints.label}"
+                                             id="plam12">
+                        <af:outputText value="#{bindings.OrganisationSub.inputValue}"
+                                       id="ot14"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.Position.hints.label}"
+                                             id="plam21">
+                        <af:outputText value="#{bindings.Position.inputValue}"
+                                       id="ot11"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.FixPhone.hints.label}"
+                                             id="plam4">
+                        <af:outputText value="#{bindings.FixPhone.inputValue}"
+                                       id="ot15"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.FaxPhone.hints.label}"
+                                             id="plam3">
+                        <af:outputText value="#{bindings.FaxPhone.inputValue}"
+                                       id="ot23"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.EmailAddress.hints.label}"
+                                             id="plam20">
+                        <af:outputText value="#{bindings.EmailAddress.inputValue}"
+                                       id="ot22"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.AddressLine1.hints.label}"
+                                             id="plam14">
+                        <af:outputText value="#{bindings.AddressLine1.inputValue}"
+                                       id="ot9"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.AddressLine2.hints.label}"
+                                             id="plam13">
+                        <af:outputText value="#{bindings.AddressLine2.inputValue}"
+                                       id="ot26"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.AddressLine3.hints.label}"
+                                             id="plam7">
+                        <af:outputText value="#{bindings.AddressLine3.inputValue}"
+                                       id="ot25"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.ZipCode.hints.label}"
+                                             id="plam10">
+                        <af:outputText value="#{bindings.ZipCode.inputValue}"
+                                       id="ot20"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.City.hints.label}"
+                                             id="plam2">
+                        <af:outputText value="#{bindings.City.inputValue}"
+                                       id="ot10"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.Country.hints.label}"
+                                             id="plam6">
+                        <af:outputText value="#{bindings.Country.inputValue}"
+                                       id="ot16"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.Note.hints.label}"
+                                             id="plam5">
+                        <af:outputText value="#{bindings.Note.inputValue}"
+                                       id="ot24"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.ChangedDttm.hints.label}"
+                                             id="plam17">
+                        <af:outputText value="#{bindings.ChangedDttm.inputValue}"
+                                       id="ot27">
+                            <af:convertDateTime pattern="#{bindings.ChangedDttm.format}"/>
+                        </af:outputText>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="#{bindings.ChangedUser.hints.label}"
+                                             id="plam9">
+                        <af:outputText value="#{bindings.ChangedUser.inputValue}"
+                                       id="ot13"/>
+                    </af:panelLabelAndMessage>
+                </af:panelFormLayout>
+            </f:facet>
+      </af:panelSplitter>
+  </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

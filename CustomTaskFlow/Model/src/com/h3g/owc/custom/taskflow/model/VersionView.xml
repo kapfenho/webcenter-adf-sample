@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="VersionView"
+  Version="11.1.1.61.92"
+  SelectList="Version.ID, 
+       Version.PRODUCT_ID, 
+       Version.VERSION_NAME, 
+       Version.RELEASE_DATE, 
+       Version.EOS_DATE, 
+       Version.EOS_INFO, 
+       Version.ACTIVE, 
+       Version.CHANGED_DTTM, 
+       Version.CHANGED_USER, 
+       Version.DESCRIPTION, 
+       Version.SUPPORT_STATUS, 
+       Version.SWAP_PLAN, 
+       Version.UPDATE_PLAN, 
+       Vendor.VENDOR_NAME, 
+       Vendor.ID AS ID1, 
+       Platform.PLATFORM_NAME, 
+       Platform.ID AS ID2, 
+       Product.PRODUCT_NAME, 
+       Product.ID AS ID3"
+  FromList="GSU_VERSION Version, GSU_PRODUCT Product, GSU_VENDOR Vendor, GSU_PLATFORM Platform"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  Where="((Version.PRODUCT_ID = Product.ID) AND (Product.VENDOR_ID = Vendor.ID)) AND (Product.PLATFORM_ID = Platform.ID)">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="ProductView1"
+    ViewObjectName="com.h3g.owc.custom.taskflow.model.ProductView"
+    RowLevelBinds="true"
+    OrderBy="Product.PRODUCT_NAME"/>
+  <ViewAccessor
+    Name="SupportStatusCodes1"
+    ViewObjectName="com.h3g.owc.custom.taskflow.model.SupportStatusCodes"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ProductId"
+    ListVOName="ProductView1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProductId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ProductName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_SupportStatus"
+    ListVOName="SupportStatusCodes1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SupportStatus"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Status"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="Version"
+    Entity="com.h3g.owc.custom.taskflow.model.Version"/>
+  <EntityUsage
+    Name="Product"
+    Entity="com.h3g.owc.custom.taskflow.model.Product"
+    Association="com.h3g.owc.custom.taskflow.model.GsuVersionProductFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuVersionProductFkAssoc.Product"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.VersionView.Version"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Version.ProductId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Product.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Vendor"
+    Entity="com.h3g.owc.custom.taskflow.model.Vendor"
+    Association="com.h3g.owc.custom.taskflow.model.GsuProductVendorFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuProductVendorFkAssoc.Vendor"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.VersionView.Product"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Product.VendorId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Vendor.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Platform"
+    Entity="com.h3g.owc.custom.taskflow.model.Platform"
+    Association="com.h3g.owc.custom.taskflow.model.GsuProductPlatformFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuProductPlatformFkAssoc.Platform"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.VersionView.Product"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Product.PlatformId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Platform.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Version"
+    AliasName="ID"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="ProductId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ProductId"
+    EntityUsage="Version"
+    AliasName="PRODUCT_ID"
+    LOVName="LOV_ProductId"
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="VersionName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="VersionName"
+    EntityUsage="Version"
+    AliasName="VERSION_NAME"/>
+  <ViewAttribute
+    Name="ReleaseDate"
+    PrecisionRule="true"
+    EntityAttrName="ReleaseDate"
+    EntityUsage="Version"
+    AliasName="RELEASE_DATE"/>
+  <ViewAttribute
+    Name="EosDate"
+    PrecisionRule="true"
+    EntityAttrName="EosDate"
+    EntityUsage="Version"
+    AliasName="EOS_DATE"/>
+  <ViewAttribute
+    Name="EosInfo"
+    PrecisionRule="true"
+    EntityAttrName="EosInfo"
+    EntityUsage="Version"
+    AliasName="EOS_INFO"/>
+  <ViewAttribute
+    Name="Active"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Active"
+    EntityUsage="Version"
+    AliasName="ACTIVE"/>
+  <ViewAttribute
+    Name="ChangedDttm"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ChangedDttm"
+    EntityUsage="Version"
+    AliasName="CHANGED_DTTM"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="ChangedUser"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ChangedUser"
+    EntityUsage="Version"
+    AliasName="CHANGED_USER"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="Version"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="SupportStatus"
+    PrecisionRule="true"
+    EntityAttrName="SupportStatus"
+    EntityUsage="Version"
+    AliasName="SUPPORT_STATUS"
+    LOVName="LOV_SupportStatus">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SwapPlan"
+    PrecisionRule="true"
+    EntityAttrName="SwapPlan"
+    EntityUsage="Version"
+    AliasName="SWAP_PLAN"/>
+  <ViewAttribute
+    Name="UpdatePlan"
+    PrecisionRule="true"
+    EntityAttrName="UpdatePlan"
+    EntityUsage="Version"
+    AliasName="UPDATE_PLAN"/>
+  <ViewAttribute
+    Name="VendorName"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="VendorName"
+    EntityUsage="Vendor"
+    AliasName="VENDOR_NAME"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="Id1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Vendor"
+    AliasName="ID1"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="PlatformName"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PlatformName"
+    EntityUsage="Platform"
+    AliasName="PLATFORM_NAME"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="Id2"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Platform"
+    AliasName="ID2"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="ProductName"
+    IsUpdateable="while_insert"
+    IsUnique="true"
+    PrecisionRule="true"
+    EntityAttrName="ProductName"
+    EntityUsage="Product"
+    AliasName="PRODUCT_NAME"/>
+  <ViewAttribute
+    Name="Id3"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Product"
+    AliasName="ID3"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="OperatingCountryVersionView"
+    ViewLink="com.h3g.owc.custom.taskflow.model.GsuOpcoVersionVersionFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

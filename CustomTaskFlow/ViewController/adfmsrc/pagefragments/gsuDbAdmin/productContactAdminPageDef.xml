@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="productContactAdminPageDef"
+                Package="pagefragments.gsuDbAdmin">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ProductContactView1" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="ProductContactView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ProductContactView1Iterator" id="ProductContactView1">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.ProductContactView"
+                      Name="ProductContactView10">
+        <AttrNames>
+          <Item Value="VendorName"/>
+          <Item Value="ProductName"/>
+          <Item Value="PlatformName"/>
+          <Item Value="FirstName"/>
+          <Item Value="LastName"/>
+          <Item Value="Position"/>
+          <Item Value="Organisation"/>
+          <Item Value="OrganisationSub"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ProductContactView1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ProductContactView1Iterator" StaticList="false"
+          Uses="LOV_ProductId" id="ProductId" DTSupportsMRU="false"/>
+    <list IterBinding="ProductContactView1Iterator" StaticList="false"
+          Uses="LOV_ContactId" id="ContactId" DTSupportsMRU="false"/>
+    <attributeValues IterBinding="ProductContactView1Iterator" id="Note">
+      <AttrNames>
+        <Item Value="Note"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductContactView1Iterator" id="ChangedDttm">
+      <AttrNames>
+        <Item Value="ChangedDttm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductContactView1Iterator" id="ChangedUser">
+      <AttrNames>
+        <Item Value="ChangedUser"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ProductContactView1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+    <action IterBinding="ProductContactView1Iterator" id="Execute"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <list IterBinding="ProductContactView1Iterator" StaticList="false"
+          Uses="LOV_EscalationLevel" id="EscalationLevel" DTSupportsMRU="true"/>
+  </bindings>
+</pageDefinition>

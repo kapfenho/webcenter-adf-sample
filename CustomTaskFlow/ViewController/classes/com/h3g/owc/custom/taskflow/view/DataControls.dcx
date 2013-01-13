@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration"
+                    version="11.1.1.60.13" id="DataControls"
+                    Package="com.h3g.owc.custom.taskflow.view">
+  <AdapterDataControl id="BasicEventHandler"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="com.h3g.owc.custom.taskflow.view.BasicEventHandler"
+                      BeanClass="com.h3g.owc.custom.taskflow.view.BasicEventHandler"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="com.h3g.owc.custom.taskflow.view.BasicEventHandler"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="com.h3g.owc.custom.taskflow.view.BasicEventHandler"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ContentQueryGenerator"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="com.h3g.owc.custom.taskflow.view.ContentQueryGenerator"
+                      BeanClass="com.h3g.owc.custom.taskflow.view.ContentQueryGenerator"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="com.h3g.owc.custom.taskflow.view.ContentQueryGenerator"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="com.h3g.owc.custom.taskflow.view.ContentQueryGenerator"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="BasicEventConsumer"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="com.h3g.owc.custom.taskflow.view.BasicEventConsumer"
+                      BeanClass="com.h3g.owc.custom.taskflow.view.BasicEventConsumer"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="com.h3g.owc.custom.taskflow.view.BasicEventConsumer"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="com.h3g.owc.custom.taskflow.view.BasicEventConsumer"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

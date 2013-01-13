@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="horstLayoutTestPageDef"
+                Package="oracle.webcenter.portalapp.pages">
+  <parameters>
+    <parameter id="page_info"
+               value="title=horstLayoutTest;desc=;keywords=;createdBy=weblogic;createDate=2012-06-06T16:34:54;lastUpdatedBy=weblogic;lastUpdateDate=2012-06-06T16:34:54;permissionClass=oracle.webcenter.security.auth.HierarchicalResourcePermission;target=serviceID=oracle.webcenter.page,scopeID=s8bba98ff_4cbb_40b8_beee_296c916a23ed,resourceID=/oracle/webcenter/portalapp/pages/horstLayoutTest.jspx;excluded=false;style="/>
+    <parameter id="page_title" value="horstLayoutTest"/>
+  </parameters>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="oracle.webcenter.portalapp.pagetemplates.pageTemplate_globePageDef"
+          id="pageTemplateBinding" Refresh="ifNeeded"/>
+    <taskFlow id="productmatrixtaskflow1"
+              taskFlowId="/WEB-INF/product-matrix-taskflow.xml#product-matrix-taskflow"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

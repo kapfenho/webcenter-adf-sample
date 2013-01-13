@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.60.13" id="DataBindings" SeparateXMLFiles="false"
+             Package="com.h3g.owc.custom.gsuportal.portal" ClientType="Generic"
+             PageMapClass="oracle.jbo.uicli.mom.DynamicPageMapImpl"
+             BasePageDefPackageName="pageDefs">
+  <pageMap>
+    <page path="/oracle/webcenter/portalapp/pages/navigation-renderer.jspx"
+          usageId="portal_navigation_rendererPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/home.jspx"
+          usageId="portal_homePageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/login.jspx"
+          usageId="portal_loginPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/error.jspx"
+          usageId="portal_errorPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pagetemplates/pageTemplate_globe.jspx"
+          usageId="portal_pageTemplate_globePageDef"/>
+    <page path="/oracle/webcenter/portalapp/pagetemplates/pageTemplate_swooshy.jspx"
+          usageId="portal_pageTemplate_swooshyPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/announcements.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_announcementsPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/productIdentificationTaskflowTest.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_productIdentificationTaskflowTestPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/aboutGsu.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_aboutGsuPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/instructionContent.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_instructionContentPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/defectContent.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_defectContentPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/toolAndDownloadBrowser.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_toolAndDownloadBrowserPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/contactBrowser.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_contactBrowserPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/portfolioAdmin.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_portfolioAdminPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/restrictedVersionAdmin.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_restrictedVersionAdminPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/externalLinks.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_externalLinksPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/productInfo.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_productInfoPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/contentAdmin.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_contentAdminPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/contentBrowser.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_contentBrowserPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/productMatrix.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_productMatrixPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/portalAnalytics.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_portalAnalyticsPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/opCoInfo.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_opCoInfoPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/change_pwd.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_change_pwdPageDef"/>
+    <page path="/oracle/webcenter/portalapp/pages/testShow.jspx"
+          usageId="com_h3g_owc_custom_gsuportal_portal_testShowPageDef"/>
+  </pageMap>
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/portlet/bindings"
+             className="oracle.adf.model.portlet.binding.PortletBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adfdtinternal.view.faces.portlet.PortletDefinitionDTFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageDefinitionUsages>
+    <page id="portal_navigation_rendererPageDef"
+          path="oracle.webcenter.portalapp.pages.navigation_rendererPageDef"/>
+    <page id="portal_homePageDef"
+          path="oracle.webcenter.portalapp.pages.homePageDef"/>
+    <page id="portal_loginPageDef"
+          path="oracle.webcenter.portalapp.pages.loginPageDef"/>
+    <page id="portal_errorPageDef"
+          path="oracle.webcenter.portalapp.pages.errorPageDef"/>
+    <page id="portal_pageTemplate_globePageDef"
+          path="oracle.webcenter.portalapp.pagetemplates.pageTemplate_globePageDef"/>
+    <page id="portal_pageTemplate_swooshyPageDef"
+          path="oracle.webcenter.portalapp.pagetemplates.pageTemplate_swooshyPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_announcementsPageDef"
+          path="oracle.webcenter.portalapp.pages.announcementsPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_productIdentificationTaskflowTestPageDef"
+          path="oracle.webcenter.portalapp.pages.productIdentificationTaskflowTestPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_aboutGsuPageDef"
+          path="oracle.webcenter.portalapp.pages.aboutGsuPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_instructionContentPageDef"
+          path="oracle.webcenter.portalapp.pages.instructionContentPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_defectContentPageDef"
+          path="oracle.webcenter.portalapp.pages.defectContentPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_toolAndDownloadBrowserPageDef"
+          path="oracle.webcenter.portalapp.pages.toolAndDownloadBrowserPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_contactBrowserPageDef"
+          path="oracle.webcenter.portalapp.pages.contactBrowserPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_portfolioAdminPageDef"
+          path="oracle.webcenter.portalapp.pages.portfolioAdminPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_restrictedVersionAdminPageDef"
+          path="oracle.webcenter.portalapp.pages.restrictedVersionAdminPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_externalLinksPageDef"
+          path="oracle.webcenter.portalapp.pages.externalLinksPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_productInfoPageDef"
+          path="oracle.webcenter.portalapp.pages.productInfoPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_contentAdminPageDef"
+          path="oracle.webcenter.portalapp.pages.contentAdminPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_contentBrowserPageDef"
+          path="oracle.webcenter.portalapp.pages.contentBrowserPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_productMatrixPageDef"
+          path="oracle.webcenter.portalapp.pages.productMatrixPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_portalAnalyticsPageDef"
+          path="oracle.webcenter.portalapp.pages.portalAnalyticsPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_opCoInfoPageDef"
+          path="oracle.webcenter.portalapp.pages.opCoInfoPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_change_pwdPageDef"
+          path="oracle.webcenter.portalapp.pages.change_pwdPageDef"/>
+    <page id="com_h3g_owc_custom_gsuportal_portal_testShowPageDef"
+          path="oracle.webcenter.portalapp.pages.testShowPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="ConnectionsManagementDC"
+        path="oracle.webcenter.peopleconnections.connections.model.ConnectionsManagementDC"/>
+    <dc id="ProductInfoEventHandler"
+        path="com.h3g.owc.custom.gsuportal.portal.ProductInfoEventHandler"/>
+    <dc id="AnnouncementEventHandler"
+        path="com.h3g.owc.custom.gsuportal.portal.AnnouncementEventHandler"/>
+    <BC4JDataControl id="BaseApplicationModuleDataControl"
+                     Package="com.h3g.owc.custom.gsuportal.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="BaseApplicationModuleLocal"
+                     syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

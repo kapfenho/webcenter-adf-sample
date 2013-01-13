@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="versionAdminPageDef"
+                Package="pagefragments.opcoVersionAdmin">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RestrictedVersionView1" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="RestrictedVersionView1Iterator"/>
+    <searchRegion Binds="RestrictedVersionView1Iterator" Criteria=""
+              Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+              id="RestrictedVersionView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RestrictedVersionView1Iterator"
+          id="RestrictedVersionView1">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.RestrictedVersionView"
+                      Name="RestrictedVersionView10">
+        <AttrNames>
+          <Item Value="OpcoName"/>
+          <Item Value="VendorName"/>
+          <Item Value="ProductName"/>
+          <Item Value="VersionName"/>
+          <Item Value="PlatformName"/>
+          <Item Value="VersionBuild"/>
+          <Item Value="Active"/>
+          <Item Value="Logon"/>
+          <Item Value="ChangedDttm"/>
+          <Item Value="Comments"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="RestrictedVersionView1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="RestrictedVersionView1Iterator" StaticList="false"
+          Uses="LOV_OpcoId" id="OpcoId" DTSupportsMRU="false"/>
+    <list IterBinding="RestrictedVersionView1Iterator" StaticList="false"
+          Uses="LOV_VersionId" id="VersionId" DTSupportsMRU="false"/>
+    <attributeValues IterBinding="RestrictedVersionView1Iterator"
+                     id="VersionBuild">
+      <AttrNames>
+        <Item Value="VersionBuild"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RestrictedVersionView1Iterator" id="Active">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RestrictedVersionView1Iterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RestrictedVersionView1Iterator" id="SwapPlan">
+      <AttrNames>
+        <Item Value="SwapPlan"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RestrictedVersionView1Iterator"
+                     id="UpdatePlan">
+      <AttrNames>
+        <Item Value="UpdatePlan"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RestrictedVersionView1Iterator"
+                     id="ChangedDttm">
+      <AttrNames>
+        <Item Value="ChangedDttm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RestrictedVersionView1Iterator"
+                     id="ChangedUser">
+      <AttrNames>
+        <Item Value="ChangedUser"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="RestrictedVersionView1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+    <action IterBinding="RestrictedVersionView1Iterator" id="Execute"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

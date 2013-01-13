@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="US-ASCII" ?>
+<navigationDefinition description="Default Navigation" 
+               id="default-navigation-model"
+               name="Default Navigation"
+               xmlns="http://xmlns.oracle.com/adf/rcs/catalog" visible="#{true}"
+                      definitionFilter="">
+  <attributes/>
+  <contents>
+    <url id="home-old" visible="#{false}"
+         factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory"
+         url="page://oracle/webcenter/portalapp/pages/home.jspx">
+      <attributes>
+        <attribute value="Home" isKey="false" attributeId="Title"/>
+        <attribute isKey="false" attributeId="Redirect" value="false"/>
+      </attributes>
+    </url>
+    <url id="home" visible="#{true}"
+         factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory"
+         url="page://oracle/webcenter/portalapp/pages/aboutGsu.jspx">
+      <attributes>
+        <attribute value="Information" isKey="false" attributeId="Title"/>
+      </attributes>
+      <contents>
+        <url id="instructionContent" visible="#{true}"
+             factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory"
+             url="page://oracle/webcenter/portalapp/pages/instructionContent.jspx">
+          <attributes>
+            <attribute value="Instructions" isKey="false" attributeId="Title"/>
+          </attributes>
+        </url>
+        <url id="defectContent" visible="#{true}"
+             factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory"
+             url="page://oracle/webcenter/portalapp/pages/defectContent.jspx">
+          <attributes>
+            <attribute value="Defects" isKey="false" attributeId="Title"/>
+          </attributes>
+          <contents/>
+        </url>
+        <url id="toolAndDownloadBrowser" visible="#{true}"
+             factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory"
+             url="page://oracle/webcenter/portalapp/pages/toolAndDownloadBrowser.jspx">
+          <attributes>
+            <attribute value="Tools &amp; Downloads" isKey="false"
+                       attributeId="Title"/>
+          </attributes>
+        </url>
+        <url url="page://oracle/webcenter/portalapp/pages/contactBrowser.jspx"
+             visible="#{true}"
+             factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory"
+             id="contactBrowser">
+          <attributes>
+            <attribute value="Contacts" isKey="false" attributeId="Title"/>
+          </attributes>
+        </url>
+        <url factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory"
+             id="externalLinks"
+             url="page://oracle/webcenter/portalapp/pages/externalLinks.jspx"
+             visible="#{true}">
+          <attributes>
+            <attribute isKey="false" attributeId="Title"
+                       value="External links"/>
+          </attributes>
+          <contents>
+            <url visible="#{securityContext.authenticated}"
+                 factoryClass="oracle.webcenter.portalframework.sitestructure.rc.UrlResourceFactory"
+                 id="spacesUrl"
+                 url="https://spaces-test.three.com/webcenter/spaces">
+              <attributes>
+                <attribute isKey="false" value="Spaces" attributeId="Title"/>
+                <attribute value="true" isKey="false" attributeId="Redirect"/>
+              </attributes>
+              <parameters/>
+            </url>
+          </contents>
+        </url>
+      </contents>
+    </url>
+    <url id="announcements" visible="#{true}"
+         factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory"
+         url="page://oracle/webcenter/portalapp/pages/announcements.jspx">
+      <attributes>
+        <attribute value="Announcements" isKey="false" attributeId="Title"/>
+      </attributes>
+    </url>
+    <url factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory"
+         id="productMatrix" visible="#{true}"
+         url="page://oracle/webcenter/portalapp/pages/productMatrix.jspx">
+      <attributes>
+        <attribute attributeId="Title" isKey="false" value="Vendor Overview"/>
+      </attributes>
+    </url>
+    <url visible="#{true}"
+         url="page://oracle/webcenter/portalapp/pages/productInfo.jspx"
+         factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory"
+         id="productInfo">
+      <attributes>
+        <attribute attributeId="Title" value="Products" isKey="false"/>
+      </attributes>
+    </url>
+    <url visible="#{true}"
+         url="page://oracle/webcenter/portalapp/pages/opCoInfo.jspx"
+         id="opCoInfo"
+         factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory">
+      <attributes>
+        <attribute value="OpCos" attributeId="Title" isKey="false"/>
+      </attributes>
+    </url>
+    <url factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory"
+         id="restrictedVersionAdmin"
+         url="page://oracle/webcenter/portalapp/pages/restrictedVersionAdmin.jspx"
+         visible="#{true}">
+      <attributes>
+        <attribute attributeId="Title" value="OpCo-Selfservice"
+                   isKey="false"/>
+      </attributes>
+    </url>
+    <url id="contentBrowser"
+         factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory"
+         url="page://oracle/webcenter/portalapp/pages/contentBrowser.jspx"
+         visible="#{true}">
+      <attributes>
+        <attribute value="Search" isKey="false" attributeId="Title"/>
+      </attributes>
+    </url>
+    <folder id="folderAdmin"
+            visible="#{securityContext.userInRole['Administrator']}">
+      <attributes>
+        <attribute value="Admin" attributeId="Title" isKey="false"/>
+      </attributes>
+      <parameters/>
+      <contents>
+        <url url="page://oracle/webcenter/portalapp/pages/portfolioAdmin.jspx"
+             visible="#{true}"
+             factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory"
+             id="portfolioAdmin">
+          <attributes>
+            <attribute value="Portfolio Admin" isKey="false"
+                       attributeId="Title"/>
+          </attributes>
+        </url>
+        <url url="page://oracle/webcenter/portalapp/pages/contentAdmin.jspx"
+             factoryClass="oracle.webcenter.portalframework.sitestructure.rc.AdfPageResourceFactory"
+             visible="#{true}" id="contentAdmin">
+          <attributes>
+            <attribute isKey="false" attributeId="Title" value="Content Admin"/>
+          </attributes>
+          <contents/>
+        </url>
+        <url id="contribute"
+             factoryClass="oracle.webcenter.portalframework.sitestructure.rc.UrlResourceFactory"
+             visible="#{securityContext.userInRole['Administrator']}"
+             url="/cs/resources/wcm/custom/sitestudio/contentwizard/webcenter/contentwizard.hcsp?dDocType=Document&amp;amp;cpIframe=true&amp;amp;forceLogin=1">
+          <attributes>
+            <attribute isKey="false" attributeId="Title" value="Contribute"/>
+            <attribute isKey="false" attributeId="Redirect" value="true"/>
+            <attribute isKey="false" attributeId="Target" value="_blank"/>
+          </attributes>
+        </url>
+      </contents>
+    </folder>
+  </contents>
+  <schema resourceBundle="oracle.adf.rc.attribute.nls.AttributeBundle">
+    <descriptor multivalue="false" shortLabelKey="TITLE.SHORT_PROMPT_KEY"
+                labelKey="TITLE.PROMPT_KEY" attributeId="Title"
+                searchable="true" endUserVisible="true"/>
+    <descriptor multivalue="false" shortLabelKey="ACCESS_KEY.SHORT_PROMPT_KEY"
+                labelKey="ACCESS_KEY.PROMPT_KEY" attributeId="AccessKey"
+                searchable="true" endUserVisible="true"/>
+    <descriptor multivalue="false" shortLabelKey="DESCRIPTION.SHORT_PROMPT_KEY"
+                labelKey="DESCRIPTION.PROMPT_KEY" attributeId="Description"
+                searchable="true" endUserVisible="true"/>
+    <descriptor multivalue="false" shortLabelKey="ICON_URI.SHORT_PROMPT_KEY"
+                labelKey="ICON_URI.PROMPT_KEY" attributeId="IconURI"
+                searchable="true" endUserVisible="true"/>
+    <descriptor multivalue="true" shortLabelKey="SUBJECT.SHORT_PROMPT_KEY"
+                labelKey="SUBJECT.PROMPT_KEY" attributeId="Subject"
+                searchable="true" endUserVisible="true"/>
+    <descriptor multivalue="false"
+                shortLabelKey="REDIRECT_FLAG.SHORT_PROMPT_KEY"
+                labelKey="REDIRECT_FLAG.PROMPT_KEY" attributeId="Redirect"
+                searchable="true" endUserVisible="true"/>
+    <descriptor multivalue="false" shortLabelKey="TARGET_FRAME.SHORT_PROMPT_KEY"
+                labelKey="TARGET_FRAME.PROMPT_KEY" attributeId="Target"
+                searchable="true" endUserVisible="true"/>
+    <descriptor multivalue="false" shortLabelKey="TOOL_TIP.SHORT_PROMPT_KEY"
+                labelKey="TOOL_TIP.PROMPT_KEY" attributeId="ToolTip"
+                searchable="true" endUserVisible="true"/>
+    <descriptor multivalue="false" shortLabelKey="MODIFIED.SHORT_PROMPT_KEY"
+                labelKey="MODIFIED.PROMPT_KEY" attributeId="Modified"
+                searchable="true" endUserVisible="true"/>
+    <descriptor multivalue="false"
+                shortLabelKey="CHANGE_FREQUENCY.SHORT_PROMPT_KEY"
+                labelKey="CHANGE_FREQUENCY.PROMPT_KEY"
+                attributeId="ChangeFrequency" searchable="true"
+                endUserVisible="true"/>
+    <descriptor multivalue="false" shortLabelKey="SIGNIFICANCE.SHORT_PROMPT_KEY"
+                labelKey="SIGNIFICANCE.PROMPT_KEY" attributeId="Significance"
+                searchable="true" endUserVisible="true"/>
+    <descriptor multivalue="false" shortLabelKey="EXTERNAL_ID"
+                labelKey="EXTERNAL_ID" attributeId="ExternalId"
+                searchable="true" endUserVisible="true"
+                resourceBundle="oracle.webcenter.navigationeditor.view.resource.NavigationEditorBundle"/>
+  </schema>
+</navigationDefinition>

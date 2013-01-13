@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="opco-user-version-admin">
+    <default-activity id="__1">versionAdmin</default-activity>
+    <view id="versionAdmin">
+      <page>/pagefragments/opcoVersionAdmin/versionAdmin.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

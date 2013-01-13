@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<task-flow-registry xmlns="http://xmlns.oracle.com/adf/controller/rc">
+   <task-flow-descriptor path="WEB-INF/opcoInfo-taskflow.xml" id="opcoInfo-taskflow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/cmis-query-taskflow.xml" id="cmis-query-taskflow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false">
+      <input-parameter name="user"/>
+   </task-flow-descriptor>
+   <task-flow-descriptor path="WEB-INF/gsu-db-admin.xml" id="gsu-db-admin" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/product-info-taskflow.xml" id="product-info-taskflow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/opco-user-version-admin.xml" id="opco-user-version-admin" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/gsu-contact-browser.xml" id="gsu-contact-browser" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/product-matrix-taskflow.xml" id="product-matrix-taskflow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="META-INF/adfc-config.xml" id="" type="" uses-page-fragments="false" library-internal="false" train="false"/>
+</task-flow-registry>

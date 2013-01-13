@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration"
+                    version="11.1.1.60.13" id="DataControls"
+                    Package="com.h3g.owc.custom.gsuportal.portal">
+  <AdapterDataControl id="AnnouncementEventHandler"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="com.h3g.owc.custom.gsuportal.portal.pagebacking.AnnouncementEventHandler"
+                      BeanClass="com.h3g.owc.custom.gsuportal.portal.pagebacking.AnnouncementEventHandler"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="com.h3g.owc.custom.gsuportal.portal.pagebacking.AnnouncementEventHandler"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="com.h3g.owc.custom.gsuportal.portal.pagebacking.AnnouncementEventHandler"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ProductInfoEventHandler"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="com.h3g.owc.custom.gsuportal.portal.pagebacking.ProductInfoEventHandler"
+                      BeanClass="com.h3g.owc.custom.gsuportal.portal.pagebacking.ProductInfoEventHandler"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="com.h3g.owc.custom.gsuportal.portal.pagebacking.ProductInfoEventHandler"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="com.h3g.owc.custom.gsuportal.portal.pagebacking.ProductInfoEventHandler"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

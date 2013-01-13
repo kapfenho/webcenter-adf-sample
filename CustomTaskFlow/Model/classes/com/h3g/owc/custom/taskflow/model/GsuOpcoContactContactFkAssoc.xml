@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GsuOpcoContactContactFkAssoc"
+  Version="11.1.1.60.13">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Contact"
+    Cardinality="1"
+    Source="true"
+    Owner="com.h3g.owc.custom.taskflow.model.Contact">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Contact"/>
+      <Attr Name="_foreignKey"
+        Value="com.h3g.owc.custom.taskflow.model.Contact.GsuContactPk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.Contact.Id"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="OperatingCountryContact"
+    Cardinality="-1"
+    Owner="com.h3g.owc.custom.taskflow.model.OperatingCountryContact">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="OperatingCountryContact"/>
+      <Attr Name="_foreignKey"
+        Value="com.h3g.owc.custom.taskflow.model.OperatingCountryContact.GsuOpcoContactContactFk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="com.h3g.owc.custom.taskflow.model.OperatingCountryContact.ContactId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

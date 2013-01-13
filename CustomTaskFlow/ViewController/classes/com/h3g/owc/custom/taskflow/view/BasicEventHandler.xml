@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="BasicEventHandler" Package="com.h3g.owc.custom.taskflow.view"
+          BeanClass="com.h3g.owc.custom.taskflow.view.BasicEventHandler"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="fireEvents"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="parameter" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="java.util.Map" id="fireComplexEvent"
+                  ReturnNodeName="Object"
+                  CollectionBeanClass="UpdateableCollection">
+    <Attribute Name="element" Type="java.lang.String, java.lang.Object"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="captureEvents" ReturnNodeName="Return">
+    <ParameterInfo id="parameter" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="captureComplexEvents" ReturnNodeName="Return">
+    <ParameterInfo id="parameter" Type="java.lang.Object" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="com.h3g.owc.custom.taskflow.view.BasicEventHandler"
+                     BeanClass="com.h3g.owc.custom.taskflow.view.BasicEventHandler"
+                     id="BasicEventHandler"/>
+</JavaBean>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <managed-bean id="__1">
+    <managed-bean-name id="__2">announcementBacking</managed-bean-name>
+    <managed-bean-class id="__3">com.h3g.owc.custom.gsuportal.portal.pagebacking.AnnouncementBacking</managed-bean-class>
+    <managed-bean-scope id="__4">view</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__8">
+    <managed-bean-name id="__5">currentTimeBean</managed-bean-name>
+    <managed-bean-class id="__7">com.h3g.owc.custom.gsuportal.portal.pagebacking.CurrentTimeResolverBean</managed-bean-class>
+    <managed-bean-scope id="__6">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__9">
+    <managed-bean-name id="__11">productInfoBacking</managed-bean-name>
+    <managed-bean-class id="__10">com.h3g.owc.custom.gsuportal.portal.pagebacking.ProductInfoBacking</managed-bean-class>
+    <managed-bean-scope id="__12">view</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__13">
+    <managed-bean-name id="__16">backing_oracle_webcenter_portalapp_pages_change_pwd</managed-bean-name>
+    <managed-bean-class id="__15">com.h3g.owc.custom.gsuportal.portal.backing.oracle.webcenter.portalapp.pages.Change_pwd</managed-bean-class>
+    <managed-bean-scope id="__14">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1oracle/webcenter/portalapp/pages/change_pwd.jspx-->
+  </managed-bean>
+  <managed-bean id="__19">
+    <managed-bean-name id="__18">backing_oracle_webcenter_portalapp_pages_testShow</managed-bean-name>
+    <managed-bean-class id="__20">com.h3g.owc.custom.gsuportal.portal.backing.oracle.webcenter.portalapp.pages.TestShow</managed-bean-class>
+    <managed-bean-scope id="__17">backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1oracle/webcenter/portalapp/pages/testShow.jspx-->
+  </managed-bean>
+</adfc-config>

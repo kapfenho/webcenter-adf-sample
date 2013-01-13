@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" version="2.1"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['com.h3g.owc.custom.taskflow.view.ViewControllerBundle']}"/>
+  <af:panelStretchLayout id="bcpsl1" topHeight="25px">
+    <f:facet name="top">
+        <af:panelHeader text="Administration of Operating Countries Installed Versions"
+                        id="pagehead1"/>
+    </f:facet>
+    <f:facet name="center">
+      <af:panelSplitter orientation="vertical" splitterPosition="254"
+                        positionedFromEnd="true" id="ps1">
+        <f:facet name="first">
+          <af:panelCollection id="pc1"> <!-- Feattures off : viewMenu detach -->
+            <f:facet name="menus"/>
+            <f:facet name="toolbar">
+              <af:toolbar id="t2">
+                <af:commandToolbarButton actionListener="#{bindings.CreateInsert.execute}"
+                                         text="Create" immediate="true"
+                                         partialSubmit="true"
+                                         disabled="#{!bindings.CreateInsert.enabled or bindings.Id.inputValue.value lt 0}"
+                                         id="ctb1"/>
+                <af:commandToolbarButton actionListener="#{bindings.Execute.execute}"
+                                         text="Requery"
+                                         disabled="#{!bindings.Execute.enabled}"
+                                         id="ctb2" immediate="true"
+                                         partialSubmit="false"/>
+              </af:toolbar>
+            </f:facet>
+            <!-- f:facet name="statusbar"/ -->
+            <af:table value="#{bindings.RestrictedVersionView1.collectionModel}"
+                      var="row"
+                      rows="#{bindings.RestrictedVersionView1.rangeSize}"
+                      emptyText="#{bindings.RestrictedVersionView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.RestrictedVersionView1.rangeSize}"
+                      rowBandingInterval="0"
+                      filterModel="#{bindings.RestrictedVersionView1Query.queryDescriptor}"
+                      queryListener="#{bindings.RestrictedVersionView1Query.processQuery}"
+                      filterVisible="true" varStatus="vs"
+                      selectedRowKeys="#{bindings.RestrictedVersionView1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.RestrictedVersionView1.collectionModel.makeCurrent}"
+                      rowSelection="single" id="t1"
+                      partialTriggers="::ctb2 ::ctb1"
+                      columnStretching="last" styleClass="AFStretchWidth" >
+              <af:column sortProperty="OpcoName" sortable="true" filterable="true" 
+                         filterFeatures="caseInsensitive"
+                         headerText="#{bindings.RestrictedVersionView1.hints.OpcoName.label}"
+                         id="c2" width="100">
+                <af:outputText value="#{row.OpcoName}" id="ot4"/>
+              </af:column>
+              <af:column sortProperty="PlatformName" sortable="true" filterable="true" 
+                         filterFeatures="caseInsensitive"
+                         headerText="#{bindings.RestrictedVersionView1.hints.PlatformName.label}"
+                         id="c6" width="100">
+                <af:outputText value="#{row.PlatformName}" id="ot7"/>
+              </af:column>
+              <af:column sortProperty="VendorName" sortable="true" filterable="true" 
+                         filterFeatures="caseInsensitive"
+                         headerText="#{bindings.RestrictedVersionView1.hints.VendorName.label}"
+                         id="c3" width="120">
+                <af:outputText value="#{row.VendorName}" id="ot5"/>
+              </af:column>
+              <af:column sortProperty="ProductName" sortable="true" filterable="true" 
+                         filterFeatures="caseInsensitive"
+                         headerText="#{bindings.RestrictedVersionView1.hints.ProductName.label}"
+                         id="c5" width="160">
+                <af:outputText value="#{row.ProductName}" id="ot6"/>
+              </af:column>
+              <af:column sortProperty="VersionName" sortable="true" filterable="true" 
+                         filterFeatures="caseInsensitive"
+                         headerText="#{bindings.RestrictedVersionView1.hints.VersionName.label}"
+                         id="c8" width="60">
+                <af:outputText value="#{row.VersionName}" id="ot3"/>
+              </af:column>
+              <af:column sortProperty="VersionBuild" sortable="true" filterable="true" 
+                         filterFeatures="caseInsensitive"
+                         headerText="#{bindings.RestrictedVersionView1.hints.VersionBuild.label}"
+                         id="c1" width="80">
+                <af:outputText value="#{row.VersionBuild}" id="ot8"/>
+              </af:column>
+              <af:column sortProperty="ChangedDttm" sortable="true" filterable="true" 
+                         filterFeatures="caseInsensitive"
+                         headerText="#{viewcontrollerBundle.LAST_CHANGED}"
+                         id="c4" width="60">
+                <af:outputText value="#{row.ChangedDttm}" id="ot1"/>
+              </af:column>
+              <af:column sortProperty="Active" sortable="true" filterable="true" 
+                         headerText="#{bindings.RestrictedVersionView1.hints.Active.label}"
+                         id="c7" width="30">
+                <af:selectBooleanCheckbox id="cb1" value="#{row.Active}"
+                                          readOnly="true" simple="true"/>
+              </af:column>
+              <af:column sortProperty="Comments" sortable="true" filterable="true" 
+                         filterFeatures="caseInsensitive"
+                         headerText="#{bindings.RestrictedVersionView1.hints.Comments.label}"
+                         id="c9" width="80">
+                <af:outputText value="#{row.Comments}" id="ot10"/>
+              </af:column>
+              
+            </af:table>
+          </af:panelCollection>
+        </f:facet>
+        <f:facet name="second">
+          <af:panelFormLayout id="pfl1" partialTriggers="pc1:ctb1 pc1:t1"
+                              maxColumns="2" rows="6">
+            <af:panelLabelAndMessage label="#{bindings.Id.hints.label}"
+                                     id="plam1">
+              <af:outputText value="#{bindings.Id.inputValue}" id="ot9"/>
+            </af:panelLabelAndMessage>
+            <af:selectOneChoice value="#{bindings.OpcoId.inputValue}"
+                                label="#{bindings.OpcoId.label}"
+                                required="#{bindings.OpcoId.hints.mandatory}"
+                                shortDesc="#{bindings.OpcoId.hints.tooltip}"
+                                id="soc2">
+              <f:selectItems value="#{bindings.OpcoId.items}" id="si2"/>
+            </af:selectOneChoice>
+            <af:selectOneChoice value="#{bindings.VersionId.inputValue}"
+                                label="#{bindings.VersionId.label}"
+                                required="#{bindings.VersionId.hints.mandatory}"
+                                shortDesc="#{bindings.VersionId.hints.tooltip}"
+                                id="soc1" contentStyle="width:380px">
+              <f:selectItems value="#{bindings.VersionId.items}" id="si1"/>
+            </af:selectOneChoice>
+            <af:inputText value="#{bindings.VersionBuild.inputValue}"
+                          label="#{bindings.VersionBuild.hints.label}"
+                          required="#{bindings.VersionBuild.hints.mandatory}"
+                          columns="#{bindings.VersionBuild.hints.displayWidth}"
+                          maximumLength="#{bindings.VersionBuild.hints.precision}"
+                          shortDesc="#{bindings.VersionBuild.hints.tooltip}"
+                          id="it1" contentStyle="width:380px">
+              <f:validator binding="#{bindings.VersionBuild.validator}"/>
+            </af:inputText>
+            <af:selectBooleanCheckbox id="cb2"
+                                      value="#{bindings.Active.inputValue}"
+                                      label="#{bindings.Active.hints.label}"/>
+            <af:inputText value="#{bindings.Comments.inputValue}"
+                          label="#{bindings.Comments.hints.label}"
+                          required="#{bindings.Comments.hints.mandatory}"
+                          maximumLength="#{bindings.Comments.hints.precision}"
+                          shortDesc="#{bindings.Comments.hints.tooltip}"
+                          id="it6" rows="4" contentStyle="width:380px">
+              <f:validator binding="#{bindings.Comments.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.SwapPlan.inputValue}"
+                          label="#{bindings.SwapPlan.hints.label}"
+                          required="#{bindings.SwapPlan.hints.mandatory}"
+                          columns="#{bindings.SwapPlan.hints.displayWidth}"
+                          maximumLength="#{bindings.SwapPlan.hints.precision}"
+                          shortDesc="#{bindings.SwapPlan.hints.tooltip}"
+                          id="it3" rows="4" contentStyle="width:380px">
+              <f:validator binding="#{bindings.SwapPlan.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.UpdatePlan.inputValue}"
+                          label="#{bindings.UpdatePlan.hints.label}"
+                          required="#{bindings.UpdatePlan.hints.mandatory}"
+                          columns="#{bindings.UpdatePlan.hints.displayWidth}"
+                          maximumLength="#{bindings.UpdatePlan.hints.precision}"
+                          shortDesc="#{bindings.UpdatePlan.hints.tooltip}"
+                          id="it5" rows="4" contentStyle="width:380px">
+              <f:validator binding="#{bindings.UpdatePlan.validator}"/>
+            </af:inputText>
+            <af:inputDate value="#{bindings.ChangedDttm.inputValue}"
+                          label="#{bindings.ChangedDttm.hints.label}"
+                          required="#{bindings.ChangedDttm.hints.mandatory}"
+                          shortDesc="#{bindings.ChangedDttm.hints.tooltip}"
+                          id="id1">
+              <f:validator binding="#{bindings.ChangedDttm.validator}"/>
+              <af:convertDateTime type="both"/>
+            </af:inputDate>
+            <af:panelLabelAndMessage label="#{bindings.ChangedUser.hints.label}"
+                                     id="plam2">
+              <af:outputText value="#{bindings.ChangedUser.inputValue}"
+                             id="ot2"/>
+            </af:panelLabelAndMessage>
+            <f:facet name="footer">
+              <af:panelGroupLayout id="fpgl" layout="horizontal">
+                <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                  text="Discard" disabled="false"
+                                  visible="#{bindings.Id.inputValue.value lt 0}"
+                                  immediate="true" id="cb3"
+                                  partialTriggers="pc1:ctb1 pc1:t1">
+                  <af:resetActionListener/>
+                </af:commandButton>
+                <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                  text="Save" disabled="false" id="cb4"/>
+              </af:panelGroupLayout>
+            </f:facet>
+          </af:panelFormLayout>
+        </f:facet>
+      </af:panelSplitter>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

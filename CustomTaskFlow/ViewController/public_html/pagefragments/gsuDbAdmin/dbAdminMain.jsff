@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelHeader text="What would you like to do?" id="ph1" type="stretch">
+    <f:facet name="legend"/>
+    <f:facet name="info"/>
+    <af:panelGroupLayout id="pgl1" layout="horizontal" valign="top">
+      <f:facet name="separator">
+        <af:spacer id="gadtsp1" width="10" height="10"/>
+      </f:facet>
+      <af:panelGroupLayout id="pgl2" layout="vertical">
+        <f:facet name="separator">
+          <af:spacer id="gadtsp2" width="10" height="10"/>
+        </f:facet>
+        <af:panelHeader text="Operating Countries" id="ph2" type="flow">
+          <af:panelGroupLayout id="pgl3" layout="vertical">
+            <af:commandLink text="Update Operating Countries" id="cl1" action="opcoAdmin"/>
+            <af:commandLink text="Update installed Versions" id="cl2"
+                            action="opcoVersionAdmin"/>
+            <af:commandLink text="Update related Contacts" id="cl3"
+                            action="opcoContactAdmin"/>
+          </af:panelGroupLayout>
+        </af:panelHeader>
+        <af:panelHeader text="Products" id="ph3">
+          <af:panelGroupLayout id="pgl5" layout="vertical">
+            <af:commandLink text="Update Products" id="cl4"
+                            action="productAdmin"/>
+            <af:commandLink text="Update Versions" id="cl6"
+                            action="versionAdmin"/>
+            <af:commandLink text="Update related Contacts" id="cl5"
+                            action="productContactAdmin"/>
+          </af:panelGroupLayout>
+        </af:panelHeader>
+      </af:panelGroupLayout>
+      <af:panelGroupLayout id="pgl4" layout="vertical">
+        <f:facet name="separator">
+          <af:spacer id="gadtsp3" width="10" height="10"/>
+        </f:facet>
+        <af:panelHeader text="Vendor" id="ph5" type="flow">
+          <af:panelGroupLayout id="pgl7" layout="vertical">
+            <af:commandLink text="Update Vendors" id="cl9"
+                            action="vendorAdmin"/>
+            <af:commandLink text="Update related Contacts" id="cl10"
+                            action="vendorContactAdmin"/>
+          </af:panelGroupLayout>
+        </af:panelHeader>
+        <af:panelHeader text="Other" id="ph4" type="flow">
+          <af:panelGroupLayout id="pgl6" layout="vertical">
+            <af:commandLink text="Update Platforms" id="cl8"
+                            action="platformAdmin"/>
+            <af:commandLink text="Update Contacts" id="cl7"
+                            action="contactAdmin"/>
+          </af:panelGroupLayout>
+        </af:panelHeader>
+      </af:panelGroupLayout>
+    </af:panelGroupLayout>
+  </af:panelHeader>
+</jsp:root>

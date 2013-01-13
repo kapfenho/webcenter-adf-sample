@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/pagefragmentTemplates/gsuDbAdminTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageHeader">
+      <af:panelHeader text="Administration of Products Related Contacts" id="pagehead1"/>
+    </f:facet>
+    <f:facet name="readOnlyTable">
+      <af:panelCollection id="pc1" featuresOff="viewMenu detach">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:commandToolbarButton actionListener="#{bindings.CreateInsert.execute}"
+                              text="Create"
+                              disabled="#{!bindings.CreateInsert.enabled or bindings.Id.inputValue.value lt 0}"
+                              immediate="true"
+                              partialSubmit="true"
+                              id="cb1"/>
+            <af:commandToolbarButton actionListener="#{bindings.Execute.execute}"
+                                     text="Requery"
+                                     disabled="#{!bindings.Execute.enabled}"
+                                     partialSubmit="false"
+                                     id="ctb1"/>
+            <af:commandToolbarButton text="Export" id="ctb2">
+              <af:exportCollectionActionListener type="excelHTML"
+                                                 exportedId="t1"
+                                                 title="GSU-Product-Contact-Export"
+                                                 exportedRows="all"
+                                                 filename="GSU-Product-Contact-Export.xls"/>
+            </af:commandToolbarButton>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.ProductContactView1.collectionModel}"
+                  var="row" rows="#{bindings.ProductContactView1.rangeSize}"
+                  emptyText="#{bindings.ProductContactView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.ProductContactView1.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.ProductContactView1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.ProductContactView1.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1" contentDelivery="immediate"
+                  columnStretching="last" partialTriggers="::ctb1">
+          <af:column sortProperty="VendorName" sortable="true"
+                     headerText="#{bindings.ProductContactView1.hints.VendorName.label}"
+                     id="c1">
+            <af:outputText value="#{row.VendorName}" id="ot5"/>
+          </af:column>
+          <af:column sortProperty="ProductName" sortable="true"
+                     headerText="#{bindings.ProductContactView1.hints.ProductName.label}"
+                     id="c2">
+            <af:outputText value="#{row.ProductName}" id="ot8"/>
+          </af:column>
+          <af:column sortProperty="PlatformName" sortable="true"
+                     headerText="#{bindings.ProductContactView1.hints.PlatformName.label}"
+                     id="c8">
+            <af:outputText value="#{row.PlatformName}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="FirstName" sortable="true"
+                     headerText="#{bindings.ProductContactView1.hints.FirstName.label}"
+                     id="c6">
+            <af:outputText value="#{row.FirstName}" id="ot7"/>
+          </af:column>
+          <af:column sortProperty="LastName" sortable="true"
+                     headerText="#{bindings.ProductContactView1.hints.LastName.label}"
+                     id="c5">
+            <af:outputText value="#{row.LastName}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="Position" sortable="true"
+                     headerText="#{bindings.ProductContactView1.hints.Position.label}"
+                     id="c3">
+            <af:outputText value="#{row.Position}" id="ot4"/>
+          </af:column>
+          <af:column sortProperty="Organisation" sortable="true"
+                     headerText="#{bindings.ProductContactView1.hints.Organisation.label}"
+                     id="c7">
+            <af:outputText value="#{row.Organisation}" id="ot3"/>
+          </af:column>
+          <af:column sortProperty="OrganisationSub" sortable="true"
+                     headerText="#{bindings.ProductContactView1.hints.OrganisationSub.label}"
+                     id="c4">
+            <af:outputText value="#{row.OrganisationSub}" id="ot6"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="editableForm">
+      <af:panelFormLayout id="pfl1" partialTriggers="pc1:cb1 pc1:t1">
+        <af:panelLabelAndMessage label="#{bindings.Id.hints.label}" id="plam1">
+          <af:outputText value="#{bindings.Id.inputValue}" id="ot9"/>
+        </af:panelLabelAndMessage>
+        <af:selectOneChoice value="#{bindings.ProductId.inputValue}"
+                            label="#{bindings.ProductId.label}"
+                            required="#{bindings.ProductId.hints.mandatory}"
+                            shortDesc="#{bindings.ProductId.hints.tooltip}"
+                            id="soc2" contentStyle="width:260px">
+          <f:selectItems value="#{bindings.ProductId.items}" id="si2"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice value="#{bindings.ContactId.inputValue}"
+                            label="#{bindings.ContactId.label}"
+                            required="#{bindings.ContactId.hints.mandatory}"
+                            shortDesc="#{bindings.ContactId.hints.tooltip}"
+                            id="soc1" contentStyle="width:260px">
+          <f:selectItems value="#{bindings.ContactId.items}" id="si1"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice value="#{bindings.EscalationLevel.inputValue}"
+                            label="#{bindings.EscalationLevel.label}"
+                            required="#{bindings.EscalationLevel.hints.mandatory}"
+                            shortDesc="#{bindings.EscalationLevel.hints.tooltip}"
+                            id="soc3">
+          <f:selectItems value="#{bindings.EscalationLevel.items}" id="si3"/>
+        </af:selectOneChoice>
+        <af:inputText value="#{bindings.Note.inputValue}"
+                      label="#{bindings.Note.hints.label}"
+                      required="#{bindings.Note.hints.mandatory}"
+                      columns="#{bindings.Note.hints.displayWidth}"
+                      maximumLength="#{bindings.Note.hints.precision}"
+                      shortDesc="#{bindings.Note.hints.tooltip}" id="it2"
+                      rows="5" contentStyle="width:260px">
+          <f:validator binding="#{bindings.Note.validator}"/>
+        </af:inputText>
+        <af:inputDate value="#{bindings.ChangedDttm.inputValue}"
+                      label="#{bindings.ChangedDttm.hints.label}"
+                      required="#{bindings.ChangedDttm.hints.mandatory}"
+                      shortDesc="#{bindings.ChangedDttm.hints.tooltip}"
+                      readOnly="true"
+                      id="id1">
+          <f:validator binding="#{bindings.ChangedDttm.validator}"/>
+          <af:convertDateTime type="both"/>
+        </af:inputDate>
+        <af:inputText value="#{bindings.ChangedUser.inputValue}"
+                      label="#{bindings.ChangedUser.hints.label}"
+                      required="#{bindings.ChangedUser.hints.mandatory}"
+                      columns="#{bindings.ChangedUser.hints.displayWidth}"
+                      maximumLength="#{bindings.ChangedUser.hints.precision}"
+                      shortDesc="#{bindings.ChangedUser.hints.tooltip}"
+                      readOnly="true"
+                      id="it1">
+          <f:validator binding="#{bindings.ChangedUser.validator}"/>
+        </af:inputText>
+      </af:panelFormLayout>
+    </f:facet>
+    <f:facet name="formButtons">
+      <af:panelGroupLayout id="fbpgl" layout="horizontal">
+        <af:commandButton actionListener="#{bindings.Commit.execute}"
+                          text="Save" disabled="false"
+                          id="cb3"/>
+        <af:spacer id="fbsp" width="10" height="10"/>
+        <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                          text="Discard"
+                          disabled="false"
+                          visible="#{bindings.Id.inputValue.value lt 0}"
+                          
+                          immediate="true" id="cb2"
+                          partialTriggers="pc1:cb1 pc1:t1">
+          <af:resetActionListener/>
+        </af:commandButton>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="globalButtons"/>
+  </af:pageTemplate>
+</jsp:root>

@@ -1,0 +1,67 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1">
+      <property
+         name="y">324.44434</property>
+      <property
+         name="x">91.65625</property>
+   </OverallProperties>
+   <Page
+      id="Page2">
+      <property
+         name="wildcard">true</property>
+      <property
+         name="y">169.98145</property>
+      <property
+         name="x">91.65625</property>
+      <property
+         name="jspName">*</property>
+   </Page>
+   <Page
+      id="Page3">
+      <property
+         name="wildcard">false</property>
+      <property
+         name="y">83.5</property>
+      <property
+         name="x">350.1416</property>
+      <property
+         name="jspName">/adfAuthentication?logout=true&amp;end_url=/</property>
+   </Page>
+   <NavigationCase
+      islink="true"
+      id="NavigationCase4"
+      from="Page2"
+      to="Page3">
+      <property
+         name="fromOutcome">logout_success</property>
+      <property
+         name="description">Navigation Case</property>
+      <property
+         name="sdm:polyPoints">R45,127.65625,167.0,309.1416,83.518555,L50</property>
+   </NavigationCase>
+   <Page
+      id="Page5">
+      <property
+         name="wildcard">false</property>
+      <property
+         name="y">255.46289</property>
+      <property
+         name="x">350.1416</property>
+      <property
+         name="jspName">/home</property>
+   </Page>
+   <NavigationCase
+      islink="true"
+      id="NavigationCase6"
+      from="Page2"
+      to="Page5">
+      <property
+         name="fromOutcome">login_success</property>
+      <property
+         name="description">Navigation Case</property>
+      <property
+         name="sdm:polyPoints">R55,127.65625,174.0,309.1416,255.48145,L50</property>
+   </NavigationCase>
+</SDM>

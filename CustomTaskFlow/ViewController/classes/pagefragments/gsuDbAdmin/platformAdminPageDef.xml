@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="platformAdminPageDef"
+                Package="pagefragments.gsuDbAdmin">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PlatformView1" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="PlatformView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PlatformView1Iterator" id="PlatformView1">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.PlatformView"
+                      Name="PlatformView10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="PlatformName"/>
+          <Item Value="Active"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="PlatformView1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PlatformView1Iterator" id="PlatformName">
+      <AttrNames>
+        <Item Value="PlatformName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PlatformView1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PlatformView1Iterator" id="ChangedDttm">
+      <AttrNames>
+        <Item Value="ChangedDttm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PlatformView1Iterator" id="ChangedUser">
+      <AttrNames>
+        <Item Value="ChangedUser"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="PlatformView1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+    <attributeValues IterBinding="PlatformView1Iterator" id="Active">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View3">
+      <property
+         name="activityId">test</property>
+      <property
+         name="page">/test.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>test&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">145.0332</property>
+      <property
+         name="x">371.0</property>
+   </View>
+   <View
+      id="View4">
+      <property
+         name="activityId">navigationListTest</property>
+      <property
+         name="page">/navigationListTest.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>navigationListTest&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="thumbnailExpanded">false</property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">148.25781</property>
+      <property
+         name="x">513.0</property>
+   </View>
+   <View
+      id="View5">
+      <property
+         name="activityId">dbAdminTest</property>
+      <property
+         name="page">/dbAdminTest.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>dbAdminTest&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">147.25781</property>
+      <property
+         name="x">230.0</property>
+   </View>
+   <View
+      id="View6">
+      <property
+         name="activityId">restrictedTest</property>
+      <property
+         name="page">/unboundedTestPages/restrictedTest.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>restrictedTest&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">290.01074</property>
+      <property
+         name="x">223.0</property>
+   </View>
+   <View
+      id="View7">
+      <property
+         name="activityId">contactBrowserTest</property>
+      <property
+         name="page">/contactBrowserTest.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>contactBrowserTest&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">291.2578</property>
+      <property
+         name="x">371.0</property>
+   </View>
+   <View
+      id="View8">
+      <property
+         name="activityId">testProduct</property>
+      <property
+         name="page">/unboundedTestPages/testProduct.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>testProduct&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">290.8047</property>
+      <property
+         name="x">516.0</property>
+   </View>
+   <View
+      id="View9">
+      <property
+         name="activityId">testProductMatrix</property>
+      <property
+         name="page">/unboundedTestPages/testProductMatrix.jspx</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>testProductMatrix&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">291.23438</property>
+      <property
+         name="x">649.7588</property>
+   </View>
+   <View
+      id="View10">
+      <property
+         name="activityId">testOpcoInfo</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>testOpcoInfo&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">459.60938</property>
+      <property
+         name="x">284.0</property>
+   </View>
+</SDM>

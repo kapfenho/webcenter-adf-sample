@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="productInfoPageDef"
+                Package="pagefragments.productInfo">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ProductView1" RangeSize="-1"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="ProductView1Iterator">
+      <sortCriteria>
+        <sort attribute="ProductName" ascending="true"/>
+      </sortCriteria>
+    </iterator>
+    <iterator Binds="ProductContactView3" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="ProductContactView3Iterator"/>
+    <iterator Binds="OperatingCountryVersionView4" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="OperatingCountryVersionView4Iterator"/>
+    <iterator id="VersionView2Iterator" Binds="VersionView2"
+              DataControl="GsuBaseApplicationModuleDataControl" RangeSize="25"/>
+    <iterator id="VendorContactView4Iterator" Binds="VendorContactView4"
+              DataControl="GsuBaseApplicationModuleDataControl" RangeSize="25"/>
+    <searchRegion Binds="VendorContactView4Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="VendorContactView4Query"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ProductView1Iterator" id="ProductName">
+      <AttrNames>
+        <Item Value="ProductName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="Active">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="VendorName">
+      <AttrNames>
+        <Item Value="VendorName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="Url">
+      <AttrNames>
+        <Item Value="Url"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="Description1">
+      <AttrNames>
+        <Item Value="Description1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="PlatformName">
+      <AttrNames>
+        <Item Value="PlatformName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    
+    <attributeValues IterBinding="ProductView1Iterator" id="HowTo">
+      <AttrNames>
+        <Item Value="HowTo"/>
+      </AttrNames>
+    </attributeValues>
+     <attributeValues IterBinding="ProductView1Iterator" id="Licensing">
+      <AttrNames>
+        <Item Value="Licensing"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="ProductInformation">
+      <AttrNames>
+        <Item Value="ProductInformation"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="Sla">
+      <AttrNames>
+        <Item Value="Sla"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="Others">
+      <AttrNames>
+        <Item Value="Others"/>
+      </AttrNames>
+    </attributeValues>
+   
+    
+    
+    
+    
+    <tree IterBinding="ProductContactView3Iterator" id="ProductContactView3">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.ProductContactView"
+                      Name="ProductContactView30">
+        <AttrNames>
+          <Item Value="LastName"/>
+          <Item Value="FirstName"/>
+          <Item Value="Position"/>
+          <Item Value="EmailAddress"/>
+          <Item Value="MobilePhone"/>
+          <Item Value="FixPhone"/>
+          <Item Value="FaxPhone"/>
+          <Item Value="Category"/>
+          <Item Value="Organisation"/>
+          <Item Value="OrganisationSub"/>
+          <Item Value="City"/>
+          <Item Value="ZipCode"/>
+          <Item Value="Country"/>
+          <Item Value="AddressLine1"/>
+          <Item Value="AddressLine2"/>
+          <Item Value="AddressLine3"/>
+          <Item Value="Note"/>
+          <Item Value="Id"/>
+          <Item Value="EscalationLevel"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="OperatingCountryVersionView4Iterator"
+          id="OperatingCountryVersionView4">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.OperatingCountryVersionView"
+                      Name="OperatingCountryVersionView40">
+        <AttrNames>
+          <Item Value="OpcoName"/>
+          <Item Value="VersionName"/>
+          <Item Value="VersionBuild"/>
+          <Item Value="Active"/>
+          <Item Value="UpdatePlan"/>
+          <Item Value="SwapPlan"/>
+          <Item Value="Comments"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="VersionView2Iterator" id="VersionView2">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.VersionView"
+                      Name="VersionView40">
+        <AttrNames>
+          <Item Value="VersionName"/>
+          <Item Value="SupportStatus"/>
+          <Item Value="ReleaseDate"/>
+          <Item Value="SwapPlan"/>
+          <Item Value="UpdatePlan"/>
+          <Item Value="Description"/>
+          <Item Value="EosDate"/>
+          <Item Value="EosInfo"/>
+          <Item Value="Active"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="ProductView1Iterator" ListOperMode="navigation"
+          ListIter="ProductView1Iterator" id="ProductView1"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="ProductName"/>
+      </AttrNames>
+    </list>
+    <eventBinding id="eventBinding" Listener="javax.faces.event.ActionListener">
+      <events xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+        <event name="productChangeEvent"
+               customPayLoad="${bindings.ProductName.inputValue}"
+               eventType="Action Event"/>
+      </events>
+    </eventBinding>
+    <tree IterBinding="VendorContactView4Iterator" id="VendorContactView4">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.VendorContactView"
+                      Name="VendorContactView40">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="ChangedDttm"/>
+          <Item Value="ChangedUser"/>
+          <Item Value="ContactId"/>
+          <Item Value="EscalationLevel"/>
+          <Item Value="FirstName"/>
+          <Item Value="Id1"/>
+          <Item Value="Id2"/>
+          <Item Value="LastName"/>
+          <Item Value="Note"/>
+          <Item Value="Organisation"/>
+          <Item Value="OrganisationSub"/>
+          <Item Value="Position"/>
+          <Item Value="VendorId"/>
+          <Item Value="VendorName"/>
+          <Item Value="EmailAddress"/>
+          <Item Value="MobilePhone"/>
+          <Item Value="FixPhone"/>
+          <Item Value="FaxPhone"/>
+          <Item Value="Category"/>
+          <Item Value="City"/>
+          <Item Value="ZipCode"/>
+          <Item Value="Country"/>
+          <Item Value="AddressLine1"/>
+          <Item Value="AddressLine2"/>
+          <Item Value="AddressLine3"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+  <events xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+    <event name="productChangeEvent"
+           customPayLoad="${bindings.PlatformName.inputValue}"
+           eventType="Action Event"/>
+  </events>
+</pageDefinition>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="opcoInfosPageDef"
+                Package="pagefragments.opcoInfo">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="OperatingCountryView1Iterator" Binds="OperatingCountryView1"
+              DataControl="GsuBaseApplicationModuleDataControl" RangeSize="25">
+        <sortCriteria>
+            <sort attribute="OpcoName" ascending="true"/>
+        </sortCriteria>
+    </iterator>
+    <iterator id="OperatingCountryContactView3Iterator"
+              Binds="OperatingCountryContactView3"
+              DataControl="GsuBaseApplicationModuleDataControl" RangeSize="25"/>
+    <iterator id="OperatingCountryVersionView2Iterator"
+              Binds="OperatingCountryVersionView2"
+              DataControl="GsuBaseApplicationModuleDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="OperatingCountryView1Iterator" id="OpcoName">
+      <AttrNames>
+        <Item Value="OpcoName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OperatingCountryView1Iterator" id="Active">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OperatingCountryView1Iterator"
+                     id="ChangedDttm">
+      <AttrNames>
+        <Item Value="ChangedDttm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OperatingCountryView1Iterator"
+                     id="ChangedUser">
+      <AttrNames>
+        <Item Value="ChangedUser"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OperatingCountryView1Iterator"
+                     id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    
+    <list IterBinding="OperatingCountryView1Iterator" ListOperMode="navigation"
+          ListIter="OperatingCountryView1Iterator" id="listOpco"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="OpcoName"/>
+      </AttrNames>
+    </list>
+
+    <eventBinding id="eventBinding" Listener="javax.faces.event.ActionListener">
+      <events xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+        <event name="opcoChangeEvent"
+               customPayLoad="${bindings.OpcoName.inputValue}"
+               eventType="Action Event"/>
+      </events>
+    </eventBinding>
+    <tree IterBinding="OperatingCountryContactView3Iterator"
+          id="OperatingCountryContactView3">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.OperatingCountryContactView"
+                      Name="OperatingCountryContactView30">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="FirstName"/>
+          <Item Value="LastName"/>
+          <Item Value="Position"/>
+          <Item Value="Organisation"/>
+          <Item Value="OrganisationSub"/>
+          <Item Value="Note"/>
+          <Item Value="ChangedDttm"/>
+          <Item Value="ChangedUser"/>
+          <Item Value="ContactId"/>
+          <Item Value="Id1"/>
+          <Item Value="Id2"/>
+          <Item Value="OpcoId"/>
+          <Item Value="OpcoName"/>
+          <Item Value="AddressLine1"/>
+          <Item Value="AddressLine2"/>
+          <Item Value="AddressLine3"/>
+          <Item Value="Category"/>
+          <Item Value="City"/>
+          <Item Value="Country"/>
+          <Item Value="EmailAddress"/>
+          <Item Value="FaxPhone"/>
+          <Item Value="FirstName1"/>
+          <Item Value="FixPhone"/>
+          <Item Value="MobilePhone"/>
+          <Item Value="Note1"/>
+          <Item Value="ZipCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="OperatingCountryVersionView2Iterator"
+          id="OperatingCountryVersionView2">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.OperatingCountryVersionView"
+                      Name="OperatingCountryVersionView20">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Active"/>
+          <Item Value="ChangedDttm"/>
+          <Item Value="ChangedUser"/>
+          <Item Value="Comments"/>
+          <Item Value="Id1"/>
+          <Item Value="Id2"/>
+          <Item Value="Id3"/>
+          <Item Value="Id4"/>
+          <Item Value="Id5"/>
+          <Item Value="OpcoId"/>
+          <Item Value="OpcoName"/>
+          <Item Value="PlatformName"/>
+          <Item Value="ProductName"/>
+          <Item Value="SwapPlan"/>
+          <Item Value="UpdatePlan"/>
+          <Item Value="VendorName"/>
+          <Item Value="VersionBuild"/>
+          <Item Value="VersionId"/>
+          <Item Value="VersionName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+
+</pageDefinition>

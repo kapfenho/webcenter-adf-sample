@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['com.h3g.owc.custom.taskflow.view.ViewControllerBundle']}"/>
+  <af:panelGroupLayout id="psl1" layout="scroll" partialTriggers="cb1">
+    <af:panelHeader text="Operating Countries Details" id="pagehead1"/>
+    <!-- f:facet name="separator">
+      <af:spacer id="pifpgsp" width="10" height="10"/>
+    </f:facet -->
+    <af:panelFormLayout id="pfl1">
+      <af:panelLabelAndMessage id="soc1l" for="soc1"
+                               label="#{viewcontrollerBundle.OPCO_NAME}">
+        <af:panelGroupLayout id="soc1pgl" layout="horizontal">
+          <af:selectOneChoice value="#{bindings.listOpco.inputValue}"
+                              required="#{bindings.listOpco.hints.mandatory}"
+                              shortDesc="#{bindings.listOpco.hints.tooltip}"
+                              id="soc1">
+            <f:selectItems value="#{bindings.listOpco.items}" id="si1"/>
+          </af:selectOneChoice>
+          <af:spacer id="soc1sp" width="5" height="5"/>
+          <af:commandButton text="Update" id="cb1" partialSubmit="true"
+                            actionListener="#{bindings.eventBinding.listener.processAction}"/>
+          <af:spacer id="s14" width="5" height="5"/>
+        </af:panelGroupLayout>
+      </af:panelLabelAndMessage>
+      <af:separator id="s5"/>
+      <af:selectBooleanCheckbox id="cb2" value="#{bindings.Active.inputValue}"
+                                label="#{bindings.Active.hints.label}"
+                                readOnly="true"/>
+      <af:panelLabelAndMessage label="#{viewcontrollerBundle.DESCRIPTION}"
+                               id="plam3">
+        <af:outputText value="#{bindings.Description.inputValue}" id="ot1"/>
+      </af:panelLabelAndMessage>
+    </af:panelFormLayout>
+    <af:spacer id="pifpgsp1" width="10" height="10"/>
+    <af:panelHeader text="Operating Country Contacts" id="ph01">
+      <af:table value="#{bindings.OperatingCountryContactView3.collectionModel}"
+                var="row"
+                rows="#{bindings.OperatingCountryContactView3.rangeSize}"
+                emptyText="#{bindings.OperatingCountryContactView3.viewable ? 'No related contacts defined.' : 'Access Denied.'}"
+                fetchSize="#{bindings.OperatingCountryContactView3.rangeSize}"
+                rowBandingInterval="0" id="t1" columnStretching="last"
+                contentDelivery="immediate" autoHeightRows="100"
+                styleClass="AFStretchWidth"
+                summary="Operating Country contact list">
+        <af:column sortProperty="LastName" sortable="true"
+                   headerText="#{bindings.OperatingCountryContactView3.hints.LastName.label}"
+                   id="c3" width="120">
+          <af:outputText value="#{row.LastName}" id="ot7"/>
+        </af:column>
+        <af:column sortProperty="FirstName" sortable="true"
+                   headerText="#{bindings.OperatingCountryContactView3.hints.FirstName.label}"
+                   id="c4" width="100">
+          <af:outputText value="#{row.FirstName}" id="ot9"/>
+        </af:column>
+        <af:column sortProperty="Position" sortable="true"
+                   headerText="#{bindings.OperatingCountryContactView3.hints.Position.label}"
+                   id="c2" width="120">
+          <af:outputText value="#{row.Position}" id="ot6"/>
+        </af:column>
+        <af:column sortProperty="Organisation" sortable="true"
+                   headerText="#{bindings.OperatingCountryContactView3.hints.Organisation.label}"
+                   id="c2a" width="100">
+          <af:outputText value="#{row.Organisation}" id="ot7a"/>
+        </af:column>
+        <af:column sortProperty="OrganisationSub" sortable="true"
+                   headerText="#{bindings.OperatingCountryContactView3.hints.OrganisationSub.label}"
+                   id="c2b" width="100">
+          <af:outputText value="#{row.OrganisationSub}" id="ot8"/>
+        </af:column>
+        <af:column sortable="false" headerText="Show" id="c1" width="40"
+                   align="center">
+          <af:commandLink id="cl1">
+            <af:image id="img01" source="/images/user.png"
+                      shortDesc="Contact icon"/>
+            <af:showPopupBehavior popupId="pu1" triggerType="action"/>
+          </af:commandLink>
+          <af:popup id="pu1" contentDelivery="lazyUncached">
+            <af:noteWindow id="nw1">
+              <af:panelFormLayout id="pfl2">
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.LastName.label}"
+                                         id="plam2">
+                  <af:outputText value="#{row.LastName}" id="ot52"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.FirstName.label}"
+                                         id="plam23">
+                  <af:outputText value="#{row.FirstName}" id="ot8z"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.Position.label}"
+                                         id="plam10">
+                  <af:outputText value="#{row.Position}" id="ot16"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.Organisation.label}"
+                                         id="plam9">
+                  <af:outputText value="#{row.Organisation}" id="ot17"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.OrganisationSub.label}"
+                                         id="plam8">
+                  <af:outputText value="#{row.OrganisationSub}" id="ot18"/>
+                </af:panelLabelAndMessage>
+                <af:separator id="s1"/>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.EmailAddress.label}"
+                                         id="plam11">
+                  <af:outputText value="#{row.EmailAddress}" id="ot20"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.MobilePhone.label}"
+                                         id="plam13">
+                  <af:outputText value="#{row.MobilePhone}" id="ot19"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.FixPhone.label}"
+                                         id="plam12">
+                  <af:outputText value="#{row.FixPhone}" id="ot21"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.FaxPhone.label}"
+                                         id="plam14">
+                  <af:outputText value="#{row.FaxPhone}" id="ot22"/>
+                </af:panelLabelAndMessage>
+                <af:separator id="s2"/>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.City.label}"
+                                         id="plam21">
+                  <af:outputText value="#{row.City}" id="ot23"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.ZipCode.label}"
+                                         id="plam22">
+                  <af:outputText value="#{row.ZipCode}" id="ot30"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.Country.label}"
+                                         id="plam20">
+                  <af:outputText value="#{row.Country}" id="ot29"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.AddressLine1.label}"
+                                         id="plam19">
+                  <af:outputText value="#{row.AddressLine1}" id="ot28"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.AddressLine2.label}"
+                                         id="plam18">
+                  <af:outputText value="#{row.AddressLine2}" id="ot27"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.AddressLine3.label}"
+                                         id="plam17">
+                  <af:outputText value="#{row.AddressLine3}" id="ot26"/>
+                </af:panelLabelAndMessage>
+                <af:separator id="s3"/>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.Category.label}"
+                                         id="plam16">
+                  <af:outputText value="#{row.Category}" id="ot25"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryContactView3.hints.Note.label}"
+                                         id="plam15">
+                  <af:outputText value="#{row.Note}" id="ot24"/>
+                </af:panelLabelAndMessage>
+                <f:facet name="footer"/>
+              </af:panelFormLayout>
+            </af:noteWindow>
+          </af:popup>
+        </af:column>
+        <af:column sortProperty="Note" sortable="true"
+                   headerText="#{bindings.OperatingCountryContactView3.hints.Note.label}"
+                   id="c5" width="60">
+          <af:outputText value="#{row.Note}" id="ot2"/>
+        </af:column>
+      </af:table>
+    </af:panelHeader>
+    <af:spacer id="pifpgsp2" width="10" height="10"/>
+    <af:panelHeader id="ph003" text="OpCo-Deployments (installed versions)">
+      <af:table value="#{bindings.OperatingCountryVersionView2.collectionModel}"
+                var="row"
+                rows="#{bindings.OperatingCountryVersionView2.rangeSize}"
+                emptyText="#{bindings.OperatingCountryVersionView2.viewable ? 'No installed versions in any OpCo.' : 'Access Denied.'}"
+                fetchSize="#{bindings.OperatingCountryVersionView2.rangeSize}"
+                styleClass="AFStretchWidth" rowBandingInterval="0" id="t2"
+                columnStretching="last" contentDelivery="immediate"
+                autoHeightRows="100">
+        <af:column sortProperty="VendorName" sortable="true"
+                   headerText="#{bindings.OperatingCountryVersionView2.hints.VendorName.label}"
+                   id="c10" width="100">
+          <af:outputText value="#{row.VendorName}" id="ot40"/>
+        </af:column>
+        <af:column sortProperty="ProductName" sortable="true"
+                   headerText="#{bindings.OperatingCountryVersionView2.hints.ProductName.label}"
+                   id="c11" width="120">
+          <af:outputText value="#{row.ProductName}" id="ot41"/>
+        </af:column>
+        <af:column sortProperty="VersionName" sortable="true"
+                   headerText="#{bindings.OperatingCountryVersionView2.hints.VersionName.label}"
+                   id="c12" width="60">
+          <af:outputText value="#{row.VersionName}" id="ot42"/>
+        </af:column>
+        <af:column sortProperty="VersionBuild" sortable="true"
+                   headerText="#{bindings.OperatingCountryVersionView2.hints.VersionBuild.label}"
+                   id="c14" width="80">
+          <af:outputText value="#{row.VersionBuild}" id="ot43"/>
+        </af:column>
+        <af:column sortProperty="Active" sortable="true"
+                   headerText="#{bindings.OperatingCountryVersionView2.hints.Active.label}"
+                   id="c15" width="30">
+          <af:selectBooleanCheckbox id="sbc2" value="#{row.Active}"
+                                    readOnly="true" simple="true"/>
+        </af:column>
+        <af:column sortProperty="ChangedDttm" sortable="true"
+                   headerText="#{viewcontrollerBundle.LAST_CHANGED}" id="c6"
+                   width="80">
+          <af:outputText value="#{row.ChangedDttm}" id="ot3"/>
+        </af:column>
+        <af:column sortable="false" headerText="Show" id="c16" width="40"
+                   align="center">
+          <af:commandLink id="cl3">
+            <af:image id="img02" source="/images/zoomin.png"/>
+            <af:showPopupBehavior popupId="pu2" triggerType="action"/>
+          </af:commandLink>
+          <af:popup id="pu2" contentDelivery="lazyUncached">
+            <af:noteWindow id="nw2">
+              <af:panelFormLayout id="pfl4">
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryVersionView2.hints.ProductName.label}"
+                                         id="plam30">
+                  <af:outputText value="#{row.OpcoName}" id="ot44"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryVersionView2.hints.VersionName.label}"
+                                         id="plam34">
+                  <af:outputText value="#{row.VersionName}" id="ot45"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryVersionView2.hints.VersionBuild.label}"
+                                         id="plam35">
+                  <af:outputText value="#{row.VersionBuild}" id="ot46"/>
+                </af:panelLabelAndMessage>
+                <af:separator id="s8"/>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryVersionView2.hints.UpdatePlan.label}"
+                                         id="plam36">
+                  <af:outputText value="#{row.UpdatePlan}" id="ot48"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryVersionView2.hints.SwapPlan.label}"
+                                         id="plam37">
+                  <af:outputText value="#{row.SwapPlan}" id="ot47"/>
+                </af:panelLabelAndMessage>
+                <af:separator id="s9"/>
+                <af:panelLabelAndMessage label="#{bindings.OperatingCountryVersionView2.hints.Comments.label}"
+                                         id="plam38">
+                  <af:outputText value="#{row.Comments}" id="ot49"/>
+                </af:panelLabelAndMessage>
+                <f:facet name="footer"/>
+              </af:panelFormLayout>
+            </af:noteWindow>
+          </af:popup>
+        </af:column>
+        <af:column sortProperty="Comments" sortable="true"
+                   headerText="#{bindings.OperatingCountryVersionView2.hints.Comments.label}"
+                   id="c18">
+          <af:outputText value="#{row.Comments}" id="ot51"/>
+        </af:column>
+      </af:table>
+    </af:panelHeader>
+  </af:panelGroupLayout>
+</jsp:root>

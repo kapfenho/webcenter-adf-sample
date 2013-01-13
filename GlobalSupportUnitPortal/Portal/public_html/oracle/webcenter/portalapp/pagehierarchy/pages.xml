@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pagesDef xmlns="http://xmlns.oracle.com/webcenter/page"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://xmlns.oracle.com/webcenter/page/pagesDef.xsd">
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/home.jspx"
+           hidden="true" shared="false" hasSubPages="false" id="home-old"
+           overridePolicy="true"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/aboutGsu.jspx"
+           hidden="false" shared="false" hasSubPages="false" id="home"
+           overridePolicy="true"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/instructionContent.jspx"
+           hidden="false" shared="false" hasSubPages="false"
+           id="instructionContent" overridePolicy="false"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/defectContent.jspx"
+           hidden="false" shared="false" hasSubPages="false"
+           id="defectContent" overridePolicy="false"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/toolAndDownloadBrowser.jspx"
+           hidden="false" shared="false" hasSubPages="false"
+           id="toolAndDownloadBrowser" overridePolicy="false"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/announcements.jspx"
+           hidden="false" shared="false" hasSubPages="false"
+           id="announcements" overridePolicy="false"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/restrictedVersionAdmin.jspx"
+           hidden="false" shared="false" hasSubPages="false"
+           id="restrictedVersionAdmin" overridePolicy="true"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/portfolioAdmin.jspx"
+           hidden="false" shared="false" hasSubPages="false"
+           id="portfolioAdmin" overridePolicy="true"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/contentAdmin.jspx"
+           hidden="false" shared="false" hasSubPages="false" id="contentAdmin"
+           overridePolicy="true"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/contactBrowser.jspx"
+           hidden="false" shared="false" hasSubPages="false"
+           id="contactBrowser"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/externalLinks.jspx"
+           hidden="false" shared="false" hasSubPages="false"
+           id="externalLinks"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/productInfo.jspx"
+           hidden="false" shared="false" hasSubPages="false" id="productInfo"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/productMatrix.jspx"
+           hidden="false" shared="false" hasSubPages="false"
+           id="productMatrix"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/opCoInfo.jspx"
+           hidden="false" shared="false" hasSubPages="false" id="opCoInfo"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/change_pwd.jspx"
+           hidden="false" shared="false" hasSubPages="false" id="change_pwd"/>
+  <pageDef contentMRef="/oracle/webcenter/portalapp/pages/contentBrowser.jspx"
+           hidden="false" shared="false" hasSubPages="false"
+           id="contentBrowser" overridePolicy="true"/>
+</pagesDef>

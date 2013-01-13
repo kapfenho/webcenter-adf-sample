@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RestrictedVersionView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="OperatingCountryVersion.ACTIVE, 
+       OperatingCountryVersion.CHANGED_DTTM, 
+       OperatingCountryVersion.CHANGED_USER, 
+       OperatingCountryVersion.COMMENTS, 
+       OperatingCountryVersion.ID, 
+       OperatingCountryVersion.OPCO_ID, 
+       OperatingCountryVersion.SWAP_PLAN, 
+       OperatingCountryVersion.UPDATE_PLAN, 
+       OperatingCountryVersion.VERSION_BUILD, 
+       OperatingCountryVersion.VERSION_ID, 
+       OperatingCountry.OPCO_NAME, 
+       OperatingCountry.ID AS ID1, 
+       OperatingCountryContact.ID AS ID2, 
+       Contact.LOGON, 
+       Contact.ID AS ID3, 
+       Version.VERSION_NAME, 
+       Version.ID AS ID4, 
+       Product.PRODUCT_NAME, 
+       Product.ID AS ID5, 
+       Vendor.VENDOR_NAME, 
+       Vendor.ID AS ID6, 
+       Platform.PLATFORM_NAME, 
+       Platform.ID AS ID7"
+  FromList="GSU_OPCO_VERSION OperatingCountryVersion, GSU_OPCO OperatingCountry, GSU_OPCO_CONTACT OperatingCountryContact, GSU_CONTACT Contact, GSU_VERSION Version, GSU_PRODUCT Product, GSU_VENDOR Vendor, GSU_PLATFORM Platform"
+  Where="((((((OperatingCountryVersion.OPCO_ID = OperatingCountry.ID) AND (OperatingCountry.ID = OperatingCountryContact.OPCO_ID)) AND (OperatingCountryContact.CONTACT_ID = Contact.ID)) AND (OperatingCountryVersion.VERSION_ID = Version.ID)) AND (Version.PRODUCT_ID = Product.ID)) AND (Product.VENDOR_ID = Vendor.ID)) AND (Product.PLATFORM_ID = Platform.ID) AND (Contact.LOGON = :username)"
+  OrderBy="OPCO_NAME,VENDOR_NAME,PRODUCT_NAME,PLATFORM_NAME"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.h3g.owc.custom.taskflow.model.RestrictedVersionView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="username"
+    Kind="where"
+    Type="java.lang.String"
+    DefaultValue="adf.context.securityContext.userName"/>
+  <ViewAccessor
+    Name="RestrictedOpCoView1"
+    ViewObjectName="com.h3g.owc.custom.taskflow.model.RestrictedOpCoView">
+    <ParameterMap>
+      <PIMap Variable="username">
+        <TransientExpression><![CDATA[adf.context.securityContext.userName]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="VersionView1"
+    ViewObjectName="com.h3g.owc.custom.taskflow.model.VersionView"
+    RowLevelBinds="true"
+    OrderBy="Product.PRODUCT_NAME,Version.VERSION_NAME"/>
+  <ListBinding
+    Name="LOV_OpcoId"
+    ListVOName="RestrictedOpCoView1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OpcoId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OpcoName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_VersionId"
+    ListVOName="VersionView1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="VersionId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="VendorName"/>
+      <Item Value="ProductName"/>
+      <Item Value="VersionName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="OperatingCountryVersion"
+    Entity="com.h3g.owc.custom.taskflow.model.OperatingCountryVersion"/>
+  <EntityUsage
+    Name="OperatingCountry"
+    Entity="com.h3g.owc.custom.taskflow.model.OperatingCountry"
+    Association="com.h3g.owc.custom.taskflow.model.GsuOpcoVersionOpcoFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuOpcoVersionOpcoFkAssoc.OperatingCountry"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.RestrictedVersionView.OperatingCountryVersion"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item
+          Value="com.h3g.owc.custom.taskflow.model.OperatingCountryVersion.OpcoId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.OperatingCountry.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="OperatingCountryContact"
+    Entity="com.h3g.owc.custom.taskflow.model.OperatingCountryContact"
+    Association="com.h3g.owc.custom.taskflow.model.GsuOpcoContactOpcoFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuOpcoContactOpcoFkAssoc.OperatingCountryContact"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.RestrictedVersionView.OperatingCountry"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.OperatingCountry.Id"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item
+          Value="com.h3g.owc.custom.taskflow.model.OperatingCountryContact.OpcoId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Contact"
+    Entity="com.h3g.owc.custom.taskflow.model.Contact"
+    Association="com.h3g.owc.custom.taskflow.model.GsuOpcoContactContactFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuOpcoContactContactFkAssoc.Contact"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.RestrictedVersionView.OperatingCountryContact"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item
+          Value="com.h3g.owc.custom.taskflow.model.OperatingCountryContact.ContactId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Contact.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Version"
+    Entity="com.h3g.owc.custom.taskflow.model.Version"
+    Association="com.h3g.owc.custom.taskflow.model.GsuOpcoVersionVersionFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuOpcoVersionVersionFkAssoc.Version"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.RestrictedVersionView.OperatingCountryVersion"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item
+          Value="com.h3g.owc.custom.taskflow.model.OperatingCountryVersion.VersionId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Version.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Product"
+    Entity="com.h3g.owc.custom.taskflow.model.Product"
+    Association="com.h3g.owc.custom.taskflow.model.GsuVersionProductFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuVersionProductFkAssoc.Product"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.RestrictedVersionView.Version"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Version.ProductId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Product.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Vendor"
+    Entity="com.h3g.owc.custom.taskflow.model.Vendor"
+    Association="com.h3g.owc.custom.taskflow.model.GsuProductVendorFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuProductVendorFkAssoc.Vendor"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.RestrictedVersionView.Product"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Product.VendorId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Vendor.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Platform"
+    Entity="com.h3g.owc.custom.taskflow.model.Platform"
+    Association="com.h3g.owc.custom.taskflow.model.GsuProductPlatformFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuProductPlatformFkAssoc.Platform"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.RestrictedVersionView.Product"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Product.PlatformId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Platform.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="Active"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Active"
+    EntityUsage="OperatingCountryVersion"
+    AliasName="ACTIVE"/>
+  <ViewAttribute
+    Name="ChangedDttm"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ChangedDttm"
+    EntityUsage="OperatingCountryVersion"
+    AliasName="CHANGED_DTTM"/>
+  <ViewAttribute
+    Name="ChangedUser"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ChangedUser"
+    EntityUsage="OperatingCountryVersion"
+    AliasName="CHANGED_USER"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="Comments"
+    PrecisionRule="true"
+    EntityAttrName="Comments"
+    EntityUsage="OperatingCountryVersion"
+    AliasName="COMMENTS"/>
+  <ViewAttribute
+    Name="Id"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="OperatingCountryVersion"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="OpcoId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="OpcoId"
+    EntityUsage="OperatingCountryVersion"
+    AliasName="OPCO_ID"
+    LOVName="LOV_OpcoId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SwapPlan"
+    PrecisionRule="true"
+    EntityAttrName="SwapPlan"
+    EntityUsage="OperatingCountryVersion"
+    AliasName="SWAP_PLAN"/>
+  <ViewAttribute
+    Name="UpdatePlan"
+    PrecisionRule="true"
+    EntityAttrName="UpdatePlan"
+    EntityUsage="OperatingCountryVersion"
+    AliasName="UPDATE_PLAN"/>
+  <ViewAttribute
+    Name="VersionBuild"
+    PrecisionRule="true"
+    EntityAttrName="VersionBuild"
+    EntityUsage="OperatingCountryVersion"
+    AliasName="VERSION_BUILD"/>
+  <ViewAttribute
+    Name="VersionId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="VersionId"
+    EntityUsage="OperatingCountryVersion"
+    AliasName="VERSION_ID"
+    LOVName="LOV_VersionId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OpcoName"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="OpcoName"
+    EntityUsage="OperatingCountry"
+    AliasName="OPCO_NAME"/>
+  <ViewAttribute
+    Name="Id1"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="OperatingCountry"
+    AliasName="ID1"/>
+  <ViewAttribute
+    Name="Id2"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="OperatingCountryContact"
+    AliasName="ID2"/>
+  <ViewAttribute
+    Name="Logon"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Logon"
+    EntityUsage="Contact"
+    AliasName="LOGON"/>
+  <ViewAttribute
+    Name="Id3"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Contact"
+    AliasName="ID3"/>
+  <ViewAttribute
+    Name="VersionName"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="VersionName"
+    EntityUsage="Version"
+    AliasName="VERSION_NAME"/>
+  <ViewAttribute
+    Name="Id4"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Version"
+    AliasName="ID4"/>
+  <ViewAttribute
+    Name="ProductName"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="ProductName"
+    EntityUsage="Product"
+    AliasName="PRODUCT_NAME"/>
+  <ViewAttribute
+    Name="Id5"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Product"
+    AliasName="ID5"/>
+  <ViewAttribute
+    Name="VendorName"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="VendorName"
+    EntityUsage="Vendor"
+    AliasName="VENDOR_NAME"/>
+  <ViewAttribute
+    Name="Id6"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Vendor"
+    AliasName="ID6"/>
+  <ViewAttribute
+    Name="PlatformName"
+    IsUpdateable="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PlatformName"
+    EntityUsage="Platform"
+    AliasName="PLATFORM_NAME"/>
+  <ViewAttribute
+    Name="Id7"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Platform"
+    AliasName="ID7"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.h3g.owc.custom.taskflow.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

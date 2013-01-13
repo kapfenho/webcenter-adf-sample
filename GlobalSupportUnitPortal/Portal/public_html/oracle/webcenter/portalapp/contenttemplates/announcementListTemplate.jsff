@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+  xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+  xmlns:dt="http://xmlns.oracle.com/webcenter/content/templates"
+  xmlns:f="http://java.sun.com/jsf/core">
+<dt:contentListTemplateDef var="nodes" >
+ <af:panelGroupLayout layout="vertical" id="list" valign="top">
+   <af:showDetailHeader id="altem" text="No related announcements" rendered="#{nodes.rowCount eq 0}"
+                       disclosed="true" size="1">
+      <af:outputText id="altemot" value="There were no announcements posted for the supplied criteria. Supply different criteria to review recent announcements."/>
+   </af:showDetailHeader> 
+   <af:iterator var="node" value="#{nodes}" rendered="#{nodes.rowCount gt 0}">
+      <dt:contentTemplate node="#{node}" view="at.h3g.contenttemplate.announcement.detail"
+                nodesHint="#{nodes}" id="announcementItem"/>
+    </af:iterator>
+  <f:facet name="separator">
+     <af:spacer id="sp1" height="10px"/>
+   </f:facet>
+</af:panelGroupLayout>
+</dt:contentListTemplateDef>
+</jsp:root>

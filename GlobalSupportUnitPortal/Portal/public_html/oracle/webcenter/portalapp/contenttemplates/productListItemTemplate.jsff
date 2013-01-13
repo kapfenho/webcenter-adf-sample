@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dt="http://xmlns.oracle.com/webcenter/content/templates"
+          xmlns:f="http://java.sun.com/jsf/core"
+          version="2.1">
+<dt:contentTemplateDef var="node">
+  <af:panelHeader id="adtpb" text="Product Information"
+                       size="1">
+    <af:panelHeader text="How to raise a defect" id="ph1">
+        <af:outputText id="ot2" value="#{node.propertyMap['RD_PRODUCT:HowTo'].asTextHtml}"
+                       escape="false"/>
+    </af:panelHeader>
+    <af:panelHeader text="Licensing Information" id="ph2">
+        <af:outputText id="ot1" value="#{node.propertyMap['RD_PRODUCT:Licensing'].asTextHtml}"
+                       escape="false"/>
+    </af:panelHeader>
+    <af:panelHeader text="General Information" id="pph1">
+        <af:outputText id="adtof" value="#{node.propertyMap['RD_PRODUCT:ProductInformation'].asTextHtml}"
+                       escape="false"/>
+    </af:panelHeader>
+    <af:panelHeader text="Service Level Agreement" id="ph3">
+        <af:outputText id="ot3" value="#{node.propertyMap['RD_PRODUCT:SLA'].asTextHtml}"
+                       escape="false"/>
+    </af:panelHeader>
+    <af:panelHeader text="Others" id="ph6">
+        <af:outputText id="ot6" value="#{node.propertyMap['RD_PRODUCT:Others'].asTextHtml}"
+                       escape="false"/>
+    </af:panelHeader>
+  </af:panelHeader>
+</dt:contentTemplateDef>
+</jsp:root>

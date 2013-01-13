@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+  xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+  xmlns:dt="http://xmlns.oracle.com/webcenter/content/templates"
+  xmlns:f="http://java.sun.com/jsf/core">
+<dt:contentListTemplateDef var="nodes" >
+   <af:panelTabbed id="pt1">
+     <af:showDetailItem id="altem" text="No Content" rendered="#{nodes.rowCount eq 0}">
+      <af:outputText id="altemot" value="No content was retrieved from the Content Server."/>
+     </af:showDetailItem> 
+     <af:iterator var="node" value="#{nodes}" rendered="#{nodes.rowCount gt 0}">
+        <af:showDetailItem id="listitem" text="#{node.propertyMap['dDocTitle'].asTextHtml}">
+          <dt:contentTemplate node="#{node}" view="oracle.webcenter.content.templates.default.detail"
+                    nodesHint="#{nodes}" id="tabbedItem"/>
+        </af:showDetailItem>
+      </af:iterator>
+   </af:panelTabbed>
+</dt:contentListTemplateDef>
+</jsp:root>

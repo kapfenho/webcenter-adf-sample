@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="versionAdminPageDef"
+                Package="pagefragments.gsuDbAdmin">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="VersionView2" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="VersionView2Iterator"/>
+    <iterator Binds="ProductView1" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="ProductView1Iterator"/>
+    <!-- iterator Binds="VersionView1" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="VersionView1Iterator"/  -->
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="VersionView2Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="VersionView2Iterator" StaticList="false"
+          Uses="LOV_ProductId" id="ProductId" DTSupportsMRU="false"/>
+    <list IterBinding="VersionView2Iterator" StaticList="false"
+          Uses="LOV_SupportStatus" id="SupportStatus" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="VersionView2Iterator" id="VersionName">
+      <AttrNames>
+        <Item Value="VersionName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="VersionView2Iterator" id="ReleaseDate">
+      <AttrNames>
+        <Item Value="ReleaseDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="VersionView2Iterator" id="EosDate">
+      <AttrNames>
+        <Item Value="EosDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="VersionView2Iterator" id="EosInfo">
+      <AttrNames>
+        <Item Value="EosInfo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="VersionView2Iterator" id="Active">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="VersionView2Iterator" id="ChangedDttm">
+      <AttrNames>
+        <Item Value="ChangedDttm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="VersionView2Iterator" id="ChangedUser">
+      <AttrNames>
+        <Item Value="ChangedUser"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="VersionView2Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="VersionView2Iterator" id="SwapPlan">
+      <AttrNames>
+        <Item Value="SwapPlan"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="VersionView2Iterator" id="UpdatePlan">
+      <AttrNames>
+        <Item Value="UpdatePlan"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+    <tree IterBinding="ProductView1Iterator" id="ProductView1">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.ProductView"
+                      Name="ProductView10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="PlatformName"/>
+          <Item Value="VendorName"/>
+          <Item Value="ProductName"/>
+          <Item Value="Active"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="VersionView2Iterator" id="VersionView2">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.VersionView"
+                      Name="VersionView20">
+        <AttrNames>
+          <Item Value="ProductName"/>
+          <Item Value="VersionName"/>
+          <Item Value="ReleaseDate"/>
+          <Item Value="EosDate"/>
+          <Item Value="EosInfo"/>
+          <Item Value="Active"/>
+          <Item Value="Description"/>
+          <Item Value="SupportStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="VersionView2Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+
+  </bindings>
+</pageDefinition>

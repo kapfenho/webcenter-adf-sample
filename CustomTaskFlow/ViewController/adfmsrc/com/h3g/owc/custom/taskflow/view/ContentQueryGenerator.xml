@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="ContentQueryGenerator" Package="com.h3g.owc.custom.taskflow.view"
+          BeanClass="com.h3g.owc.custom.taskflow.view.ContentQueryGenerator"
+          isJavaBased="true">
+  <Attribute Name="productName" Type="java.lang.String"/>
+  <Attribute Name="platformName" Type="java.lang.String"/>
+  <Attribute Name="vendorName" Type="java.lang.String"/>
+  <Attribute Name="announcementQuery" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="vendorQuery" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="productQuery" IsUpdateable="0" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="fireQueryRefreshedEvent" ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="com.h3g.owc.custom.taskflow.view.ContentQueryGenerator"
+                     BeanClass="com.h3g.owc.custom.taskflow.view.ContentQueryGenerator"
+                     id="ContentQueryGenerator"/>
+</JavaBean>

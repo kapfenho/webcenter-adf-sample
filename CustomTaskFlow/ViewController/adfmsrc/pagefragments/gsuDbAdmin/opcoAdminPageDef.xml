@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="opcoAdminPageDef"
+                Package="pagefragments.gsuDbAdmin">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="OperatingCountryView1" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="OperatingCountryView1Iterator" ChangeEventPolicy="none"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="OperatingCountryView1Iterator" id="OpcoName">
+      <AttrNames>
+        <Item Value="OpcoName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OperatingCountryView1Iterator" id="Active">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OperatingCountryView1Iterator"
+                     id="ChangedDttm">
+      <AttrNames>
+        <Item Value="ChangedDttm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OperatingCountryView1Iterator"
+                     id="ChangedUser">
+      <AttrNames>
+        <Item Value="ChangedUser"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OperatingCountryView1Iterator"
+                     id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="OperatingCountryView1Iterator"
+          id="OperatingCountryView1">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.OperatingCountryView"
+                      Name="OperatingCountryView10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="OpcoName"/>
+          <Item Value="Active"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="OperatingCountryView1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+    <action IterBinding="OperatingCountryView1Iterator" id="CreateInsert"
+            InstanceName="GsuBaseApplicationModuleDataControl.OperatingCountryView1"
+            DataControl="GsuBaseApplicationModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

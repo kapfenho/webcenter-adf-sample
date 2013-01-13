@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="connectPage1PageDef"
+                Package="oracle.webcenter.portalapp.pages">
+  <parameters>
+    <parameter id="page_info"
+               value="title=connectPage1;desc=;keywords=;createdBy=weblogic;createDate=2012-06-29T00:22:15;lastUpdatedBy=weblogic;lastUpdateDate=2012-06-29T00:22:15;permissionClass=oracle.webcenter.security.auth.HierarchicalResourcePermission;target=serviceID=oracle.webcenter.page,scopeID=s8bba98ff_4cbb_40b8_beee_296c916a23ed,resourceID=/oracle/webcenter/portalapp/pages/connectPage1.jspx;excluded=false;style="/>
+    <parameter id="page_title" value="connectPage1"/>
+  </parameters>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="oracle.webcenter.portalapp.pagetemplates.pageTemplate_globePageDef"
+          id="pageTemplateBinding" Refresh="ifNeeded"/>
+    <taskFlow id="connectionsmainviewuntabbedtaskflow1"
+              taskFlowId="/oracle/webcenter/peopleconnections/connections/controller/taskflows/connections-main-view-untabbed-taskflow.xml#connections-main-view-untabbed-taskflow"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="resourceId" value="#{securityContext.userName}"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="connectionsminiviewtaskflow1"
+              taskFlowId="/oracle/webcenter/peopleconnections/connections/controller/taskflows/connections-mini-view-taskflow.xml#connections-mini-view-taskflow"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

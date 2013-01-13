@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="productAdminPageDef"
+                Package="pagefragments.gsuDbAdmin">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ProductView1" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="ProductView1Iterator" ChangeEventPolicy="none"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ProductView1Iterator" id="ProductView1">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.ProductView"
+                      Name="ProductView10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="ProductName"/>
+          <Item Value="VendorName"/>
+          <Item Value="PlatformName"/>
+          <Item Value="Active"/>
+          <Item Value="Description"/>
+          <Item Value="SortableProductName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ProductView1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ProductView1Iterator" StaticList="false"
+          Uses="LOV_PlatformId" id="PlatformId" DTSupportsMRU="false"/>
+    <list IterBinding="ProductView1Iterator" StaticList="false"
+          Uses="LOV_VendorId" id="VendorId" DTSupportsMRU="false"/>
+    <attributeValues IterBinding="ProductView1Iterator" id="ProductName">
+      <AttrNames>
+        <Item Value="ProductName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="Active">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="ChangedUser">
+      <AttrNames>
+        <Item Value="ChangedUser"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="VendorName">
+      <AttrNames>
+        <Item Value="VendorName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="VendorIdForQuery">
+      <AttrNames>
+        <Item Value="VendorIdForQuery"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="PlatformName">
+      <AttrNames>
+        <Item Value="PlatformName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="PlatformIdForQuery">
+      <AttrNames>
+        <Item Value="PlatformIdForQuery"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="ChangedDttm">
+      <AttrNames>
+        <Item Value="ChangedDttm"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+    <action IterBinding="ProductView1Iterator" id="Delete"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="ProductView1Iterator" id="CreateInsert"
+            InstanceName="GsuBaseApplicationModuleDataControl.ProductView1"
+            DataControl="GsuBaseApplicationModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <attributeValues IterBinding="ProductView1Iterator" id="HowTo">
+      <AttrNames>
+        <Item Value="HowTo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="Licensing">
+      <AttrNames>
+        <Item Value="Licensing"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="ProductInformation">
+      <AttrNames>
+        <Item Value="ProductInformation"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="Sla">
+      <AttrNames>
+        <Item Value="Sla"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ProductView1Iterator" id="Others">
+      <AttrNames>
+        <Item Value="Others"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

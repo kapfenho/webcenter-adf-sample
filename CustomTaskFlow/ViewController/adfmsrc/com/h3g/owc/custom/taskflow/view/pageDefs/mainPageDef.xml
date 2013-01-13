@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="mainPageDef"
+                Package="com.h3g.owc.custom.taskflow.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="VendorView1" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="VendorView1Iterator">
+      <sortCriteria>
+        <sort attribute="VendorName" ascending="true"/>
+      </sortCriteria>
+    </iterator>
+    <iterator Binds="ProductView1" RangeSize="100" 
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="ProductView1Iterator">
+      <sortCriteria>
+        <sort attribute="ProductName" ascending="true"/>
+      </sortCriteria>
+    </iterator>
+    <iterator Binds="PlatformView1" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="PlatformView1Iterator">
+      <sortCriteria>
+        <sort attribute="PlatformName" ascending="true"/>
+      </sortCriteria>
+    </iterator>
+    <iterator Binds="ContactView1" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="ContactView1Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="VendorView1Iterator" ListOperMode="navigation"
+          ListIter="VendorView1Iterator" id="VendorView1" DTSupportsMRU="true">
+<!--
+      <events xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+        <event name="vendorChangeEvent"
+               customPayLoad="#{pageFlowScope.contentQueryBean.announcementQuery}"
+               eventType="Currency Change Event"/>
+        <event name="vendorSelectionChangeRawEvent"
+               eventType="Currency Change Event"/>
+      </events>
+-->
+      <AttrNames>
+        <Item Value="VendorName"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="ProductView1Iterator" ListOperMode="navigation"
+          ListIter="ProductView1Iterator" id="ProductView1"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="ProductName"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="PlatformView1Iterator" ListOperMode="navigation"
+          ListIter="PlatformView1Iterator" id="PlatformView1"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="PlatformName"/>
+      </AttrNames>
+    </list>
+    <table IterBinding="VendorView1Iterator" id="VendorView11">
+      <events xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+        <event name="vendorChangeEvent"
+               customPayLoad="#{pageFlowScope.contentQueryBean.announcementQuery}"
+               eventType="Currency Change Event"/>
+        <event name="vendorSelectionChangeRawEvent"
+               eventType="Currency Change Event"/>
+      </events>
+      <AttrNames>
+        <Item Value="VendorName"/>
+      </AttrNames>
+    </table>
+    <table IterBinding="ProductView1Iterator" id="ProductView11">
+      <AttrNames>
+        <Item Value="ProductName"/>
+      </AttrNames>
+    </table>
+    <table IterBinding="PlatformView1Iterator" id="PlatformView11">
+      <AttrNames>
+        <Item Value="PlatformName"/>
+      </AttrNames>
+    </table>
+    <eventBinding id="eventBinding"
+                  Listener="javax.faces.event.ActionListener">
+      <events xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+        <event name="fireButtonPushedRawEvent"/>
+        <event name="fireButtonPushedStringEvent"
+               customPayLoad="#{pageFlowScope.contentQueryBean.announcementQuery}"
+               eventType="Action Event"/>
+      </events>
+    </eventBinding>
+    <list IterBinding="ContactView1Iterator" ListOperMode="navigation"
+          ListIter="ContactView1Iterator" id="ContactView1"
+          DTSupportsMRU="true">
+      <events xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+        <event name="socCurrChangeRawEvent" eventType="Currency Change Event"/>
+        <event name="socCurrChangeEvent"
+               customPayLoad="#{pageFlowScope.contentQueryBean.announcementQuery}"
+               eventType="Currency Change Event"/>
+      </events>
+      <AttrNames>
+        <Item Value="FirstName"/>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </list>
+  </bindings>
+  <events xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+    <event name="QueryRefreshed"
+           customPayLoad="#{pageFlowScope.contentQueryBean.announcementQuery}"/>
+    <event name="vendorChangeEvent"
+           customPayLoad="#{pageFlowScope.contentQueryBean.announcementQuery}"
+           eventType="Currency Change Event"/>
+    <event name="vendorSelectionChangeRawEvent"
+           eventType="Currency Change Event"/>
+    <event name="fireButtonPushedRawEvent"/>
+    <event name="fireButtonPushedStringEvent"
+           customPayLoad="#{pageFlowScope.contentQueryBean.announcementQuery}"
+           eventType="Action Event"/>
+    <event name="socCurrChangeRawEvent" eventType="Currency Change Event"/>
+    <event name="socCurrChangeEvent"
+           customPayLoad="#{pageFlowScope.contentQueryBean.announcementQuery}"
+           eventType="Currency Change Event"/>
+  </events>
+</pageDefinition>

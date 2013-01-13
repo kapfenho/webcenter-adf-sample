@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="ProductInfoEventHandler"
+          Package="com.h3g.owc.custom.gsuportal.portal.pagebacking"
+          BeanClass="com.h3g.owc.custom.gsuportal.portal.pagebacking.ProductInfoEventHandler"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="false" Type="void"
+                  id="handleProductChangedEvent" ReturnNodeName="Return">
+    <ParameterInfo id="newProductName" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="com.h3g.owc.custom.gsuportal.portal.pagebacking.ProductInfoEventHandler"
+                     BeanClass="com.h3g.owc.custom.gsuportal.portal.pagebacking.ProductInfoEventHandler"
+                     id="ProductInfoEventHandler"/>
+</JavaBean>

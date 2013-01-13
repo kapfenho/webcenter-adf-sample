@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="AnnouncementEventHandler"
+          Package="com.h3g.owc.custom.gsuportal.portal.pagebacking"
+          BeanClass="com.h3g.owc.custom.gsuportal.portal.pagebacking.AnnouncementEventHandler"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="false" Type="void"
+                  id="handleAnnouncementQueryRefreshEvent"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="newQuery" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="com.h3g.owc.custom.gsuportal.portal.pagebacking.AnnouncementEventHandler"
+                     BeanClass="com.h3g.owc.custom.gsuportal.portal.pagebacking.AnnouncementEventHandler"
+                     id="AnnouncementEventHandler"/>
+</JavaBean>

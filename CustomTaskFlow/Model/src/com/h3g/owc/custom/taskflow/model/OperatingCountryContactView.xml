@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OperatingCountryContactView"
+  Version="11.1.1.61.92"
+  SelectList="OperatingCountryContact.ID, 
+       OperatingCountryContact.OPCO_ID, 
+       OperatingCountryContact.CONTACT_ID, 
+       OperatingCountryContact.NOTE, 
+       OperatingCountryContact.CHANGED_DTTM, 
+       OperatingCountryContact.CHANGED_USER, 
+       OperatingCountry.OPCO_NAME, 
+       OperatingCountry.ID AS ID1, 
+       Contact.FIRST_NAME, 
+       Contact.ID AS ID2, 
+       Contact.LAST_NAME, 
+       Contact.ORGANISATION, 
+       Contact.ORGANISATION_SUB, 
+       Contact.POSITION, 
+       Contact.ADDRESS_LINE1, 
+       Contact.ADDRESS_LINE2, 
+       Contact.ADDRESS_LINE3, 
+       Contact.CATEGORY, 
+       Contact.CITY, 
+       Contact.COUNTRY, 
+       Contact.EMAIL_ADDRESS, 
+       Contact.FAX_PHONE, 
+       Contact.FIRST_NAME AS FIRST_NAME1, 
+       Contact.FIX_PHONE, 
+       Contact.MOBILE_PHONE, 
+       Contact.NOTE AS NOTE1, 
+       Contact.ZIP_CODE"
+  FromList="GSU_OPCO_CONTACT OperatingCountryContact, GSU_OPCO OperatingCountry, GSU_CONTACT Contact"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  Where="(OperatingCountryContact.OPCO_ID = OperatingCountry.ID) AND (OperatingCountryContact.CONTACT_ID = Contact.ID)">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="OperatingCountryView1"
+    ViewObjectName="com.h3g.owc.custom.taskflow.model.OperatingCountryView"
+    RowLevelBinds="true"
+    OrderBy="OperatingCountry.OPCO_NAME"/>
+  <ViewAccessor
+    Name="ContactView1"
+    ViewObjectName="com.h3g.owc.custom.taskflow.model.ContactView"
+    RowLevelBinds="true"
+    OrderBy="Contact.LAST_NAME,Contact.FIRST_NAME,Contact.ORGANISATION,Contact.ORGANISATION_SUB"/>
+  <ListBinding
+    Name="LOV_OpcoId"
+    ListVOName="OperatingCountryView1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OpcoId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="OpcoName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ContactId"
+    ListVOName="ContactView1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ContactId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FirstName"/>
+      <Item Value="LastName"/>
+      <Item Value="Position"/>
+      <Item Value="Organisation"/>
+      <Item Value="OrganisationSub"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="OperatingCountryContact"
+    Entity="com.h3g.owc.custom.taskflow.model.OperatingCountryContact"/>
+  <EntityUsage
+    Name="OperatingCountry"
+    Entity="com.h3g.owc.custom.taskflow.model.OperatingCountry"
+    Association="com.h3g.owc.custom.taskflow.model.GsuOpcoContactOpcoFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuOpcoContactOpcoFkAssoc.OperatingCountry"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.OperatingCountryContactView.OperatingCountryContact"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item
+          Value="com.h3g.owc.custom.taskflow.model.OperatingCountryContact.OpcoId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.OperatingCountry.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Contact"
+    Entity="com.h3g.owc.custom.taskflow.model.Contact"
+    Association="com.h3g.owc.custom.taskflow.model.GsuOpcoContactContactFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuOpcoContactContactFkAssoc.Contact"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.OperatingCountryContactView.OperatingCountryContact"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item
+          Value="com.h3g.owc.custom.taskflow.model.OperatingCountryContact.ContactId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Contact.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="OperatingCountryContact"
+    AliasName="ID"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="OpcoId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="OpcoId"
+    EntityUsage="OperatingCountryContact"
+    AliasName="OPCO_ID"
+    LOVName="LOV_OpcoId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ContactId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ContactId"
+    EntityUsage="OperatingCountryContact"
+    AliasName="CONTACT_ID"
+    LOVName="LOV_ContactId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Note"
+    PrecisionRule="true"
+    EntityAttrName="Note"
+    EntityUsage="OperatingCountryContact"
+    AliasName="NOTE"/>
+  <ViewAttribute
+    Name="ChangedDttm"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ChangedDttm"
+    EntityUsage="OperatingCountryContact"
+    AliasName="CHANGED_DTTM"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="ChangedUser"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ChangedUser"
+    EntityUsage="OperatingCountryContact"
+    AliasName="CHANGED_USER"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="OpcoName"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="OpcoName"
+    EntityUsage="OperatingCountry"
+    AliasName="OPCO_NAME"/>
+  <ViewAttribute
+    Name="Id1"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="OperatingCountry"
+    AliasName="ID1"/>
+  <ViewAttribute
+    Name="FirstName"
+    PrecisionRule="true"
+    EntityAttrName="FirstName"
+    EntityUsage="Contact"
+    AliasName="FIRST_NAME"/>
+  <ViewAttribute
+    Name="Id2"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Contact"
+    AliasName="ID2"/>
+  <ViewAttribute
+    Name="LastName"
+    PrecisionRule="true"
+    EntityAttrName="LastName"
+    EntityUsage="Contact"
+    AliasName="LAST_NAME"/>
+  <ViewAttribute
+    Name="Organisation"
+    PrecisionRule="true"
+    EntityAttrName="Organisation"
+    EntityUsage="Contact"
+    AliasName="ORGANISATION"/>
+  <ViewAttribute
+    Name="OrganisationSub"
+    PrecisionRule="true"
+    EntityAttrName="OrganisationSub"
+    EntityUsage="Contact"
+    AliasName="ORGANISATION_SUB"/>
+  <ViewAttribute
+    Name="Position"
+    PrecisionRule="true"
+    EntityAttrName="Position"
+    EntityUsage="Contact"
+    AliasName="POSITION"/>
+  <ViewAttribute
+    Name="AddressLine1"
+    PrecisionRule="true"
+    EntityAttrName="AddressLine1"
+    EntityUsage="Contact"
+    AliasName="ADDRESS_LINE1"/>
+  <ViewAttribute
+    Name="AddressLine2"
+    PrecisionRule="true"
+    EntityAttrName="AddressLine2"
+    EntityUsage="Contact"
+    AliasName="ADDRESS_LINE2"/>
+  <ViewAttribute
+    Name="AddressLine3"
+    PrecisionRule="true"
+    EntityAttrName="AddressLine3"
+    EntityUsage="Contact"
+    AliasName="ADDRESS_LINE3"/>
+  <ViewAttribute
+    Name="Category"
+    PrecisionRule="true"
+    EntityAttrName="Category"
+    EntityUsage="Contact"
+    AliasName="CATEGORY"/>
+  <ViewAttribute
+    Name="City"
+    PrecisionRule="true"
+    EntityAttrName="City"
+    EntityUsage="Contact"
+    AliasName="CITY"/>
+  <ViewAttribute
+    Name="Country"
+    PrecisionRule="true"
+    EntityAttrName="Country"
+    EntityUsage="Contact"
+    AliasName="COUNTRY"/>
+  <ViewAttribute
+    Name="EmailAddress"
+    PrecisionRule="true"
+    EntityAttrName="EmailAddress"
+    EntityUsage="Contact"
+    AliasName="EMAIL_ADDRESS"/>
+  <ViewAttribute
+    Name="FaxPhone"
+    PrecisionRule="true"
+    EntityAttrName="FaxPhone"
+    EntityUsage="Contact"
+    AliasName="FAX_PHONE"/>
+  <ViewAttribute
+    Name="FirstName1"
+    PrecisionRule="true"
+    EntityAttrName="FirstName"
+    EntityUsage="Contact"
+    AliasName="FIRST_NAME1"/>
+  <ViewAttribute
+    Name="FixPhone"
+    PrecisionRule="true"
+    EntityAttrName="FixPhone"
+    EntityUsage="Contact"
+    AliasName="FIX_PHONE"/>
+  <ViewAttribute
+    Name="MobilePhone"
+    PrecisionRule="true"
+    EntityAttrName="MobilePhone"
+    EntityUsage="Contact"
+    AliasName="MOBILE_PHONE"/>
+  <ViewAttribute
+    Name="Note1"
+    PrecisionRule="true"
+    EntityAttrName="Note"
+    EntityUsage="Contact"
+    AliasName="NOTE1"/>
+  <ViewAttribute
+    Name="ZipCode"
+    PrecisionRule="true"
+    EntityAttrName="ZipCode"
+    EntityUsage="Contact"
+    AliasName="ZIP_CODE"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
+</ViewObject>

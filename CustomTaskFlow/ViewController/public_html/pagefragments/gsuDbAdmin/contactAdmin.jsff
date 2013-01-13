@@ -1,0 +1,299 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/pagefragmentTemplates/gsuDbAdminTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageHeader">
+      <af:panelHeader text="Administration of Contacts" id="pagehead1"/>
+    </f:facet>
+    <f:facet name="readOnlyTable">
+      <af:panelCollection id="pc1" featuresOff="detach viewMenu">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:commandToolbarButton actionListener="#{bindings.CreateInsert.execute}"
+                                     text="Create"
+                                     disabled="#{!bindings.CreateInsert.enabled or bindings.Id.inputValue.value lt 0}"
+                                     immediate="true" partialSubmit="true"
+                                     id="ctb1"/>
+            <af:commandToolbarButton text="Export" id="ctb2">
+              <af:exportCollectionActionListener type="excelHTML"
+                                                 exportedId="t1"
+                                                 title="GSU-Contacts-Export"
+                                                 exportedRows="all"
+                                                 filename="GSU-Contacts-Export.xls"/>
+            </af:commandToolbarButton>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.ContactView1.collectionModel}" var="row"
+                  rows="#{bindings.ContactView1.rangeSize}"
+                  emptyText="#{bindings.ContactView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.ContactView1.rangeSize}"
+                  rowBandingInterval="0" filterVisible="true" 
+                  selectedRowKeys="#{bindings.ContactView1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.ContactView1.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1" contentDelivery="immediate"
+                  columnStretching="last">
+          <af:column sortProperty="Id" sortable="true"
+                     headerText="#{bindings.ContactView1.hints.Id.label}"
+                     id="c2">
+            <af:outputText value="#{row.Id}" id="ot10"/>
+          </af:column>
+          <af:column sortProperty="Logon" sortable="true"
+                     filterFeatures="caseInsensitive"
+                     headerText="#{bindings.ContactView1.hints.Logon.label}"
+                     id="c3">
+            <af:outputText value="#{row.Logon}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="FirstName" sortable="true"
+                     filterFeatures="caseInsensitive"
+                     headerText="#{bindings.ContactView1.hints.FirstName.label}"
+                     id="c5">
+            <af:outputText value="#{row.FirstName}" id="ot3"/>
+          </af:column>
+          <af:column sortProperty="LastName" sortable="true"
+                     filterFeatures="caseInsensitive"
+                     headerText="#{bindings.ContactView1.hints.LastName.label}"
+                     id="c1">
+            <af:outputText value="#{row.LastName}" id="ot4"/>
+          </af:column>
+          <af:column sortProperty="Category" sortable="true"
+                     filterFeatures="caseInsensitive"
+                     headerText="#{bindings.ContactView1.hints.Category.label}"
+                     id="c9">
+            <af:outputText value="#{row.Category}" id="ot7"/>
+          </af:column>
+          <af:column sortProperty="Organisation" sortable="true"
+                     filterFeatures="caseInsensitive"
+                     headerText="#{bindings.ContactView1.hints.Organisation.label}"
+                     id="c6">
+            <af:outputText value="#{row.Organisation}" id="ot8"/>
+          </af:column>
+          <af:column sortProperty="OrganisationSub" sortable="true"
+                     filterFeatures="caseInsensitive"
+                     headerText="#{bindings.ContactView1.hints.OrganisationSub.label}"
+                     id="c8">
+            <af:outputText value="#{row.OrganisationSub}" id="ot6"/>
+          </af:column>
+          <af:column sortProperty="Position" sortable="true"
+                     filterFeatures="caseInsensitive"
+                     headerText="#{bindings.ContactView1.hints.Position.label}"
+                     id="c7">
+            <af:outputText value="#{row.Position}" id="ot9"/>
+          </af:column>
+          <af:column sortProperty="MobilePhone" sortable="true"
+                     headerText="#{bindings.ContactView1.hints.MobilePhone.label}"
+                     id="c4">
+            <af:outputText value="#{row.MobilePhone}" id="ot5"/>
+          </af:column>
+          <af:column sortProperty="EmailAddress" sortable="true"
+                     headerText="#{bindings.ContactView1.hints.EmailAddress.label}"
+                     id="c10">
+            <af:outputText value="#{row.EmailAddress}" id="ot1"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="editableForm">
+      <af:panelFormLayout id="pfl1" partialTriggers="pc1:ctb1 pc1:t1">
+        <af:panelLabelAndMessage label="#{bindings.Id.hints.label}" id="plam1">
+          <af:outputText value="#{bindings.Id.inputValue}" id="ot11"/>
+        </af:panelLabelAndMessage>
+        <af:inputText value="#{bindings.Logon.inputValue}"
+                      label="#{bindings.Logon.hints.label}"
+                      required="#{bindings.Logon.hints.mandatory}"
+                      columns="#{bindings.Logon.hints.displayWidth}"
+                      maximumLength="#{bindings.Logon.hints.precision}"
+                      shortDesc="#{bindings.Logon.hints.tooltip}" id="it17"
+                      contentStyle="width:260px">
+          <f:validator binding="#{bindings.Logon.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.FirstName.inputValue}"
+                      label="#{bindings.FirstName.hints.label}"
+                      required="#{bindings.FirstName.hints.mandatory}"
+                      columns="#{bindings.FirstName.hints.displayWidth}"
+                      maximumLength="#{bindings.FirstName.hints.precision}"
+                      shortDesc="#{bindings.FirstName.hints.tooltip}" id="it6"
+                      contentStyle="width:260px">
+          <f:validator binding="#{bindings.FirstName.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.LastName.inputValue}"
+                      label="#{bindings.LastName.hints.label}"
+                      required="#{bindings.LastName.hints.mandatory}"
+                      columns="#{bindings.LastName.hints.displayWidth}"
+                      maximumLength="#{bindings.LastName.hints.precision}"
+                      shortDesc="#{bindings.LastName.hints.tooltip}" id="it15"
+                      contentStyle="width:260px">
+          <f:validator binding="#{bindings.LastName.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Category.inputValue}"
+                      label="#{bindings.Category.hints.label}"
+                      required="#{bindings.Category.hints.mandatory}"
+                      columns="#{bindings.Category.hints.displayWidth}"
+                      maximumLength="#{bindings.Category.hints.precision}"
+                      shortDesc="#{bindings.Category.hints.tooltip}" id="it13"
+                      contentStyle="width:260px">
+          <f:validator binding="#{bindings.Category.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Organisation.inputValue}"
+                      label="#{bindings.Organisation.hints.label}"
+                      required="#{bindings.Organisation.hints.mandatory}"
+                      columns="#{bindings.Organisation.hints.displayWidth}"
+                      maximumLength="#{bindings.Organisation.hints.precision}"
+                      shortDesc="#{bindings.Organisation.hints.tooltip}"
+                      id="it14" contentStyle="width:260px">
+          <f:validator binding="#{bindings.Organisation.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.OrganisationSub.inputValue}"
+                      label="#{bindings.OrganisationSub.hints.label}"
+                      required="#{bindings.OrganisationSub.hints.mandatory}"
+                      columns="#{bindings.OrganisationSub.hints.displayWidth}"
+                      maximumLength="#{bindings.OrganisationSub.hints.precision}"
+                      shortDesc="#{bindings.OrganisationSub.hints.tooltip}"
+                      id="it12" contentStyle="width:260px">
+          <f:validator binding="#{bindings.OrganisationSub.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Position.inputValue}"
+                      label="#{bindings.Position.hints.label}"
+                      required="#{bindings.Position.hints.mandatory}"
+                      columns="#{bindings.Position.hints.displayWidth}"
+                      maximumLength="#{bindings.Position.hints.precision}"
+                      shortDesc="#{bindings.Position.hints.tooltip}" id="it7"
+                      contentStyle="width:260px">
+          <f:validator binding="#{bindings.Position.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.MobilePhone.inputValue}"
+                      label="#{bindings.MobilePhone.hints.label}"
+                      required="#{bindings.MobilePhone.hints.mandatory}"
+                      columns="#{bindings.MobilePhone.hints.displayWidth}"
+                      maximumLength="#{bindings.MobilePhone.hints.precision}"
+                      shortDesc="#{bindings.MobilePhone.hints.tooltip}" id="it3"
+                      contentStyle="width:260px">
+          <f:validator binding="#{bindings.MobilePhone.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.FixPhone.inputValue}"
+                      label="#{bindings.FixPhone.hints.label}"
+                      required="#{bindings.FixPhone.hints.mandatory}"
+                      columns="#{bindings.FixPhone.hints.displayWidth}"
+                      maximumLength="#{bindings.FixPhone.hints.precision}"
+                      shortDesc="#{bindings.FixPhone.hints.tooltip}" id="it4"
+                      contentStyle="width:260px">
+          <f:validator binding="#{bindings.FixPhone.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.FaxPhone.inputValue}"
+                      label="#{bindings.FaxPhone.hints.label}"
+                      required="#{bindings.FaxPhone.hints.mandatory}"
+                      columns="#{bindings.FaxPhone.hints.displayWidth}"
+                      maximumLength="#{bindings.FaxPhone.hints.precision}"
+                      shortDesc="#{bindings.FaxPhone.hints.tooltip}" id="it19"
+                      contentStyle="width:260px">
+          <f:validator binding="#{bindings.FaxPhone.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.EmailAddress.inputValue}"
+                      label="#{bindings.EmailAddress.hints.label}"
+                      required="#{bindings.EmailAddress.hints.mandatory}"
+                      columns="#{bindings.EmailAddress.hints.displayWidth}"
+                      maximumLength="#{bindings.EmailAddress.hints.precision}"
+                      shortDesc="#{bindings.EmailAddress.hints.tooltip}"
+                      id="it1" contentStyle="width:260px">
+          <f:validator binding="#{bindings.EmailAddress.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.AddressLine1.inputValue}"
+                      label="#{bindings.AddressLine1.hints.label}"
+                      required="#{bindings.AddressLine1.hints.mandatory}"
+                      columns="#{bindings.AddressLine1.hints.displayWidth}"
+                      maximumLength="#{bindings.AddressLine1.hints.precision}"
+                      shortDesc="#{bindings.AddressLine1.hints.tooltip}"
+                      id="it11" contentStyle="width:260px">
+          <f:validator binding="#{bindings.AddressLine1.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.AddressLine2.inputValue}"
+                      label="#{bindings.AddressLine2.hints.label}"
+                      required="#{bindings.AddressLine2.hints.mandatory}"
+                      columns="#{bindings.AddressLine2.hints.displayWidth}"
+                      maximumLength="#{bindings.AddressLine2.hints.precision}"
+                      shortDesc="#{bindings.AddressLine2.hints.tooltip}"
+                      id="it5" contentStyle="width:260px">
+          <f:validator binding="#{bindings.AddressLine2.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.AddressLine3.inputValue}"
+                      label="#{bindings.AddressLine3.hints.label}"
+                      required="#{bindings.AddressLine3.hints.mandatory}"
+                      columns="#{bindings.AddressLine3.hints.displayWidth}"
+                      maximumLength="#{bindings.AddressLine3.hints.precision}"
+                      shortDesc="#{bindings.AddressLine3.hints.tooltip}"
+                      id="it8" contentStyle="width:260px">
+          <f:validator binding="#{bindings.AddressLine3.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.ZipCode.inputValue}"
+                      label="#{bindings.ZipCode.hints.label}"
+                      required="#{bindings.ZipCode.hints.mandatory}"
+                      columns="#{bindings.ZipCode.hints.displayWidth}"
+                      maximumLength="#{bindings.ZipCode.hints.precision}"
+                      shortDesc="#{bindings.ZipCode.hints.tooltip}" id="it10">
+          <f:validator binding="#{bindings.ZipCode.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.City.inputValue}"
+                      label="#{bindings.City.hints.label}"
+                      required="#{bindings.City.hints.mandatory}"
+                      columns="#{bindings.City.hints.displayWidth}"
+                      maximumLength="#{bindings.City.hints.precision}"
+                      shortDesc="#{bindings.City.hints.tooltip}" id="it2"
+                      contentStyle="width:260px">
+          <f:validator binding="#{bindings.City.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Country.inputValue}"
+                      label="#{bindings.Country.hints.label}"
+                      required="#{bindings.Country.hints.mandatory}"
+                      columns="#{bindings.Country.hints.displayWidth}"
+                      maximumLength="#{bindings.Country.hints.precision}"
+                      shortDesc="#{bindings.Country.hints.tooltip}" id="it16"
+                      contentStyle="width:260px">
+          <f:validator binding="#{bindings.Country.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.Note.inputValue}"
+                      label="#{bindings.Note.hints.label}"
+                      required="#{bindings.Note.hints.mandatory}"
+                      columns="#{bindings.Note.hints.displayWidth}"
+                      maximumLength="#{bindings.Note.hints.precision}"
+                      shortDesc="#{bindings.Note.hints.tooltip}" id="it18"
+                      rows="4" contentStyle="width:260px">
+          <f:validator binding="#{bindings.Note.validator}"/>
+        </af:inputText>
+        <af:inputDate value="#{bindings.ChangedDttm.inputValue}"
+                      label="#{bindings.ChangedDttm.hints.label}"
+                      required="#{bindings.ChangedDttm.hints.mandatory}"
+                      shortDesc="#{bindings.ChangedDttm.hints.tooltip}"
+                      readOnly="true" id="id1">
+          <f:validator binding="#{bindings.ChangedDttm.validator}"/>
+          <af:convertDateTime type="both"/>
+        </af:inputDate>
+        <af:inputText value="#{bindings.ChangedUser.inputValue}"
+                      label="#{bindings.ChangedUser.hints.label}"
+                      required="#{bindings.ChangedUser.hints.mandatory}"
+                      columns="#{bindings.ChangedUser.hints.displayWidth}"
+                      maximumLength="#{bindings.ChangedUser.hints.precision}"
+                      shortDesc="#{bindings.ChangedUser.hints.tooltip}"
+                      readOnly="true" id="it9">
+          <f:validator binding="#{bindings.ChangedUser.validator}"/>
+        </af:inputText>
+      </af:panelFormLayout>
+    </f:facet>
+    <f:facet name="formButtons">
+      <af:panelGroupLayout id="fbpgl" layout="horizontal">
+        <af:commandButton actionListener="#{bindings.Commit.execute}"
+                          text="Save" disabled="false" id="cb2"/>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                          text="Discard"
+                          visible="#{bindings.Id.inputValue.value lt 0}"
+                          disabled="false" immediate="true" id="cb1"
+                          partialTriggers="pc1:ctb1 pc1:t1">
+          <af:resetActionListener/>
+        </af:commandButton>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:pageTemplate>
+</jsp:root>

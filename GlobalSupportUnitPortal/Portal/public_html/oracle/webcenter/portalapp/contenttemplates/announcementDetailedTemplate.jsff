@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dt="http://xmlns.oracle.com/webcenter/content/templates"
+          xmlns:f="http://java.sun.com/jsf/core"
+          version="2.1">
+<dt:contentTemplateDef var="node">
+  <af:showDetailHeader id="adtpb" text="#{node.propertyMap['RD_ANNOUNCEMENT:Title'].asTextHtml}"
+                       disclosed="false" size="1">
+      <f:facet name="toolbar">
+        <af:panelFormLayout id="adthtfl" rows="1" maxColumns="2">
+          <af:inputDate id="adtiindate" label="InDate" value="#{node.propertyMap['dInDate'].value.calendarValue}" readOnly="true">
+              <af:convertDateTime type="both"/>
+            </af:inputDate>
+          <af:inputText id="adtiprod" label="Product" value="#{node.propertyMap['xgsuProduct'].value.stringValue}"  readOnly="true"/>
+        </af:panelFormLayout>
+      </f:facet>
+      <f:facet name="info">
+        <af:panelFormLayout id="adtdhipg" maxColumns="5" rows="1">
+          <af:inputDate id="adticrdate" label="createdDate" value="#{node.createdDate}" readOnly="true">
+              <af:convertDateTime type="both"/>
+            </af:inputDate>
+          <af:inputText id="adtivend" label="Vendor" value="#{node.propertyMap['xgsuVendor'].value.stringValue}"  readOnly="true"/>
+          <af:inputText id="adtiplatf" label="Platform" value="#{node.propertyMap['xgsuPlatform'].value.stringValue}" readOnly="true"/>        
+        </af:panelFormLayout>
+      </f:facet>
+      <af:outputText id="adtof" value="#{node.propertyMap['RD_ANNOUNCEMENT:Body'].asTextHtml}"
+                     escape="false"/>
+  </af:showDetailHeader>
+</dt:contentTemplateDef>
+</jsp:root>

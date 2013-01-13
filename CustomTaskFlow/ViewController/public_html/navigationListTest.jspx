@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:form id="f1">
+        <af:pageTemplate viewId="/oracle/templates/threeColumnTemplate.jspx"
+                         id="pt1">
+          <f:facet name="center">
+            <af:table value="#{bindings.OperatingCountryVersionView4.collectionModel}"
+                      var="row"
+                      rows="#{bindings.OperatingCountryVersionView4.rangeSize}"
+                      emptyText="#{bindings.OperatingCountryVersionView4.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.OperatingCountryVersionView4.rangeSize}"
+                      rowBandingInterval="0" id="t2" partialTriggers="::t1">
+              <af:column sortProperty="OpcoName" sortable="true"
+                         headerText="#{bindings.OperatingCountryVersionView4.hints.OpcoName.label}"
+                         id="c3">
+                <af:outputText value="#{row.OpcoName}" id="ot3"/>
+              </af:column>
+              <af:column sortProperty="ProductName" sortable="true"
+                         headerText="#{bindings.OperatingCountryVersionView4.hints.ProductName.label}"
+                         id="c6">
+                <af:outputText value="#{row.ProductName}" id="ot4"/>
+              </af:column>
+              <af:column sortProperty="VersionName" sortable="true"
+                         headerText="#{bindings.OperatingCountryVersionView4.hints.VersionName.label}"
+                         id="c5">
+                <af:outputText value="#{row.VersionName}" id="ot6"/>
+              </af:column>
+              <af:column sortProperty="VersionBuild" sortable="true"
+                         headerText="#{bindings.OperatingCountryVersionView4.hints.VersionBuild.label}"
+                         id="c4">
+                <af:outputText value="#{row.VersionBuild}" id="ot5"/>
+              </af:column>
+            </af:table>
+          </f:facet>
+          <f:facet name="end">
+          </f:facet>
+          <f:facet name="start">
+            <af:table value="#{bindings.ProductView1.collectionModel}" var="row"
+                      rows="#{bindings.ProductView1.rangeSize}"
+                      emptyText="#{bindings.ProductView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.ProductView1.rangeSize}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.ProductView1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.ProductView1.collectionModel.makeCurrent}"
+                      rowSelection="single" id="t1">
+              <af:column sortProperty="VendorName" sortable="true"
+                         headerText="#{bindings.ProductView1.hints.VendorName.label}"
+                         id="c2" width="63">
+                <af:outputText value="#{row.VendorName}" id="ot2"/>
+              </af:column>
+              <af:column sortProperty="ProductName" sortable="true"
+                         headerText="#{bindings.ProductView1.hints.ProductName.label}"
+                         id="c1" width="107">
+                <af:outputText value="#{row.ProductName}" id="ot1"/>
+              </af:column>
+            </af:table>
+          </f:facet>
+          <f:facet name="branding"/>
+          <f:facet name="copyright"/>
+          <f:facet name="status"/>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

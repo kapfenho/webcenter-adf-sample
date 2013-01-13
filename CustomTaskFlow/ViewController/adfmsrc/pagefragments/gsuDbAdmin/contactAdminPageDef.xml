@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="contactAdminPageDef"
+                Package="pagefragments.gsuDbAdmin">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ContactView1" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="ContactView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ContactView1Iterator" id="ContactView1">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.ContactView"
+                      Name="ContactView10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Logon"/>
+          <Item Value="FirstName"/>
+          <Item Value="LastName"/>
+          <Item Value="Category"/>
+          <Item Value="Organisation"/>
+          <Item Value="OrganisationSub"/>
+          <Item Value="Position"/>
+          <Item Value="MobilePhone"/>
+          <Item Value="EmailAddress"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ContactView1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="Logon">
+      <AttrNames>
+        <Item Value="Logon"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="Category">
+      <AttrNames>
+        <Item Value="Category"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="Organisation">
+      <AttrNames>
+        <Item Value="Organisation"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="OrganisationSub">
+      <AttrNames>
+        <Item Value="OrganisationSub"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="Position">
+      <AttrNames>
+        <Item Value="Position"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="MobilePhone">
+      <AttrNames>
+        <Item Value="MobilePhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="FixPhone">
+      <AttrNames>
+        <Item Value="FixPhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="FaxPhone">
+      <AttrNames>
+        <Item Value="FaxPhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="EmailAddress">
+      <AttrNames>
+        <Item Value="EmailAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="AddressLine1">
+      <AttrNames>
+        <Item Value="AddressLine1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="AddressLine2">
+      <AttrNames>
+        <Item Value="AddressLine2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="AddressLine3">
+      <AttrNames>
+        <Item Value="AddressLine3"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="ZipCode">
+      <AttrNames>
+        <Item Value="ZipCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="City">
+      <AttrNames>
+        <Item Value="City"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="Country">
+      <AttrNames>
+        <Item Value="Country"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="Note">
+      <AttrNames>
+        <Item Value="Note"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="ChangedDttm">
+      <AttrNames>
+        <Item Value="ChangedDttm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactView1Iterator" id="ChangedUser">
+      <AttrNames>
+        <Item Value="ChangedUser"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ContactView1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+  </bindings>
+</pageDefinition>

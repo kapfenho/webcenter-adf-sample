@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="opcoVersionAdminPageDef"
+                Package="pagefragments.gsuDbAdmin">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="OperatingCountryVersionView1" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="OperatingCountryVersionView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="OperatingCountryVersionView1Iterator"
+          id="OperatingCountryVersionView1">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.OperatingCountryVersionView"
+                      Name="OperatingCountryVersionView10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="OpcoName"/>
+          <Item Value="ProductName"/>
+          <Item Value="VendorName"/>
+          <Item Value="PlatformName"/>
+          <Item Value="VersionName"/>
+          <Item Value="VersionBuild"/>
+          <Item Value="Active"/>
+          <Item Value="Comments"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="OperatingCountryVersionView1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="OperatingCountryVersionView1Iterator" StaticList="false"
+          Uses="LOV_OpcoId" id="OpcoId" DTSupportsMRU="false"/>
+    <list IterBinding="OperatingCountryVersionView1Iterator" StaticList="false"
+          Uses="LOV_VersionId" id="VersionId" DTSupportsMRU="false"/>
+    <attributeValues IterBinding="OperatingCountryVersionView1Iterator"
+                     id="VersionBuild">
+      <AttrNames>
+        <Item Value="VersionBuild"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OperatingCountryVersionView1Iterator"
+                     id="Active">
+      <AttrNames>
+        <Item Value="Active"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OperatingCountryVersionView1Iterator"
+                     id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OperatingCountryVersionView1Iterator"
+                     id="UpdatePlan">
+      <AttrNames>
+        <Item Value="UpdatePlan"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OperatingCountryVersionView1Iterator"
+                     id="SwapPlan">
+      <AttrNames>
+        <Item Value="SwapPlan"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OperatingCountryVersionView1Iterator"
+                     id="ChangedDttm">
+      <AttrNames>
+        <Item Value="ChangedDttm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="OperatingCountryVersionView1Iterator"
+                     id="ChangedUser">
+      <AttrNames>
+        <Item Value="ChangedUser"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="OperatingCountryVersionView1Iterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action id="Rollback" RequiresUpdateModel="false"
+            Action="rollbackTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="GsuBaseApplicationModuleDataControl"/>
+    <action IterBinding="OperatingCountryVersionView1Iterator" id="Execute"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

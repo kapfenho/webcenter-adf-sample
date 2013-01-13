@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="test">
+    <page>/test.jspx</page>
+  </view>
+  <view id="navigationListTest">
+    <page>/navigationListTest.jspx</page>
+  </view>
+  <view id="dbAdminTest">
+    <page>/dbAdminTest.jspx</page>
+  </view>
+  <view id="restrictedTest">
+    <page>/unboundedTestPages/restrictedTest.jspx</page>
+  </view>
+  <view id="contactBrowserTest">
+    <page>/contactBrowserTest.jspx</page>
+  </view>
+  <view id="testProduct">
+    <page>/unboundedTestPages/testProduct.jspx</page>
+  </view>
+  <view id="testProductMatrix">
+    <page>/unboundedTestPages/testProductMatrix.jspx</page>
+  </view>
+</adfc-config>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RestrictedOpCoView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="OperatingCountry.ID, 
+       OperatingCountry.OPCO_NAME, 
+       OperatingCountry.DESCRIPTION, 
+       OperatingCountryContact.ID AS ID1, 
+       Contact.LOGON, 
+       Contact.ID AS ID2"
+  FromList="GSU_OPCO OperatingCountry, GSU_OPCO_CONTACT OperatingCountryContact, GSU_CONTACT Contact"
+  Where="(OperatingCountry.ID = OperatingCountryContact.OPCO_ID) AND (OperatingCountryContact.CONTACT_ID = Contact.ID) AND (Contact.LOGON = :username)"
+  OrderBy="OPCO_NAME"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.h3g.owc.custom.taskflow.model.RestrictedOpCoView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="username"
+    Kind="where"
+    Type="java.lang.String"/>
+  <EntityUsage
+    Name="OperatingCountry"
+    Entity="com.h3g.owc.custom.taskflow.model.OperatingCountry"
+    ReadOnly="true"
+    DeleteParticipant="false"/>
+  <EntityUsage
+    Name="OperatingCountryContact"
+    Entity="com.h3g.owc.custom.taskflow.model.OperatingCountryContact"
+    Association="com.h3g.owc.custom.taskflow.model.GsuOpcoContactOpcoFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuOpcoContactOpcoFkAssoc.OperatingCountryContact"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.RestrictedOpCoView.OperatingCountry"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.OperatingCountry.Id"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item
+          Value="com.h3g.owc.custom.taskflow.model.OperatingCountryContact.OpcoId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Contact"
+    Entity="com.h3g.owc.custom.taskflow.model.Contact"
+    Association="com.h3g.owc.custom.taskflow.model.GsuOpcoContactContactFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuOpcoContactContactFkAssoc.Contact"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.RestrictedOpCoView.OperatingCountryContact"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item
+          Value="com.h3g.owc.custom.taskflow.model.OperatingCountryContact.ContactId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Contact.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="Id"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="OperatingCountry"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="OpcoName"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="OpcoName"
+    EntityUsage="OperatingCountry"
+    AliasName="OPCO_NAME"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="OperatingCountry"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="Id1"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="OperatingCountryContact"
+    AliasName="ID1"/>
+  <ViewAttribute
+    Name="Logon"
+    PrecisionRule="true"
+    EntityAttrName="Logon"
+    EntityUsage="Contact"
+    AliasName="LOGON"/>
+  <ViewAttribute
+    Name="Id2"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Contact"
+    AliasName="ID2"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.h3g.owc.custom.taskflow.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

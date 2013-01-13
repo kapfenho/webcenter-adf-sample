@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:pe="http://xmlns.oracle.com/adf/pageeditor"
+          xmlns:cust="http://xmlns.oracle.com/adf/faces/customizable"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="portalBundle"
+         value="#{adfBundle['com.h3g.owc.custom.gsuportal.portal.PortalBundle']}"/>
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="#{portalBundle.OPERATING_COUNTRY}">
+      <af:form id="f1">
+        <af:pageTemplate viewId="/oracle/webcenter/portalapp/pagetemplates/pageTemplate_globe.jspx"
+                         value="#{bindings.pageTemplateBinding}" id="pt1">
+          <f:facet name="content">
+
+
+            <pe:pageCustomizable id="pageCustomizable1">
+              <cust:panelCustomizable id="pc_main" layout="scroll">
+                <pe:layoutCustomizable id="layoutCustomizable1" type="oneColumn"
+                                       showIcon="false">
+                  <cust:panelCustomizable id="panelCustomizable01"
+                                          layout="vertical">
+                    <af:region value="#{bindings.opcoinfotaskflow1.regionModel}"
+                               id="r1"/>
+                  </cust:panelCustomizable>
+                </pe:layoutCustomizable>
+              </cust:panelCustomizable>
+              <f:facet name="editor">
+                <pe:pageEditorPanel id="pep1"/>
+              </f:facet>              
+            </pe:pageCustomizable>
+          </f:facet>
+          
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

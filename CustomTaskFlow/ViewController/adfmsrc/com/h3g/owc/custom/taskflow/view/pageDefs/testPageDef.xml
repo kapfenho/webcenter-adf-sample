@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="testPageDef"
+                Package="com.h3g.owc.custom.taskflow.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="fireQueryRefreshedEvent_Return"
+                IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.fireQueryRefreshedEvent.result}"/>
+    </variableIterator>
+    <taskFlow id="cmisquerytaskflow1"
+              taskFlowId="/WEB-INF/cmis-query-taskflow.xml#cmis-query-taskflow"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="user" value="kocsisis"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="cmisquerytaskflow2"
+              taskFlowId="/WEB-INF/cmis-query-taskflow.xml#cmis-query-taskflow"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings>
+    <methodAction id="consumeEvent"
+                  InstanceName="BasicEventConsumer.dataProvider"
+                  DataControl="BasicEventConsumer" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="consumeEvent"
+                  IsViewObjectMethod="false">
+      <NamedData NDName="parameter" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+  <eventMap xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+    <event name="vendorChangeEvent">
+      <producer region="*">
+        <consumer region="" handler="consumeEvent" handleCondition="">
+          <parameters>
+            <parameter name="parameter" value="#{payLoad}"/>
+          </parameters>
+        </consumer>
+      </producer>
+    </event>
+  </eventMap>
+</pageDefinition>

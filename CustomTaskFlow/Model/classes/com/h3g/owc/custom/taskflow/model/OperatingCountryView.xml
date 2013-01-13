@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="OperatingCountryView"
+  Version="11.1.1.60.13"
+  SelectList="OperatingCountry.ID, 
+       OperatingCountry.OPCO_NAME, 
+       OperatingCountry.ACTIVE, 
+       OperatingCountry.CHANGED_DTTM, 
+       OperatingCountry.CHANGED_USER, 
+       OperatingCountry.DESCRIPTION"
+  FromList="GSU_OPCO OperatingCountry"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="OperatingCountry"
+    Entity="com.h3g.owc.custom.taskflow.model.OperatingCountry"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="OperatingCountry"
+    AliasName="ID"/>
+  <ViewAttribute
+    Name="OpcoName"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="OpcoName"
+    EntityUsage="OperatingCountry"
+    AliasName="OPCO_NAME"/>
+  <ViewAttribute
+    Name="Active"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Active"
+    EntityUsage="OperatingCountry"
+    AliasName="ACTIVE"/>
+  <ViewAttribute
+    Name="ChangedDttm"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ChangedDttm"
+    EntityUsage="OperatingCountry"
+    AliasName="CHANGED_DTTM"/>
+  <ViewAttribute
+    Name="ChangedUser"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ChangedUser"
+    EntityUsage="OperatingCountry"
+    AliasName="CHANGED_USER"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="OperatingCountry"
+    AliasName="DESCRIPTION"/>
+  <ViewLinkAccessor
+    Name="OperatingCountryContactView"
+    ViewLink="com.h3g.owc.custom.taskflow.model.GsuOpcoContactOpcoFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="OperatingCountryVersionView"
+    ViewLink="com.h3g.owc.custom.taskflow.model.GsuOpcoVersionOpcoFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

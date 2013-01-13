@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProductContactView"
+  Version="11.1.1.61.92"
+  SelectList="ProductContact.ID, 
+       ProductContact.PRODUCT_ID, 
+       ProductContact.CONTACT_ID, 
+       ProductContact.ESCALATION_LEVEL, 
+       ProductContact.NOTE, 
+       ProductContact.CHANGED_DTTM, 
+       ProductContact.CHANGED_USER, 
+       Product.PRODUCT_NAME, 
+       Product.ID AS ID1, 
+       Contact.FIRST_NAME, 
+       Contact.ID AS ID2, 
+       Contact.LAST_NAME, 
+       Contact.POSITION, 
+       Contact.ORGANISATION, 
+       Contact.ORGANISATION_SUB, 
+       Platform.PLATFORM_NAME, 
+       Platform.ID AS ID3, 
+       Vendor.VENDOR_NAME, 
+       Vendor.ID AS ID4, 
+       Contact.ADDRESS_LINE1, 
+       Contact.ADDRESS_LINE2, 
+       Contact.ADDRESS_LINE3, 
+       Contact.CATEGORY, 
+       Contact.CITY, 
+       Contact.COUNTRY, 
+       Contact.EMAIL_ADDRESS, 
+       Contact.FAX_PHONE, 
+       Contact.FIX_PHONE, 
+       Contact.ID AS ID5, 
+       Contact.LOGON, 
+       Contact.MOBILE_PHONE, 
+       Contact.ZIP_CODE"
+  FromList="GSU_PRODUCT_CONTACT ProductContact, GSU_PRODUCT Product, GSU_CONTACT Contact, GSU_PLATFORM Platform, GSU_VENDOR Vendor"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  Where="(((ProductContact.PRODUCT_ID = Product.ID) AND (ProductContact.CONTACT_ID = Contact.ID)) AND (Product.PLATFORM_ID = Platform.ID)) AND (Product.VENDOR_ID = Vendor.ID)">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="ContactView1"
+    ViewObjectName="com.h3g.owc.custom.taskflow.model.ContactView"
+    RowLevelBinds="true"
+    OrderBy="Contact.LAST_NAME,Contact.FIRST_NAME,Contact.ORGANISATION"/>
+  <ViewAccessor
+    Name="ProductView1"
+    ViewObjectName="com.h3g.owc.custom.taskflow.model.ProductView"
+    RowLevelBinds="true"
+    OrderBy="Product.PRODUCT_NAME"/>
+  <ViewAccessor
+    Name="ProductEscalationCodes1"
+    ViewObjectName="com.h3g.owc.custom.taskflow.model.ProductEscalationCodes"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_ContactId"
+    ListVOName="ContactView1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ContactId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FirstName"/>
+      <Item Value="LastName"/>
+      <Item Value="Position"/>
+      <Item Value="Organisation"/>
+      <Item Value="OrganisationSub"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ProductId"
+    ListVOName="ProductView1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ProductId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ProductName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_EscalationLevel"
+    ListVOName="ProductEscalationCodes1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="EscalationLevel"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Code"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="ProductContact"
+    Entity="com.h3g.owc.custom.taskflow.model.ProductContact"/>
+  <EntityUsage
+    Name="Product"
+    Entity="com.h3g.owc.custom.taskflow.model.Product"
+    Association="com.h3g.owc.custom.taskflow.model.GsuProductContactProductFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuProductContactProductFkAssoc.Product"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.ProductContactView.ProductContact"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item
+          Value="com.h3g.owc.custom.taskflow.model.ProductContact.ProductId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Product.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Contact"
+    Entity="com.h3g.owc.custom.taskflow.model.Contact"
+    Association="com.h3g.owc.custom.taskflow.model.GsuProductContactContactFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuProductContactContactFkAssoc.Contact"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.ProductContactView.ProductContact"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item
+          Value="com.h3g.owc.custom.taskflow.model.ProductContact.ContactId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Contact.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Platform"
+    Entity="com.h3g.owc.custom.taskflow.model.Platform"
+    Association="com.h3g.owc.custom.taskflow.model.GsuProductPlatformFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuProductPlatformFkAssoc.Platform"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.ProductContactView.Product"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Product.PlatformId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Platform.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Vendor"
+    Entity="com.h3g.owc.custom.taskflow.model.Vendor"
+    Association="com.h3g.owc.custom.taskflow.model.GsuProductVendorFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuProductVendorFkAssoc.Vendor"
+    SourceUsage="com.h3g.owc.custom.taskflow.model.ProductContactView.Product"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Product.VendorId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="com.h3g.owc.custom.taskflow.model.Vendor.Id"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="ProductContact"
+    AliasName="ID"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="ProductId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ProductId"
+    EntityUsage="ProductContact"
+    AliasName="PRODUCT_ID"
+    LOVName="LOV_ProductId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ContactId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ContactId"
+    EntityUsage="ProductContact"
+    AliasName="CONTACT_ID"
+    LOVName="LOV_ContactId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EscalationLevel"
+    PrecisionRule="true"
+    EntityAttrName="EscalationLevel"
+    EntityUsage="ProductContact"
+    AliasName="ESCALATION_LEVEL"
+    LOVName="LOV_EscalationLevel">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Note"
+    PrecisionRule="true"
+    EntityAttrName="Note"
+    EntityUsage="ProductContact"
+    AliasName="NOTE"/>
+  <ViewAttribute
+    Name="ChangedDttm"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ChangedDttm"
+    EntityUsage="ProductContact"
+    AliasName="CHANGED_DTTM"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="ChangedUser"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ChangedUser"
+    EntityUsage="ProductContact"
+    AliasName="CHANGED_USER"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="ProductName"
+    IsUpdateable="while_insert"
+    IsUnique="true"
+    PrecisionRule="true"
+    EntityAttrName="ProductName"
+    EntityUsage="Product"
+    AliasName="PRODUCT_NAME"/>
+  <ViewAttribute
+    Name="Id1"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Product"
+    AliasName="ID1"/>
+  <ViewAttribute
+    Name="FirstName"
+    PrecisionRule="true"
+    EntityAttrName="FirstName"
+    EntityUsage="Contact"
+    AliasName="FIRST_NAME"/>
+  <ViewAttribute
+    Name="Id2"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Contact"
+    AliasName="ID2"/>
+  <ViewAttribute
+    Name="LastName"
+    PrecisionRule="true"
+    EntityAttrName="LastName"
+    EntityUsage="Contact"
+    AliasName="LAST_NAME"/>
+  <ViewAttribute
+    Name="Position"
+    PrecisionRule="true"
+    EntityAttrName="Position"
+    EntityUsage="Contact"
+    AliasName="POSITION"/>
+  <ViewAttribute
+    Name="Organisation"
+    PrecisionRule="true"
+    EntityAttrName="Organisation"
+    EntityUsage="Contact"
+    AliasName="ORGANISATION"/>
+  <ViewAttribute
+    Name="OrganisationSub"
+    PrecisionRule="true"
+    EntityAttrName="OrganisationSub"
+    EntityUsage="Contact"
+    AliasName="ORGANISATION_SUB"/>
+  <ViewAttribute
+    Name="PlatformName"
+    IsUpdateable="while_insert"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PlatformName"
+    EntityUsage="Platform"
+    AliasName="PLATFORM_NAME"/>
+  <ViewAttribute
+    Name="Id3"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Platform"
+    AliasName="ID3"/>
+  <ViewAttribute
+    Name="VendorName"
+    IsUpdateable="while_insert"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="VendorName"
+    EntityUsage="Vendor"
+    AliasName="VENDOR_NAME"/>
+  <ViewAttribute
+    Name="Id4"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Vendor"
+    AliasName="ID4"/>
+  <ViewAttribute
+    Name="AddressLine1"
+    PrecisionRule="true"
+    EntityAttrName="AddressLine1"
+    EntityUsage="Contact"
+    AliasName="ADDRESS_LINE1"/>
+  <ViewAttribute
+    Name="AddressLine2"
+    PrecisionRule="true"
+    EntityAttrName="AddressLine2"
+    EntityUsage="Contact"
+    AliasName="ADDRESS_LINE2"/>
+  <ViewAttribute
+    Name="AddressLine3"
+    PrecisionRule="true"
+    EntityAttrName="AddressLine3"
+    EntityUsage="Contact"
+    AliasName="ADDRESS_LINE3"/>
+  <ViewAttribute
+    Name="Category"
+    PrecisionRule="true"
+    EntityAttrName="Category"
+    EntityUsage="Contact"
+    AliasName="CATEGORY"/>
+  <ViewAttribute
+    Name="City"
+    PrecisionRule="true"
+    EntityAttrName="City"
+    EntityUsage="Contact"
+    AliasName="CITY"/>
+  <ViewAttribute
+    Name="Country"
+    PrecisionRule="true"
+    EntityAttrName="Country"
+    EntityUsage="Contact"
+    AliasName="COUNTRY"/>
+  <ViewAttribute
+    Name="EmailAddress"
+    PrecisionRule="true"
+    EntityAttrName="EmailAddress"
+    EntityUsage="Contact"
+    AliasName="EMAIL_ADDRESS"/>
+  <ViewAttribute
+    Name="FaxPhone"
+    PrecisionRule="true"
+    EntityAttrName="FaxPhone"
+    EntityUsage="Contact"
+    AliasName="FAX_PHONE"/>
+  <ViewAttribute
+    Name="FixPhone"
+    PrecisionRule="true"
+    EntityAttrName="FixPhone"
+    EntityUsage="Contact"
+    AliasName="FIX_PHONE"/>
+  <ViewAttribute
+    Name="Id5"
+    IsUpdateable="while_insert"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="Contact"
+    AliasName="ID5"/>
+  <ViewAttribute
+    Name="Logon"
+    PrecisionRule="true"
+    EntityAttrName="Logon"
+    EntityUsage="Contact"
+    AliasName="LOGON"/>
+  <ViewAttribute
+    Name="MobilePhone"
+    PrecisionRule="true"
+    EntityAttrName="MobilePhone"
+    EntityUsage="Contact"
+    AliasName="MOBILE_PHONE"/>
+  <ViewAttribute
+    Name="ZipCode"
+    PrecisionRule="true"
+    EntityAttrName="ZipCode"
+    EntityUsage="Contact"
+    AliasName="ZIP_CODE"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Id"/>
+  </AttrArray>
+</ViewObject>

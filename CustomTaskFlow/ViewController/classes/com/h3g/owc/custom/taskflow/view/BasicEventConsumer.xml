@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="BasicEventConsumer" Package="com.h3g.owc.custom.taskflow.view"
+          BeanClass="com.h3g.owc.custom.taskflow.view.BasicEventConsumer"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="false" Type="void" id="consumeEvent"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="parameter" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="com.h3g.owc.custom.taskflow.view.BasicEventConsumer"
+                     BeanClass="com.h3g.owc.custom.taskflow.view.BasicEventConsumer"
+                     id="BasicEventConsumer"/>
+</JavaBean>

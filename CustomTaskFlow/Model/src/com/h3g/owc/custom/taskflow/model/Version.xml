@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Version"
+  Version="11.1.1.61.92"
+  DBObjectType="table"
+  DBObjectName="GSU_VERSION"
+  AliasName="Version"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Id"
+    Precision="12"
+    Scale="0"
+    ColumnName="ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.DBSequence"
+    ColumnType="NUMBER"
+    TableName="GSU_VERSION"
+    PrimaryKey="true"
+    IsUpdateable="while_insert"
+    DefaultValue="@0"
+    Domain="oracle.jbo.domain.DBSequence"
+    RetrievedOnInsert="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+      <Attr Name="_SequenceStart" Value="1"/>
+      <Attr Name="_SequenceName" Value="gsu_id_seq"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProductId"
+    IsUnique="true"
+    IsNotNull="true"
+    Precision="12"
+    Scale="0"
+    ColumnName="PRODUCT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="GSU_VERSION"
+    IsUpdateable="false">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="VersionName"
+    IsUnique="true"
+    IsNotNull="true"
+    Precision="200"
+    ColumnName="VERSION_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GSU_VERSION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ReleaseDate"
+    ColumnName="RELEASE_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="GSU_VERSION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EosDate"
+    ColumnName="EOS_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="GSU_VERSION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EosInfo"
+    Precision="1000"
+    ColumnName="EOS_INFO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GSU_VERSION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Active"
+    IsNotNull="true"
+    Precision="1"
+    Scale="0"
+    ColumnName="ACTIVE"
+    SQLType="NUMERIC"
+    Type="java.lang.Boolean"
+    ColumnType="NUMBER"
+    TableName="GSU_VERSION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ChangedDttm"
+    IsNotNull="true"
+    ColumnName="CHANGED_DTTM"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="GSU_VERSION"
+    HistoryColumn="DateHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ChangedUser"
+    IsNotNull="true"
+    Precision="200"
+    ColumnName="CHANGED_USER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GSU_VERSION"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Description"
+    Precision="1000"
+    ColumnName="DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GSU_VERSION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SupportStatus"
+    Precision="20"
+    ColumnName="SUPPORT_STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GSU_VERSION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SwapPlan"
+    Precision="1000"
+    ColumnName="SWAP_PLAN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GSU_VERSION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UpdatePlan"
+    Precision="1000"
+    ColumnName="UPDATE_PLAN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GSU_VERSION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="OperatingCountryVersion"
+    Association="com.h3g.owc.custom.taskflow.model.GsuOpcoVersionVersionFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuOpcoVersionVersionFkAssoc.OperatingCountryVersion"
+    AssociationOtherEnd="com.h3g.owc.custom.taskflow.model.GsuOpcoVersionVersionFkAssoc.Version"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="Product"
+    Association="com.h3g.owc.custom.taskflow.model.GsuVersionProductFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuVersionProductFkAssoc.Product"
+    AssociationOtherEnd="com.h3g.owc.custom.taskflow.model.GsuVersionProductFkAssoc.Version"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="GsuVersionPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="GSU_VERSION_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.Version.Id"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GsuVersionUnique">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GSU_VERSION_UNIQUE"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.Version.ProductId"/>
+      <Item Value="com.h3g.owc.custom.taskflow.model.Version.VersionName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0041830">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0041830"/>
+      <Attr Name="_checkCondition" Value='"ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SysC0041831">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0041831"/>
+      <Attr Name="_checkCondition" Value='"PRODUCT_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.Version.ProductId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0041832">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0041832"/>
+      <Attr Name="_checkCondition" Value='"VERSION_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.Version.VersionName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0041833">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0041833"/>
+      <Attr Name="_checkCondition" Value='"ACTIVE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.Version.Active"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0041834">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0041834"/>
+      <Attr Name="_checkCondition" Value='"CHANGED_DTTM" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.Version.ChangedDttm"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0041835">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0041835"/>
+      <Attr Name="_checkCondition" Value='"CHANGED_USER" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.Version.ChangedUser"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GsuVersionProductFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GSU_PRODUCT_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GSU_VERSION_PRODUCT_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.Version.ProductId"/>
+    </AttrArray>
+  </Key>
+</Entity>

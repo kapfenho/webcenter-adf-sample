@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProductOpcoVersionLink"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.h3g.owc.custom.taskflow.model.ProductOpcoVersionLink_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="ProductView"
+    Cardinality="1"
+    Owner="com.h3g.owc.custom.taskflow.model.ProductView"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="ProductView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.ProductView.Id"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="OperatingCountryVersionView"
+    Cardinality="-1"
+    Owner="com.h3g.owc.custom.taskflow.model.OperatingCountryVersionView">
+    <DesignTime>
+      <Attr Name="_finderName" Value="OperatingCountryVersionView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="com.h3g.owc.custom.taskflow.model.OperatingCountryVersionView.Id3"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.h3g.owc.custom.taskflow.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

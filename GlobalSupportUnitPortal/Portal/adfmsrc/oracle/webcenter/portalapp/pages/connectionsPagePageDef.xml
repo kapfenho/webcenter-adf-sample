@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="connectionsPagePageDef"
+                Package="oracle.webcenter.portalapp.pages">
+  <parameters>
+    <parameter id="page_info"
+               value="title=connectionsPage;desc=;keywords=;createdBy=weblogic;createDate=2012-06-28T19:49:47;lastUpdatedBy=weblogic;lastUpdateDate=2012-06-28T19:49:47;permissionClass=oracle.webcenter.security.auth.HierarchicalResourcePermission;target=serviceID=oracle.webcenter.page,scopeID=s8bba98ff_4cbb_40b8_beee_296c916a23ed,resourceID=/oracle/webcenter/portalapp/pages/connectionsPage.jspx;excluded=false;style="/>
+    <parameter id="page_title" value="connectionsPage"/>
+  </parameters>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="connectionsmainviewuntabbedtaskflow1"
+              taskFlowId="/oracle/webcenter/peopleconnections/connections/controller/taskflows/connections-main-view-untabbed-taskflow.xml#connections-main-view-untabbed-taskflow"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <af:pageTemplateDef var="attrs">
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>gsuDbAdminTemplate</display-name>
+        <facet>
+          <description>Area where read only table will be present with all
+                       records</description>
+          <facet-name>readOnlyTable</facet-name>
+        </facet>
+        <facet>
+          <description>Area where master data will be available, e.g. to filter
+                       records</description>
+          <facet-name>masterData</facet-name>
+        </facet>
+        <facet>
+          <description>Area where an editable Form will be present with the
+                       current record</description>
+          <facet-name>editableForm</facet-name>
+        </facet>
+        <facet>
+          <description>Header that identifies the page</description>
+          <facet-name>pageHeader</facet-name>
+        </facet>
+        <facet>
+          <description>Area where the form related buttons will appear</description>
+          <facet-name>formButtons</facet-name>
+        </facet>
+        <facet>
+          <description>Area where global buttons (e.g. commit) will appear</description>
+          <facet-name>globalButtons</facet-name>
+        </facet>
+      </component>
+    </af:xmlContent>
+    <af:panelSplitter orientation="vertical" splitterPosition="20" id="pt_ps1">
+      <f:facet name="first">
+        <af:panelStretchLayout id="gdatmpsl" endWidth="150"
+                               dimensionsFrom="auto">
+          <f:facet name="center">
+            <af:menuBar id="gdatmm">
+              <af:commandMenuItem text="Main" id="pt_cmi1" action="main"
+                                  immediate="true"/>
+              <af:menu text="Operating Countries" id="mocm">
+                <af:commandMenuItem text="Update Operating Countries"
+                                    id="pt_cmi2" action="opcoAdmin"
+                                    immediate="true"/>
+                <af:commandMenuItem text="Update installed Versions"
+                                    id="pt_cmi3" action="opcoVersionAdmin"
+                                    immediate="true"/>
+                <af:commandMenuItem text="Update related Contacts" id="pt_cmi4"
+                                    action="opcoContactAdmin" immediate="true"/>
+              </af:menu>
+              <af:menu text="Products" id="mprm">
+                <af:commandMenuItem text="Update Products" id="pt_cmi5"
+                                    action="productAdmin" immediate="true"/>
+                <af:commandMenuItem text="Update Version" id="pt_cmi6"
+                                    action="versionAdmin" immediate="true"/>
+                <af:commandMenuItem text="Update Related Contacts" id="pt_cmi7"
+                                    action="productContactAdmin"
+                                    immediate="true"/>
+              </af:menu>
+              <af:menu text="Vendors" id="mvenm">
+                <af:commandMenuItem text="Update Vendors" id="pt_cmi8"
+                                    action="vendorAdmin" immediate="true"/>
+                <af:commandMenuItem text="Update related Contacts" id="pt_cmi9"
+                                    action="vendorContactAdmin"
+                                    immediate="true"/>
+              </af:menu>
+              <af:menu text="Other" id="mothm">
+                <af:commandMenuItem text="Update Platforms" id="pt_cmi10"
+                                    action="platformAdmin" immediate="true"/>
+                <af:commandMenuItem text="Update Contacts" id="pt_cmi11"
+                                    action="contactAdmin" immediate="true"/>
+              </af:menu>
+            </af:menuBar>
+          </f:facet>
+          <f:facet name="end">
+            <af:panelGroupLayout id="gdatmbpg" layout="horizontal" halign="end">
+              <af:facetRef facetName="globalButtons"/>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:panelStretchLayout>
+      </f:facet>
+      <f:facet name="second">
+        <af:panelStretchLayout id="pt_psl2" topHeight="25px"
+                               dimensionsFrom="auto">
+          <f:facet name="center">
+            <af:panelStretchLayout endWidth="350px" topHeight="200px"
+                                   id="pt_psl1" dimensionsFrom="auto">
+              <f:facet name="center">
+                <af:facetRef facetName="readOnlyTable"/>
+              </f:facet>
+              <f:facet name="end">
+                <af:panelGroupLayout id="gdatfpgl" layout="scroll">
+                  <af:facetRef facetName="editableForm"/>
+                  <af:panelGroupLayout id="gdatff" layout="horizontal"
+                                       halign="center">
+                    <!--<af:commandButton text="Submit" id="gdatmsubcb"/>-->
+                    <af:facetRef facetName="formButtons"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </f:facet>
+              <f:facet name="top">
+                <af:facetRef facetName="masterData"/>
+              </f:facet>
+            </af:panelStretchLayout>
+          </f:facet>
+          <f:facet name="top">
+            <af:facetRef facetName="pageHeader"/>
+          </f:facet>
+        </af:panelStretchLayout>
+      </f:facet>
+    </af:panelSplitter>
+  </af:pageTemplateDef>
+</jsp:root>

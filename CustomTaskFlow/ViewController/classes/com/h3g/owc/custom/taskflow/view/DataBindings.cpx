@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.60.13" id="DataBindings" SeparateXMLFiles="false"
+             Package="com.h3g.owc.custom.taskflow.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/pagefragments/main.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_mainPageDef"/>
+    <page path="/test.jspx"
+          usageId="com_h3g_owc_custom_taskflow_view_testPageDef"/>
+    <page path="/navigationListTest.jspx"
+          usageId="com_h3g_owc_custom_taskflow_view_navigationListTestPageDef"/>
+    <page path="/pagefragments/gsuDbAdmin/productAdmin.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_productAdminPageDef"/>
+    <page path="/dbAdminTest.jspx"
+          usageId="com_h3g_owc_custom_taskflow_view_dbAdminTestPageDef"/>
+    <page path="/pagefragments/gsuDbAdmin/versionAdmin.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_versionAdminPageDef"/>
+    <page path="/pagefragments/gsuDbAdmin/opcoAdmin.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_opcoAdminPageDef"/>
+    <page path="/pagefragments/gsuDbAdmin/opcoVersionAdmin.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_opcoVersionAdminPageDef"/>
+    <page path="/pagefragments/gsuDbAdmin/contactAdmin.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_contactAdminPageDef"/>
+    <page path="/pagefragments/gsuDbAdmin/vendorAdmin.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_vendorAdminPageDef"/>
+    <page path="/pagefragments/gsuDbAdmin/platformAdmin.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_platformAdminPageDef"/>
+    <page path="/pagefragments/gsuDbAdmin/productContactAdmin.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_productContactAdminPageDef"/>
+    <page path="/pagefragments/gsuDbAdmin/vendorContactAdmin.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_vendorContactAdminPageDef"/>
+    <page path="/pagefragments/gsuDbAdmin/opcoContactAdmin.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_opcoContactAdminPageDef"/>
+    <page path="/pagefragments/opcoVersionAdmin/versionAdmin.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_versionAdminPageDef1"/>
+    <page path="/unboundedTestPages/restrictedTest.jspx"
+          usageId="com_h3g_owc_custom_taskflow_view_restrictedTestPageDef"/>
+    <page path="/pagefragments/gsuBrowseContacts/browseContacts.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_browseContactsPageDef"/>
+    <page path="/contactBrowserTest.jspx"
+          usageId="com_h3g_owc_custom_taskflow_view_contactBrowserTestPageDef"/>
+    <page path="/pagefragments/productInfo/productInfo.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_productInfoPageDef"/>
+    <page path="/unboundedTestPages/testProduct.jspx"
+          usageId="com_h3g_owc_custom_taskflow_view_testProductPageDef"/>
+    <page path="/pagefragments/productMatrix/productMatrix.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_productMatrixPageDef"/>
+    <page path="/unboundedTestPages/productTestMatrix.jspx"
+          usageId="com_h3g_owc_custom_taskflow_view_productTestMatrixPageDef"/>
+    <page path="/unboundedTestPages/testProductMatrix.jspx"
+          usageId="com_h3g_owc_custom_taskflow_view_testProductMatrixPageDef"/>
+    <page path="/pagefragments/opcoInfo/opcoInfo.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_opcoInfoPageDef"/>
+    <page path="/pagefragments/opcoInfo/opcoInfos.jsff"
+          usageId="com_h3g_owc_custom_taskflow_view_opcoInfosPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_h3g_owc_custom_taskflow_view_mainPageDef"
+          path="com.h3g.owc.custom.taskflow.view.pageDefs.mainPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_testPageDef"
+          path="com.h3g.owc.custom.taskflow.view.pageDefs.testPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_navigationListTestPageDef"
+          path="com.h3g.owc.custom.taskflow.view.pageDefs.navigationListTestPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_productAdminPageDef"
+          path="pagefragments.gsuDbAdmin.productAdminPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_dbAdminTestPageDef"
+          path="com.h3g.owc.custom.taskflow.view.pageDefs.dbAdminTestPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_versionAdminPageDef"
+          path="pagefragments.gsuDbAdmin.versionAdminPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_opcoAdminPageDef"
+          path="pagefragments.gsuDbAdmin.opcoAdminPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_opcoVersionAdminPageDef"
+          path="pagefragments.gsuDbAdmin.opcoVersionAdminPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_contactAdminPageDef"
+          path="pagefragments.gsuDbAdmin.contactAdminPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_vendorAdminPageDef"
+          path="pagefragments.gsuDbAdmin.vendorAdminPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_platformAdminPageDef"
+          path="pagefragments.gsuDbAdmin.platformAdminPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_productContactAdminPageDef"
+          path="pagefragments.gsuDbAdmin.productContactAdminPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_vendorContactAdminPageDef"
+          path="pagefragments.gsuDbAdmin.vendorContactAdminPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_opcoContactAdminPageDef"
+          path="pagefragments.gsuDbAdmin.opcoContactAdminPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_versionAdminPageDef1"
+          path="pagefragments.opcoVersionAdmin.versionAdminPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_restrictedTestPageDef"
+          path="unboundedTestPages.restrictedTestPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_browseContactsPageDef"
+          path="pagefragments.gsuBrowseContacts.browseContactsPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_contactBrowserTestPageDef"
+          path="com.h3g.owc.custom.taskflow.view.pageDefs.contactBrowserTestPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_productInfoPageDef"
+          path="pagefragments.productInfo.productInfoPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_testProductPageDef"
+          path="unboundedTestPages.testProductPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_productMatrixPageDef"
+          path="pagefragments.productMatrix.productMatrixPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_productTestMatrixPageDef"
+          path="unboundedTestPages.productTestMatrixPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_testProductMatrixPageDef"
+          path="unboundedTestPages.testProductMatrixPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_opcoInfoPageDef"
+          path="pagefragments.opcoInfo.opcoInfoPageDef"/>
+    <page id="com_h3g_owc_custom_taskflow_view_opcoInfosPageDef"
+          path="pagefragments.opcoInfo.opcoInfosPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="BasicEventConsumer"
+        path="com.h3g.owc.custom.taskflow.view.BasicEventConsumer"/>
+    <dc id="ContentQueryGenerator"
+        path="com.h3g.owc.custom.taskflow.view.ContentQueryGenerator"/>
+    <BC4JDataControl id="GsuBaseApplicationModuleDataControl"
+                     Package="com.h3g.owc.custom.taskflow.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="GsuBaseApplicationModuleLocal"
+                     syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

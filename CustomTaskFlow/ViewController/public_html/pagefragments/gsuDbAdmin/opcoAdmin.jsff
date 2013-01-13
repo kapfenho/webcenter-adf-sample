@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/pagefragmentTemplates/gsuDbAdminTemplate.jspx"
+                   id="pt1">
+    <f:facet name="pageHeader">
+      <af:panelHeader text="Administration of Operating Countries"
+                      id="pagehead1"/>
+    </f:facet>
+    <f:facet name="readOnlyTable">
+      <af:panelCollection id="pc1" featuresOff="viewMenu detach">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t1">
+            <af:commandToolbarButton actionListener="#{bindings.CreateInsert.execute}"
+                                     text="Create" partialSubmit="true"
+                                     disabled="#{!bindings.CreateInsert.enabled or bindings.Id.inputValue.value lt 0}"
+                                     id="ctb1"/>
+            <af:commandToolbarButton text="Export" id="ctb2">
+              <af:exportCollectionActionListener type="excelHTML"
+                                                 exportedId="t2"
+                                                 title="GSU-OpCo-Export"
+                                                 exportedRows="all"
+                                                 filename="GSU-OpCo-Export.xls"/>
+            </af:commandToolbarButton>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.OperatingCountryView1.collectionModel}"
+                  var="row" rows="#{bindings.OperatingCountryView1.rangeSize}"
+                  emptyText="#{bindings.OperatingCountryView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.OperatingCountryView1.rangeSize}"
+                  rowBandingInterval="0" contentDelivery="immediate"
+                  selectedRowKeys="#{bindings.OperatingCountryView1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.OperatingCountryView1.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t2" columnStretching="last">
+          <af:column sortProperty="Id" sortable="true"
+                     headerText="#{bindings.OperatingCountryView1.hints.Id.label}"
+                     id="c3">
+            <af:outputText value="#{row.Id}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="OpcoName" sortable="true"
+                     headerText="#{bindings.OperatingCountryView1.hints.OpcoName.label}"
+                     id="c4">
+            <af:outputText value="#{row.OpcoName}" id="ot4"/>
+          </af:column>
+          <af:column sortProperty="Active" sortable="true"
+                     headerText="#{bindings.OperatingCountryView1.hints.Active.label}"
+                     id="c2">
+            <af:selectBooleanCheckbox id="cb1" value="#{row.Active}"
+                                      readOnly="true" simple="true"/>
+          </af:column>
+          <af:column sortProperty="Description" sortable="true"
+                     headerText="#{bindings.OperatingCountryView1.hints.Description.label}"
+                     id="c1">
+            <af:outputText value="#{row.Description}" id="ot1"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="editableForm">
+      <af:panelGroupLayout id="efpg" layout="vertical">
+        <af:panelFormLayout id="pfl1" partialTriggers="pc1:t2 pc1:ctb1">
+          <af:panelLabelAndMessage label="#{bindings.Id.hints.label}"
+                                   id="plam1">
+            <af:outputText value="#{bindings.Id.inputValue}" id="ot5"/>
+          </af:panelLabelAndMessage>
+          <af:inputText value="#{bindings.OpcoName.inputValue}"
+                        label="#{bindings.OpcoName.hints.label}"
+                        required="#{bindings.OpcoName.hints.mandatory}"
+                        columns="#{bindings.OpcoName.hints.displayWidth}"
+                        maximumLength="#{bindings.OpcoName.hints.precision}"
+                        shortDesc="#{bindings.OpcoName.hints.tooltip}"
+                        contentStyle="width:260px" id="it3">
+            <f:validator binding="#{bindings.OpcoName.validator}"/>
+          </af:inputText>
+          <af:selectBooleanCheckbox id="cb2"
+                                    value="#{bindings.Active.inputValue}"
+                                    label="#{bindings.Active.hints.label}"/>
+          <af:inputDate value="#{bindings.ChangedDttm.inputValue}"
+                        label="#{bindings.ChangedDttm.hints.label}"
+                        required="#{bindings.ChangedDttm.hints.mandatory}"
+                        shortDesc="#{bindings.ChangedDttm.hints.tooltip}"
+                        readOnly="true" id="id1">
+            <f:validator binding="#{bindings.ChangedDttm.validator}"/>
+            <af:convertDateTime type="both"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.ChangedUser.inputValue}"
+                        label="#{bindings.ChangedUser.hints.label}"
+                        required="#{bindings.ChangedUser.hints.mandatory}"
+                        columns="#{bindings.ChangedUser.hints.displayWidth}"
+                        maximumLength="#{bindings.ChangedUser.hints.precision}"
+                        shortDesc="#{bindings.ChangedUser.hints.tooltip}"
+                        readOnly="true" id="it1">
+            <f:validator binding="#{bindings.ChangedUser.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.Description.inputValue}"
+                        label="#{bindings.Description.hints.label}"
+                        required="#{bindings.Description.hints.mandatory}"
+                        columns="#{bindings.Description.hints.displayWidth}"
+                        maximumLength="#{bindings.Description.hints.precision}"
+                        shortDesc="#{bindings.Description.hints.tooltip}"
+                        id="it4" rows="5" contentStyle="width:260px">
+            <f:validator binding="#{bindings.Description.validator}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="formButtons">
+      <af:panelGroupLayout id="pgl1" layout="horizontal">
+        <af:commandButton actionListener="#{bindings.Commit.execute}"
+                          text="Save" disabled="false" id="cb4"/>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                          text="Discard" disabled="false" immediate="true"
+                          id="cb3"
+                          visible="#{bindings.Id.inputValue.value lt 0}"
+                          partialTriggers="pc1:ctb1 pc1:t2">
+          <af:resetActionListener/>
+        </af:commandButton>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="globalButtons"/>
+  </af:pageTemplate>
+</jsp:root>

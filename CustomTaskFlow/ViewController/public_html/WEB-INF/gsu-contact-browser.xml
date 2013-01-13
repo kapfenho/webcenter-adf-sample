@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="gsu-contact-browser">
+    <default-activity id="__1">browseContacts</default-activity>
+    <view id="browseContacts">
+      <page>/pagefragments/gsuBrowseContacts/browseContacts.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

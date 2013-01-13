@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="GsuVersionProductFkAssoc"
+  Version="11.1.1.60.13">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Product"
+    Cardinality="1"
+    Source="true"
+    Owner="com.h3g.owc.custom.taskflow.model.Product">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Product"/>
+      <Attr Name="_foreignKey"
+        Value="com.h3g.owc.custom.taskflow.model.Product.GsuProductPk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.Product.Id"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="Version"
+    Cardinality="-1"
+    Owner="com.h3g.owc.custom.taskflow.model.Version">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Version"/>
+      <Attr Name="_foreignKey"
+        Value="com.h3g.owc.custom.taskflow.model.Version.GsuVersionProductFk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.Version.ProductId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

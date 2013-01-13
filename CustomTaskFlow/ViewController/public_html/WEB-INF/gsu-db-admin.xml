@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="gsu-db-admin">
+    <default-activity id="__1">main</default-activity>
+    <managed-bean id="__39">
+      <managed-bean-name id="__38">commonPageBacking</managed-bean-name>
+      <managed-bean-class id="__40">com.h3g.owc.custom.taskflow.view.pagebacking.CommonPageBacking</managed-bean-class>
+      <managed-bean-scope id="__37">request</managed-bean-scope>
+    </managed-bean>
+    <view id="productAdmin">
+      <page>/pagefragments/gsuDbAdmin/productAdmin.jsff</page>
+    </view>
+    <view id="versionAdmin">
+      <page>/pagefragments/gsuDbAdmin/versionAdmin.jsff</page>
+    </view>
+    <view id="opcoAdmin">
+      <page>/pagefragments/gsuDbAdmin/opcoAdmin.jsff</page>
+    </view>
+    <view id="opcoVersionAdmin">
+      <page>/pagefragments/gsuDbAdmin/opcoVersionAdmin.jsff</page>
+    </view>
+    <view id="contactAdmin">
+      <page>/pagefragments/gsuDbAdmin/contactAdmin.jsff</page>
+    </view>
+    <view id="opcoContactAdmin">
+      <page>/pagefragments/gsuDbAdmin/opcoContactAdmin.jsff</page>
+    </view>
+    <view id="platformAdmin">
+      <page>/pagefragments/gsuDbAdmin/platformAdmin.jsff</page>
+    </view>
+    <view id="productContactAdmin">
+      <page>/pagefragments/gsuDbAdmin/productContactAdmin.jsff</page>
+    </view>
+    <view id="vendorAdmin">
+      <page>/pagefragments/gsuDbAdmin/vendorAdmin.jsff</page>
+    </view>
+    <view id="vendorContactAdmin">
+      <page>/pagefragments/gsuDbAdmin/vendorContactAdmin.jsff</page>
+    </view>
+    <view id="main">
+      <page>/pagefragments/gsuDbAdmin/dbAdminMain.jsff</page>
+    </view>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">*</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome id="__6">versionAdmin</from-outcome>
+        <to-activity-id id="__4">versionAdmin</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome id="__9">productAdmin</from-outcome>
+        <to-activity-id id="__7">productAdmin</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__10">
+        <from-outcome id="__12">opcoAdmin</from-outcome>
+        <to-activity-id id="__11">opcoAdmin</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__14">
+        <from-outcome id="__15">opcoVersionAdmin</from-outcome>
+        <to-activity-id id="__13">opcoVersionAdmin</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__17">
+        <from-outcome id="__18">contactAdmin</from-outcome>
+        <to-activity-id id="__16">contactAdmin</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__19">
+        <from-outcome id="__21">opcoContactAdmin</from-outcome>
+        <to-activity-id id="__20">opcoContactAdmin</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__23">
+        <from-outcome id="__24">platformAdmin</from-outcome>
+        <to-activity-id id="__22">platformAdmin</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome id="__27">productContactAdmin</from-outcome>
+        <to-activity-id id="__25">productContactAdmin</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__28">
+        <from-outcome id="__30">vendorAdmin</from-outcome>
+        <to-activity-id id="__29">vendorAdmin</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__32">
+        <from-outcome id="__33">vendorContactAdmin</from-outcome>
+        <to-activity-id id="__31">vendorContactAdmin</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__34">
+        <from-outcome id="__36">main</from-outcome>
+        <to-activity-id id="__35">main</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

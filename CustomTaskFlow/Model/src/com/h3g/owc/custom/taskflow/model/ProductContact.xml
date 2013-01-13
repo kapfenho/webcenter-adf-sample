@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ProductContact"
+  Version="11.1.1.61.92"
+  DBObjectType="table"
+  DBObjectName="GSU_PRODUCT_CONTACT"
+  AliasName="ProductContact"
+  BindingStyle="OracleName"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Id"
+    Precision="12"
+    Scale="0"
+    ColumnName="ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.DBSequence"
+    ColumnType="NUMBER"
+    TableName="GSU_PRODUCT_CONTACT"
+    PrimaryKey="true"
+    IsUpdateable="while_insert"
+    DefaultValue="@0"
+    Domain="oracle.jbo.domain.DBSequence"
+    RetrievedOnInsert="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+      <Attr Name="_SequenceStart" Value="1"/>
+      <Attr Name="_SequenceName" Value="GSU_ID_SEQ"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProductId"
+    IsUnique="true"
+    IsNotNull="true"
+    Precision="12"
+    Scale="0"
+    ColumnName="PRODUCT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="GSU_PRODUCT_CONTACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ContactId"
+    IsUnique="true"
+    IsNotNull="true"
+    Precision="12"
+    Scale="0"
+    ColumnName="CONTACT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="GSU_PRODUCT_CONTACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EscalationLevel"
+    Precision="20"
+    ColumnName="ESCALATION_LEVEL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GSU_PRODUCT_CONTACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Note"
+    Precision="200"
+    ColumnName="NOTE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GSU_PRODUCT_CONTACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ChangedDttm"
+    IsNotNull="true"
+    ColumnName="CHANGED_DTTM"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="GSU_PRODUCT_CONTACT"
+    HistoryColumn="DateHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ChangedUser"
+    IsNotNull="true"
+    Precision="200"
+    ColumnName="CHANGED_USER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="GSU_PRODUCT_CONTACT"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="Contact"
+    Association="com.h3g.owc.custom.taskflow.model.GsuProductContactContactFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuProductContactContactFkAssoc.Contact"
+    AssociationOtherEnd="com.h3g.owc.custom.taskflow.model.GsuProductContactContactFkAssoc.ProductContact"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="Product"
+    Association="com.h3g.owc.custom.taskflow.model.GsuProductContactProductFkAssoc"
+    AssociationEnd="com.h3g.owc.custom.taskflow.model.GsuProductContactProductFkAssoc.Product"
+    AssociationOtherEnd="com.h3g.owc.custom.taskflow.model.GsuProductContactProductFkAssoc.ProductContact"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="GsuProductContactPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="GSU_PRODUCT_CONTACT_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.ProductContact.Id"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GsuProductContactUnique">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GSU_PRODUCT_CONTACT_UNIQUE"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.ProductContact.ProductId"/>
+      <Item Value="com.h3g.owc.custom.taskflow.model.ProductContact.ContactId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0042006">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0042006"/>
+      <Attr Name="_checkCondition" Value='"ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SysC0042007">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0042007"/>
+      <Attr Name="_checkCondition" Value='"PRODUCT_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.ProductContact.ProductId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0042008">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0042008"/>
+      <Attr Name="_checkCondition" Value='"CONTACT_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.ProductContact.ContactId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0042009">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0042009"/>
+      <Attr Name="_checkCondition" Value='"CHANGED_DTTM" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="com.h3g.owc.custom.taskflow.model.ProductContact.ChangedDttm"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0042010">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0042010"/>
+      <Attr Name="_checkCondition" Value='"CHANGED_USER" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="com.h3g.owc.custom.taskflow.model.ProductContact.ChangedUser"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GsuProductContactContactFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GSU_CONTACT_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GSU_PRODUCT_CONTACT_CONTACT_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.ProductContact.ContactId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="GsuProductContactProductFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="GSU_PRODUCT_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="GSU_PRODUCT_CONTACT_PRODUCT_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.h3g.owc.custom.taskflow.model.ProductContact.ProductId"/>
+    </AttrArray>
+  </Key>
+</Entity>

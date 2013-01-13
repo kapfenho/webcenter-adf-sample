@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="product-matrix-taskflow">
+    <default-activity id="__1">productMatrix</default-activity>
+    <view id="productMatrix">
+      <page>/pagefragments/productMatrix/productMatrix.jsff</page>
+    </view>
+    <task-flow-call id="productPage">
+      <task-flow-reference>
+        <document>/WEB-INF/product-info-taskflow.xml</document>
+        <id>product-info-taskflow</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">productMatrix</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__6">showProduct</from-outcome>
+        <to-activity-id id="__5">productPage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

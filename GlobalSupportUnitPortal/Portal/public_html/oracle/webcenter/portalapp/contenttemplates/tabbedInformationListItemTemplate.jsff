@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dt="http://xmlns.oracle.com/webcenter/content/templates"
+          xmlns:f="http://java.sun.com/jsf/core"
+          version="2.1">
+<dt:contentTemplateDef var="node">
+  <af:showDetailItem text="#{node.propertyMap['dDocTitle'].asTextHtml}" id="sdi1">
+      <af:outputText id="adtof" value="#{node.propertyMap['RD_ANNOUNCEMENT:Body'].asTextHtml}"
+                     escape="false"/>
+  </af:showDetailItem>
+</dt:contentTemplateDef>
+</jsp:root>

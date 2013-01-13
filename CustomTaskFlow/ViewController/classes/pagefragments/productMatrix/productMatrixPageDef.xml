@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="productMatrixPageDef"
+                Package="pagefragments.productMatrix">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ProductView1" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="ProductView1Iterator"/>
+    <searchRegion Binds="ProductView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ProductView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ProductView1Iterator" id="ProductView1">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.ProductView"
+                      Name="ProductView10">
+        <AttrNames>
+          <Item Value="ProductName"/>
+          <Item Value="VendorName"/>
+          <Item Value="PlatformName"/>
+          <Item Value="Active"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

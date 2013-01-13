@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgls" layout="scroll">
+      <af:panelGroupLayout id="pgl2" layout="horizontal" valign="bottom" halign="start">
+        <af:panelFormLayout id="pgl1" maxColumns="4" rows="1" labelAlignment="top">
+  <!--
+        <af:selectOneChoice value="#{bindings.ContactView1.inputValue}"
+                            label="#{bindings.ContactView1.label}"
+                            required="#{bindings.ContactView1.hints.mandatory}"
+                            shortDesc="#{bindings.ContactView1.hints.tooltip}"
+                            autoSubmit="true"
+                            id="soc1">
+          <f:selectItems value="#{bindings.ContactView1.items}" id="si1"/>
+        </af:selectOneChoice>
+        <af:selectOneChoice value="#{bindings.VendorView1.inputValue}"
+                            label="#{bindings.VendorView1.label}"
+                            required="false"
+                            shortDesc="#{bindings.VendorView1.hints.tooltip}"
+                            autoSubmit="true"
+                            partialTriggers="vendorsoc platformsoc productsoc"
+                            unselectedLabel="- - - Make a choice"
+                            valuePassThru="true"
+                            id="vendorsoc">
+          <af:setPropertyListener from="#{null}" to="#{pageFlowScope.contentQueryBean.platformName}" type="valueChange"/>
+          <af:setPropertyListener from="#{null}" to="#{pageFlowScope.contentQueryBean.productName}" type="valueChange"/>
+          <af:forEach items="#{bindings.VendorView11.rangeSet}" var="row" varStatus="rowSet">
+              <af:selectItem value="#{row.VendorName}" label="#{rowSet.index}"/>
+          </af:forEach>
+        </af:selectOneChoice>
+        -->
+        <af:selectOneChoice value="#{pageFlowScope.contentQueryBean.productName}"
+                            label="#{bindings.ProductView1.label}"
+                            required="false"
+                            shortDesc="#{bindings.ProductView1.hints.tooltip}"
+                            autoSubmit="true"
+                            partialTriggers="vendorsoc platformsoc productsoc"
+                            unselectedLabel="--- Make a choice" id="productsoc">
+          <af:setPropertyListener from="#{null}"
+                                  to="#{pageFlowScope.contentQueryBean.vendorName}"
+                                  type="valueChange"/>
+          <af:setPropertyListener from="#{null}"
+                                  to="#{pageFlowScope.contentQueryBean.platformName}"
+                                  type="valueChange"/>
+          <!--
+          <af:setPropertyListener from="#{null}" to="#{pageFlowScope.contentQueryBean.productName}" type="valueChange"/>
+  -->
+          <af:forEach items="#{bindings.ProductView11.rangeSet}" var="row">
+            <af:selectItem value="#{row.ProductName}" label="#{row.ProductName}"/>
+          </af:forEach>
+        </af:selectOneChoice>
+        <af:selectOneChoice value="#{pageFlowScope.contentQueryBean.vendorName}"
+                            label="#{bindings.VendorView1.label}"
+                            required="false"
+                            shortDesc="#{bindings.VendorView1.hints.tooltip}"
+                            autoSubmit="true"
+                            partialTriggers="vendorsoc platformsoc productsoc"
+                            unselectedLabel="- - - Make a choice"
+                            valuePassThru="true"
+                            id="vendorsoc">
+          <af:setPropertyListener from="#{null}" to="#{pageFlowScope.contentQueryBean.platformName}" type="valueChange"/>
+          <af:setPropertyListener from="#{null}" to="#{pageFlowScope.contentQueryBean.productName}" type="valueChange"/>
+          <af:forEach items="#{bindings.VendorView11.rangeSet}" var="row">
+              <af:selectItem value="#{row.VendorName}" label="#{row.VendorName}"/>
+          </af:forEach>
+        </af:selectOneChoice>
+        
+        <af:selectOneChoice value="#{pageFlowScope.contentQueryBean.platformName}"
+                            label="#{bindings.PlatformView1.label}"
+                            required="false"
+                            shortDesc="#{bindings.PlatformView1.hints.tooltip}"
+                            autoSubmit="true"
+                            partialTriggers="vendorsoc platformsoc productsoc"
+                            unselectedLabel="--- Make a choice"
+                            id="platformsoc">
+          <af:setPropertyListener from="#{null}" to="#{pageFlowScope.contentQueryBean.vendorName}" type="valueChange"/>
+  <!--
+          <af:setPropertyListener from="#{null}" to="#{pageFlowScope.contentQueryBean.platformName}" type="valueChange"/>
+  -->
+          <af:setPropertyListener from="#{null}" to="#{pageFlowScope.contentQueryBean.productName}" type="valueChange"/>
+          <af:forEach items="#{bindings.PlatformView11.rangeSet}" var="row">
+              <af:selectItem value="#{row.PlatformName}" label="#{row.PlatformName}"/>
+          </af:forEach>
+        </af:selectOneChoice>
+  <!--
+        <f:facet name="separator">
+            <af:group id="g1">
+              <af:spacer width="10" height="10" id="s1"/>
+            </af:group>
+          </f:facet>
+  -->        
+        </af:panelFormLayout>
+        <af:spacer id="fsp01" width="10" height="10"/>
+        <af:commandButton id="eventbtn" text="Update"
+                          actionListener="#{bindings.eventBinding.listener.processAction}"/>
+      </af:panelGroupLayout>
+    </af:panelGroupLayout>
+</jsp:root>

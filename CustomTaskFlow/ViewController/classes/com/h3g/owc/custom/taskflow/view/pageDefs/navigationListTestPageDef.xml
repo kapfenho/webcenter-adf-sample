@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="navigationListTestPageDef"
+                Package="com.h3g.owc.custom.taskflow.view.pageDefs">
+  <parameters/>
+  <executables>
+    <iterator Binds="ProductView1" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="ProductView1Iterator"/>
+    <iterator Binds="OperatingCountryVersionView4" RangeSize="25"
+              DataControl="GsuBaseApplicationModuleDataControl"
+              id="OperatingCountryVersionView4Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ProductView1Iterator" id="ProductView1">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.ProductView"
+                      Name="ProductView10">
+        <AttrNames>
+          <Item Value="VendorName"/>
+          <Item Value="ProductName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="OperatingCountryVersionView4Iterator"
+          id="OperatingCountryVersionView4">
+      <nodeDefinition DefName="com.h3g.owc.custom.taskflow.model.OperatingCountryVersionView"
+                      Name="OperatingCountryVersionView40">
+        <AttrNames>
+          <Item Value="OpcoName"/>
+          <Item Value="ProductName"/>
+          <Item Value="VersionName"/>
+          <Item Value="VersionBuild"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
